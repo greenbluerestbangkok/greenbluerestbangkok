@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 Admin Panel - GreenBlueRest Bangkok</title>
+    <link rel="stylesheet" href="admin-panel.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- หน้า Login -->
+    <div id="loginPage" class="login-page">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h1>Admin Panel</h1>
+                    <p>GreenBlueRest Bangkok</p>
+                </div>
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">ชื่อผู้ใช้:</label>
+                        <input type="text" id="username" required placeholder="กรอกชื่อผู้ใช้">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">รหัสผ่าน:</label>
+                        <input type="password" id="password" required placeholder="กรอกรหัสผ่าน">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> เข้าสู่ระบบ
+                    </button>
+                </form>
+                <div class="login-footer">
+                    <p>⚠️ เฉพาะผู้ดูแลระบบเท่านั้น</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- หน้า Admin Panel -->
+    <div id="adminPage" class="admin-page hidden">
+        <header class="admin-header">
+            <div class="header-left">
+                <h1><i class="fas fa-cog"></i> Admin Panel</h1>
+                <p>จัดการข้อมูลเว็บไซต์ GreenBlueRest Bangkok</p>
+            </div>
+            <div class="header-right">
+                <span class="user-info">
+                    <i class="fas fa-user"></i> 
+                    <span id="currentUser">Admin</span>
+                </span>
+                <button class="btn btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                </button>
+            </div>
+        </header>
+
+        <nav class="admin-nav">
+            <button class="nav-btn active" data-section="dashboard">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </button>
+            <button class="nav-btn" data-section="trips">
+                <i class="fas fa-suitcase"></i> จัดการทริป
+            </button>
+            <button class="nav-btn" data-section="products">
+                <i class="fas fa-shopping-bag"></i> จัดการสินค้า
+            </button>
+            <button class="nav-btn" data-section="articles">
+                <i class="fas fa-newspaper"></i> จัดการบทความ
+            </button>
+            <button class="nav-btn" data-section="partners">
+                <i class="fas fa-handshake"></i> ผู้ประกอบการ
+            </button>
+            <button class="nav-btn" data-section="content">
+                <i class="fas fa-edit"></i> จัดการเนื้อหา
+            </button>
+            <button class="nav-btn" data-section="users">
+                <i class="fas fa-users"></i> จัดการผู้ใช้
+            </button>
+            <button class="nav-btn" data-section="settings">
+                <i class="fas fa-cogs"></i> ตั้งค่า
+            </button>
+        </nav>
+
+        <main class="admin-content">
+            <!-- Dashboard -->
+            <section id="dashboard" class="content-section active">
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-suitcase"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>ทริปทั้งหมด</h3>
+                            <p id="totalTrips">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>สินค้าทั้งหมด</h3>
+                            <p id="totalProducts">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>บทความทั้งหมด</h3>
+                            <p id="totalArticles">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>ผู้ประกอบการ</h3>
+                            <p id="totalPartnersDashboard">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>ผู้เข้าชมวันนี้</h3>
+                            <p id="todayVisitors">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>อัปเดตล่าสุด</h3>
+                            <p id="lastUpdate">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h3>การดำเนินการด่วน</h3>
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" onclick="showSection('trips')">
+                            <i class="fas fa-plus"></i> เพิ่มทริปใหม่
+                        </button>
+                        <button class="btn btn-secondary" onclick="showSection('products')">
+                            <i class="fas fa-plus"></i> เพิ่มสินค้าใหม่
+                        </button>
+                        <button class="btn btn-secondary" onclick="showSection('articles')">
+                            <i class="fas fa-plus"></i> เพิ่มบทความใหม่
+                        </button>
+                        <button class="btn btn-secondary" onclick="createBackup()">
+                            <i class="fas fa-download"></i> สร้างไฟล์สำรอง
+                        </button>
+                        <button class="btn btn-secondary" onclick="openWebsite()">
+                            <i class="fas fa-external-link-alt"></i> เปิดเว็บไซต์
+                        </button>
+                    </div>
+                </div>
+
+                <div class="website-status" style="margin-top: 30px;">
+                    <h3>🔗 สถานะการเชื่อมต่อเว็บไซต์</h3>
+                    <div class="status-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+                        <div class="status-item" style="background: white; padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <i class="fas fa-file-code" style="font-size: 2rem; color: #667eea; margin-bottom: 10px;"></i>
+                            <h4>ไฟล์ทริป</h4>
+                            <p id="tripFileStatus">กำลังตรวจสอบ...</p>
+                        </div>
+                        <div class="status-item" style="background: white; padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <i class="fas fa-shopping-bag" style="font-size: 2rem; color: #667eea; margin-bottom: 10px;"></i>
+                            <h4>ไฟล์สินค้า</h4>
+                            <p id="productFileStatus">กำลังตรวจสอบ...</p>
+                        </div>
+                        <div class="status-item" style="background: white; padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <i class="fas fa-globe" style="font-size: 2rem; color: #667eea; margin-bottom: 10px;"></i>
+                            <h4>ไฟล์เว็บไซต์</h4>
+                            <p id="websiteFileStatus">กำลังตรวจสอบ...</p>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; text-align: center;">
+                        <button class="btn btn-primary" onclick="adminPanel.checkWebsiteConnection()">
+                            <i class="fas fa-sync-alt"></i> ตรวจสอบการเชื่อมต่อใหม่
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- จัดการทริป -->
+            <section id="trips" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-suitcase"></i> จัดการทริป</h2>
+                    <button class="btn btn-primary" onclick="showAddTripModal()">
+                        <i class="fas fa-plus"></i> เพิ่มทริปใหม่
+                    </button>
+                </div>
+                
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>ชื่อทริป</th>
+                                <th>ราคา</th>
+                                <th>สถานะ</th>
+                                <th>การดำเนินการ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tripsTableBody">
+                            <!-- ข้อมูลทริปจะถูกเพิ่มที่นี่ -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- จัดการสินค้า -->
+            <section id="products" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-shopping-bag"></i> จัดการสินค้า</h2>
+                    <button class="btn btn-primary" onclick="showAddProductModal()">
+                        <i class="fas fa-plus"></i> เพิ่มสินค้าใหม่
+                    </button>
+                </div>
+                
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>ชื่อสินค้า</th>
+                                <th>ราคา</th>
+                                <th>หมวดหมู่</th>
+                                <th>การดำเนินการ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody">
+                            <!-- ข้อมูลสินค้าจะถูกเพิ่มที่นี่ -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- จัดการบทความ -->
+            <section id="articles" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-newspaper"></i> จัดการบทความ</h2>
+                    <button class="btn btn-primary" onclick="showAddArticleModal()">
+                        <i class="fas fa-plus"></i> เพิ่มบทความใหม่
+                    </button>
+                </div>
+                
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>หัวข้อ</th>
+                                <th>หมวดหมู่</th>
+                                <th>ผู้เขียน</th>
+                                <th>วันที่</th>
+                                <th>สถานะ</th>
+                                <th>การดำเนินการ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="articlesTableBody">
+                            <!-- ข้อมูลบทความจะถูกเพิ่มที่นี่ -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- จัดการผู้ประกอบการท้องถิ่น -->
+            <section id="partners" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-handshake"></i> จัดการผู้ประกอบการท้องถิ่น</h2>
+                    <button class="btn btn-primary" onclick="showAddPartnerModal()">
+                        <i class="fas fa-plus"></i> เพิ่มผู้ประกอบการใหม่
+                    </button>
+                </div>
+                
+                <div class="partners-overview" style="background: white; padding: 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">
+                        <i class="fas fa-chart-line"></i> ภาพรวมการร่วมมือ
+                    </h3>
+                    <div class="overview-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                        <div class="stat-item" style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <div style="font-size: 2.5rem; color: #667eea; margin-bottom: 10px;">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h4 style="margin-bottom: 5px;">ผู้ประกอบการทั้งหมด</h4>
+                            <p id="totalPartners" style="font-size: 1.5rem; font-weight: bold; color: #333;">0</p>
+                        </div>
+                        <div class="stat-item" style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <div style="font-size: 2.5rem; color: #28a745; margin-bottom: 10px;">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h4 style="margin-bottom: 5px;">ร่วมมือแล้ว</h4>
+                            <p id="activePartners" style="font-size: 1.5rem; font-weight: bold; color: #333;">0</p>
+                        </div>
+                        <div class="stat-item" style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <div style="font-size: 2.5rem; color: #ffc107; margin-bottom: 10px;">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h4 style="margin-bottom: 5px;">รอการยืนยัน</h4>
+                            <p id="pendingPartners" style="font-size: 1.5rem; font-weight: bold; color: #333;">0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>โลโก้</th>
+                                <th>ชื่อธุรกิจ</th>
+                                <th>ประเภท</th>
+                                <th>สถานะ</th>
+                                <th>วันที่ร่วมมือ</th>
+                                <th>การดำเนินการ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="partnersTableBody">
+                            <!-- ข้อมูลผู้ประกอบการจะถูกเพิ่มที่นี่ -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- จัดการเนื้อหา -->
+            <section id="content" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-edit"></i> จัดการเนื้อหา</h2>
+                </div>
+                
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3>ข้อมูลเว็บไซต์</h3>
+                        <form id="websiteForm" class="form">
+                            <div class="form-group">
+                                <label>ชื่อเว็บไซต์:</label>
+                                <input type="text" id="websiteName" value="GreenBlueRest Bangkok">
+                            </div>
+                            <div class="form-group">
+                                <label>คำอธิบาย:</label>
+                                <textarea id="websiteDesc" rows="3">เว็บไซต์ท่องเที่ยวชุมชน</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">บันทึก</button>
+                        </form>
+                    </div>
+                    
+                    <div class="content-card">
+                        <h3>ข้อมูลติดต่อ</h3>
+                        <form id="contactForm" class="form">
+                            <div class="form-group">
+                                <label>Email:</label>
+                                <input type="email" id="contactEmail" value="contact@greenbluerestbangkok.com">
+                            </div>
+                            <div class="form-group">
+                                <label>โทรศัพท์:</label>
+                                <input type="text" id="contactPhone" value="08x-xxx-xxxx">
+                            </div>
+                            <div class="form-group">
+                                <label>Line OA:</label>
+                                <input type="text" id="contactLine" value="greenbluerestbangkok">
+                            </div>
+                            <button type="submit" class="btn btn-primary">บันทึก</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- จัดการผู้ใช้ -->
+            <section id="users" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> จัดการผู้ใช้</h2>
+                    <button class="btn btn-primary" onclick="showAddUserModal()">
+                        <i class="fas fa-plus"></i> เพิ่มผู้ใช้ใหม่
+                    </button>
+                </div>
+                
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ชื่อผู้ใช้</th>
+                                <th>อีเมล</th>
+                                <th>สิทธิ์</th>
+                                <th>สถานะ</th>
+                                <th>การดำเนินการ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- ข้อมูลผู้ใช้จะถูกเพิ่มที่นี่ -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ตั้งค่า -->
+            <section id="settings" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cogs"></i> ตั้งค่า</h2>
+                </div>
+                
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>การตั้งค่าทั่วไป</h3>
+                        <form id="generalSettingsForm" class="form">
+                            <div class="form-group">
+                                <label>โหมดการบำรุงรักษา:</label>
+                                <select id="maintenanceMode">
+                                    <option value="false">ปิด</option>
+                                    <option value="true">เปิด</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>การแจ้งเตือน:</label>
+                                <select id="notifications">
+                                    <option value="all">ทั้งหมด</option>
+                                    <option value="important">สำคัญเท่านั้น</option>
+                                    <option value="none">ปิด</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">บันทึก</button>
+                        </form>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h3>การสำรองข้อมูล</h3>
+                        <div class="backup-actions">
+                            <button class="btn btn-secondary" onclick="createBackup()">
+                                <i class="fas fa-download"></i> สร้างไฟล์สำรอง
+                            </button>
+                            <button class="btn btn-secondary" onclick="restoreBackup()">
+                                <i class="fas fa-upload"></i> กู้คืนข้อมูล
+                            </button>
+                            <button class="btn btn-secondary" onclick="exportData()">
+                                <i class="fas fa-file-export"></i> ส่งออกข้อมูล
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal สำหรับเพิ่ม/แก้ไขทริป -->
+    <div id="tripModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="tripModalTitle">เพิ่มทริปใหม่</h2>
+            <form id="tripForm" class="form">
+                <div class="form-group">
+                    <label>ID ทริป:</label>
+                    <input type="number" id="tripId" required>
+                </div>
+                <div class="form-group">
+                    <label>ชื่อทริป:</label>
+                    <input type="text" id="tripName" required>
+                </div>
+                <div class="form-group">
+                    <label>ราคา:</label>
+                    <input type="text" id="tripPrice" required>
+                </div>
+                <div class="form-group">
+                    <label>คำอธิบาย:</label>
+                    <textarea id="tripDesc" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>สถานะ:</label>
+                    <select id="tripStatus">
+                        <option value="active">เปิดใช้งาน</option>
+                        <option value="inactive">ปิดใช้งาน</option>
+                        <option value="draft">ร่าง</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('tripModal')">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal สำหรับเพิ่ม/แก้ไขสินค้า -->
+    <div id="productModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="productModalTitle">เพิ่มสินค้าใหม่</h2>
+            <form id="productForm" class="form">
+                <div class="form-group">
+                    <label>ID สินค้า:</label>
+                    <input type="number" id="productId" required>
+                </div>
+                <div class="form-group">
+                    <label>ชื่อสินค้า:</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label>ราคา:</label>
+                    <input type="text" id="productPrice" required>
+                </div>
+                <div class="form-group">
+                    <label>คำอธิบาย:</label>
+                    <textarea id="productDesc" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>หมวดหมู่:</label>
+                    <select id="productCategory">
+                        <option value="สินค้าชุมชน">สินค้าชุมชน</option>
+                        <option value="ของที่ระลึก">ของที่ระลึก</option>
+                        <option value="อาหาร">อาหาร</option>
+                        <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('productModal')">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal สำหรับเพิ่มผู้ใช้ -->
+    <div id="userModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>เพิ่มผู้ใช้ใหม่</h2>
+            <form id="userForm" class="form">
+                <div class="form-group">
+                    <label>ชื่อผู้ใช้:</label>
+                    <input type="text" id="newUsername" required>
+                </div>
+                <div class="form-group">
+                    <label>อีเมล:</label>
+                    <input type="email" id="newUserEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>รหัสผ่าน:</label>
+                    <input type="password" id="newUserPassword" required>
+                </div>
+                <div class="form-group">
+                    <label>สิทธิ์:</label>
+                    <select id="newUserRole">
+                        <option value="admin">ผู้ดูแลระบบ</option>
+                        <option value="editor">ผู้แก้ไข</option>
+                        <option value="viewer">ผู้ดู</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">เพิ่มผู้ใช้</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('userModal')">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal สำหรับเพิ่ม/แก้ไขบทความ -->
+    <div id="articleModal" class="modal hidden">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close">&times;</span>
+            <h2 id="articleModalTitle">เพิ่มบทความใหม่</h2>
+            <form id="articleForm" class="form">
+                <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label>ID บทความ:</label>
+                        <input type="number" id="articleId" required>
+                    </div>
+                    <div class="form-group">
+                        <label>หมวดหมู่:</label>
+                        <select id="articleCategory" required>
+                            <option value="ท่องเที่ยว">ท่องเที่ยว</option>
+                            <option value="อาหาร">อาหาร</option>
+                            <option value="วัฒนธรรม">วัฒนธรรม</option>
+                            <option value="ชุมชน">ชุมชน</option>
+                            <option value="ธรรมชาติ">ธรรมชาติ</option>
+                            <option value="อื่นๆ">อื่นๆ</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>หัวข้อบทความ:</label>
+                    <input type="text" id="articleTitle" required placeholder="กรอกหัวข้อบทความ">
+                </div>
+                
+                <div class="form-group">
+                    <label>คำอธิบายสั้น:</label>
+                    <textarea id="articleExcerpt" rows="3" required placeholder="คำอธิบายสั้นๆ ของบทความ"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>เนื้อหาบทความ:</label>
+                    <textarea id="articleContent" rows="10" required placeholder="เนื้อหาบทความเต็ม"></textarea>
+                </div>
+                
+                <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label>ผู้เขียน:</label>
+                        <input type="text" id="articleAuthor" required placeholder="ชื่อผู้เขียน">
+                    </div>
+                    <div class="form-group">
+                        <label>วันที่เผยแพร่:</label>
+                        <input type="date" id="articleDate" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>รูปภาพหลัก:</label>
+                    <input type="text" id="articleImage" placeholder="URL รูปภาพ หรือ path ไฟล์">
+                </div>
+                
+                <div class="form-group">
+                    <label>แท็ก (Tags):</label>
+                    <input type="text" id="articleTags" placeholder="แท็ก1, แท็ก2, แท็ก3 (คั่นด้วยเครื่องหมายจุลภาค)">
+                </div>
+                
+                <div class="form-group">
+                    <label>สถานะ:</label>
+                    <select id="articleStatus">
+                        <option value="published">เผยแพร่แล้ว</option>
+                        <option value="draft">ร่าง</option>
+                        <option value="archived">เก็บถาวร</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">บันทึกบทความ</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('articleModal')">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal สำหรับเพิ่ม/แก้ไขผู้ประกอบการ -->
+    <div id="partnerModal" class="modal hidden">
+        <div class="modal-content" style="max-width: 900px;">
+            <span class="close">&times;</span>
+            <h2 id="partnerModalTitle">เพิ่มผู้ประกอบการใหม่</h2>
+            <form id="partnerForm" class="form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>ID ผู้ประกอบการ:</label>
+                        <input type="number" id="partnerId" required>
+                    </div>
+                    <div class="form-group">
+                        <label>ประเภทธุรกิจ:</label>
+                        <select id="partnerType" required>
+                            <option value="ร้านอาหาร">ร้านอาหาร</option>
+                            <option value="โรงแรม/ที่พัก">โรงแรม/ที่พัก</option>
+                            <option value="ร้านค้า/ของที่ระลึก">ร้านค้า/ของที่ระลึก</option>
+                            <option value="บริการท่องเที่ยว">บริการท่องเที่ยว</option>
+                            <option value="เกษตรกรรม">เกษตรกรรม</option>
+                            <option value="หัตถกรรม">หัตถกรรม</option>
+                            <option value="อื่นๆ">อื่นๆ</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>ชื่อธุรกิจ:</label>
+                    <input type="text" id="partnerName" required placeholder="ชื่อร้าน/ธุรกิจ">
+                </div>
+                
+                <div class="form-group">
+                    <label>คำอธิบายธุรกิจ:</label>
+                    <textarea id="partnerDescription" rows="4" required placeholder="อธิบายเกี่ยวกับธุรกิจ สินค้า หรือบริการ"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>เจ้าของ/ผู้ติดต่อ:</label>
+                        <input type="text" id="partnerOwner" required placeholder="ชื่อเจ้าของหรือผู้ติดต่อ">
+                    </div>
+                    <div class="form-group">
+                        <label>วันที่เริ่มร่วมมือ:</label>
+                        <input type="date" id="partnerStartDate" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>โทรศัพท์:</label>
+                        <input type="text" id="partnerPhone" placeholder="เบอร์โทรศัพท์">
+                    </div>
+                    <div class="form-group">
+                        <label>อีเมล:</label>
+                        <input type="email" id="partnerEmail" placeholder="อีเมล">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>ที่อยู่:</label>
+                    <textarea id="partnerAddress" rows="3" placeholder="ที่อยู่ของธุรกิจ"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>โลโก้/รูปภาพ:</label>
+                    <div class="logo-upload-section">
+                        <input type="text" id="partnerLogo" placeholder="URL โลโก้ หรือ path ไฟล์รูปภาพ">
+                        <div class="logo-preview" id="logoPreview" style="margin-top: 10px; text-align: center;">
+                            <div style="width: 150px; height: 100px; border: 2px dashed #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #666;">
+                                <i class="fas fa-image" style="font-size: 2rem;"></i>
+                            </div>
+                        </div>
+                        <small style="color: #666; margin-top: 5px; display: block;">
+                            รูปภาพแนะนำ: ขนาด 300x200px, รูปแบบ JPG/PNG
+                        </small>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>เว็บไซต์/โซเชียลมีเดีย:</label>
+                    <input type="text" id="partnerWebsite" placeholder="URL เว็บไซต์, Facebook, Instagram หรือ Line">
+                </div>
+                
+                <div class="form-group">
+                    <label>สถานะการร่วมมือ:</label>
+                    <select id="partnerStatus">
+                        <option value="active">ร่วมมือแล้ว</option>
+                        <option value="pending">รอการยืนยัน</option>
+                        <option value="inactive">หยุดร่วมมือ</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>หมายเหตุเพิ่มเติม:</label>
+                    <textarea id="partnerNotes" rows="3" placeholder="ข้อมูลเพิ่มเติมหรือข้อตกลงพิเศษ"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">บันทึกผู้ประกอบการ</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('partnerModal')">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- แสดงสถานะการทำงาน -->
+    <div id="status" class="status hidden"></div>
+
+    <script src="admin-panel.js"></script>
+</body>
+</html>

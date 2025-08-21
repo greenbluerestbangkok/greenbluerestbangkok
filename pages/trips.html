@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ทริปท่องเที่ยว - Green Blue Rest Bangkok</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="../main.html" class="nav-logo">GreenBlueRest Bangkok</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="../main.html" class="nav-link">หน้าแรก</a></li>
+                <li class="nav-item"><a href="low-carbon.html" class="nav-link">Low Carbon Tourism</a></li>
+                <li class="nav-item"><a href="trips.html" class="nav-link active">ทริป</a></li>
+                <li class="nav-item"><a href="products.html" class="nav-link">สินค้าชุมชน</a></li>
+                <li class="nav-item"><a href="activities.html" class="nav-link">Blog & Vlog</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">ติดต่อเรา</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container">
+            <h2>ทริปทั้งหมดของเรา</h2>
+            <p class="trips-intro">ค้นพบทริปท่องเที่ยวชุมชนวิถีคลองบางมดที่หลากหลาย ครบทั้ง 18 ทริป พร้อมประสบการณ์พิเศษที่ไม่เหมือนใคร</p>
+            
+            <div class="card-grid" id="trips-grid">
+                <!-- ทริปทั้งหมดจะถูกเพิ่มด้วย JavaScript -->
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>GreenBlueRest Bangkok</h4>
+                <p>โครงการท่องเที่ยวชุมชนย่านคลองบางมดอย่างยั่งยืน</p>
+            </div>
+            <div class="footer-column">
+                <h4>เมนู</h4>
+                <ul>
+                    <li><a href="low-carbon.html">Low Carbon Tourism</a></li>
+                    <li><a href="trips.html">ทริป (18 ทริป)</a></li>
+                    <li><a href="products.html">สินค้าชุมชน</a></li>
+                    <li><a href="contact.html">ติดต่อเรา</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>ติดต่อ</h4>
+                <p>Email: contact@greenbluerestbangkok.com</p>
+                <p>โทร: 08x-xxx-xxxx</p>
+                <p>Line OA: @greenbluerestbangkok</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Green Blue Rest Bangkok. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script type="module" src="../js/main.js"></script>
+    <script src="../js/trip-details.js"></script>
+    <script>
+        // ฟังก์ชันสร้างการ์ดทริป
+        function createTripCard(trip) {
+            return `
+                <div class="card trip-card" data-trip-id="${trip.id}">
+                    <div class="card-image-container">
+                        <img src="${trip.mainImage}" alt="${trip.name}" class="card-img">
+                        <div class="card-overlay">
+                            <a href="trip-details.html?id=${trip.id}" class="btn btn-secondary btn-overlay">ดูรายละเอียด</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">${trip.name}</h3>
+                        <p class="card-text">${trip.shortDescription}</p>
+                        <div class="trip-meta">
+                            <span class="trip-price">💰 ${trip.price}</span>
+                            <span class="trip-duration">⏰ ${trip.duration}</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="trip-details.html?id=${trip.id}" class="btn btn-primary">ดูรายละเอียด</a>
+                            <a href="#" class="btn btn-secondary">จองเลย</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // แสดงทริปทั้งหมดเมื่อโหลดหน้า
+        document.addEventListener('DOMContentLoaded', function() {
+            const tripsGrid = document.getElementById('trips-grid');
+            
+            // สร้างการ์ดทริปทั้งหมด
+            tripsGrid.innerHTML = tripsData.map(trip => createTripCard(trip)).join('');
+        });
+    </script>
+</body>
+</html>

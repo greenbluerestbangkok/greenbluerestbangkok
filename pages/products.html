@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สินค้าชุมชน - Green Blue Rest Bangkok</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="../main.html" class="nav-logo">GreenBlueRest Bangkok</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="../main.html" class="nav-link">หน้าแรก</a></li>
+                <li class="nav-item"><a href="low-carbon.html" class="nav-link">Low Carbon Tourism</a></li>
+                <li class="nav-item"><a href="trips.html" class="nav-link">ทริป</a></li>
+                <li class="nav-item"><a href="products.html" class="nav-link active">สินค้าชุมชน</a></li>
+                <li class="nav-item"><a href="activities.html" class="nav-link">Blog & Vlog</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">ติดต่อเรา</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container">
+            <h2>สินค้าชุมชน</h2>
+            
+            <!-- ช่องค้นหา -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="ค้นหาสินค้า..." class="search-input">
+                <button type="button" id="searchBtn" class="search-btn">ค้นหา</button>
+                <button type="button" id="clearSearch" class="clear-search-btn">ล้างการค้นหา</button>
+            </div>
+            
+            <!-- ตัวกรองหมวดหมู่ -->
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="all">ทั้งหมด</button>
+                <button class="filter-btn" data-category="food">อาหาร</button>
+                <button class="filter-btn" data-category="craft">งานฝีมือ</button>
+                <button class="filter-btn" data-category="beauty">ความงาม</button>
+                <button class="filter-btn" data-category="home">ของใช้ในบ้าน</button>
+            </div>
+            
+            <div class="product-grid" id="products-grid">
+                <!-- สินค้าทั้งหมดจะถูกเพิ่มด้วย JavaScript -->
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>GreenBlueRest Bangkok</h4>
+                <p>โครงการท่องเที่ยวชุมชนย่านคลองบางมดอย่างยั่งยืน</p>
+            </div>
+            <div class="footer-column">
+                <h4>เมนู</h4>
+                <ul>
+                    <li><a href="low-carbon.html">Low Carbon Tourism</a></li>
+                    <li><a href="trips.html">ทริป</a></li>
+                    <li><a href="products.html">สินค้าชุมชน</a></li>
+                    <li><a href="activities.html">Blog & Vlog</a></li>
+                    <li><a href="contact.html">ติดต่อเรา</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>ติดต่อ</h4>
+                <p>Email: contact@greenbluerestbangkok.com</p>
+                <p>โทร: 08x-xxx-xxxx</p>
+                <p>Line OA: @greenbluerestbangkok</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Green Blue Rest Bangkok. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script type="module" src="../js/main.js"></script>
+    <script src="../js/products.js"></script>
+</body>
+</html>
