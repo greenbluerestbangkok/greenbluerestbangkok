@@ -5,7 +5,7 @@ export const blogData = {
       id: 1,
       title: "กินข้าวบ้านสวนป้าดา",
       excerpt: "สัมผัสรสชาติอาหารไทยต้นตำรับที่บ้านสวนป้าดา อาหารสไตล์โบราณที่ทำจากวัตถุดิบสดใหม่ในชุมชน",
-      image: "/images/blog/blog1.jpg",
+      image: "/greenbluerestbangkok/images/blog/blog1.jpg",
       date: "2024-12-15",
       category: "blog",
       content: `
@@ -34,7 +34,7 @@ export const blogData = {
       id: 2,
       title: "ทริปวัฒนธรรม",
       excerpt: "เรียนรู้วัฒนธรรมไทยแบบดั้งเดิมผ่านการท่องเที่ยวเชิงวัฒนธรรม ชมวิถีชีวิตชุมชนคลองบางมด",
-      image: "/images/blog/blog2.jpg", 
+      image: "/greenbluerestbangkok/images/blog/blog2.jpg", 
       date: "2024-12-10",
       category: "blog",
       content: `
@@ -63,7 +63,7 @@ export const blogData = {
       id: 3,
       title: "Family Trip at SAFETist Farm",
       excerpt: "ทริปครอบครัวที่ฟาร์ม SAFETist เรียนรู้เกษตรยั่งยืนและกิจกรรมสนุกสำหรับทุกวัย",
-      image: "/images/blog/blog3.jpg",
+      image: "/greenbluerestbangkok/images/blog/blog3.jpg",
       date: "2024-12-05", 
       category: "blog",
       content: `
@@ -92,7 +92,7 @@ export const blogData = {
       id: 4,
       title: "บางมด เมืองแห่งการเรียนรู้", 
       excerpt: "ชุมชนบางมดที่กลายเป็นแหล่งเรียนรู้ด้วยการอนุรักษ์ภูมิปัญญาท้องถิ่นและการพัฒนาอย่างยั่งยืน",
-      image: "/images/blog/blog4.jpg",
+      image: "/greenbluerestbangkok/images/blog/blog4.jpg",
       date: "2024-11-28",
       category: "blog", 
       content: `

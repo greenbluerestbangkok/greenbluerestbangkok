@@ -79,7 +79,77 @@
         </div>
     </footer>
     
-    <script type="module" src="../js/main.js"></script>
-    <script src="../js/products.js"></script>
+    <script type="module">
+        import { productsData } from '../js/products.js';
+        
+        // ฟังก์ชันสร้างการ์ดสินค้า
+        function createProductCard(product) {
+            return `
+                <div class="product-card" data-category="${product.category}">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <p class="product-producer">ผู้ผลิต: ${product.producer}</p>
+                        <div class="product-price">${product.price}</div>
+                        <button class="btn btn-primary">ดูรายละเอียด</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // แสดงสินค้าทั้งหมดเมื่อโหลดหน้า
+        document.addEventListener('DOMContentLoaded', function() {
+            const productsGrid = document.getElementById('products-grid');
+            
+            // สร้างการ์ดสินค้าทั้งหมด
+            productsGrid.innerHTML = productsData.map(product => createProductCard(product)).join('');
+            
+            // ฟังก์ชันค้นหา
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const clearSearch = document.getElementById('clearSearch');
+            
+            function filterProducts() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const filteredProducts = productsData.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.description.toLowerCase().includes(searchTerm) ||
+                    product.producer.toLowerCase().includes(searchTerm)
+                );
+                
+                productsGrid.innerHTML = filteredProducts.map(product => createProductCard(product)).join('');
+            }
+            
+            searchBtn.addEventListener('click', filterProducts);
+            searchInput.addEventListener('input', filterProducts);
+            clearSearch.addEventListener('click', () => {
+                searchInput.value = '';
+                productsGrid.innerHTML = productsData.map(product => createProductCard(product)).join('');
+            });
+            
+            // ฟังก์ชันกรองหมวดหมู่
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // อัปเดต active state
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // กรองสินค้า
+                    if (category === 'all') {
+                        productsGrid.innerHTML = productsData.map(product => createProductCard(product)).join('');
+                    } else {
+                        const filteredProducts = productsData.filter(product => product.category === category);
+                        productsGrid.innerHTML = filteredProducts.map(product => createProductCard(product)).join('');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

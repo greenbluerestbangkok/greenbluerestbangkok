@@ -1,7 +1,7 @@
 // ข้อมูลสินค้าชุมชนทั้งหมด 20 รายการ
 import { IMAGE_CONFIG } from './config.js';
 
-const productsData = [
+export const productsData = [
     {
         id: 1,
         name: "สบู่แฮนด์เมดน้ำมันมะพร้าว",
