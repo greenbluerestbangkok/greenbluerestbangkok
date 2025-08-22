@@ -1,4 +1,4 @@
-// ข้อมูลสินค้าชุมชนทั้งหมด 20 รายการ
+// ข้อมูลสินค้าชุมชนทั้งหมด 15 รายการ
 import { IMAGE_CONFIG } from './config.js';
 
 export const productsData = [
@@ -66,139 +66,76 @@ export const productsData = [
         producer: "วิสาหกิจชุมชนอารยะคลองบางมดสร้างสรรค์"
     },
     {
-        id: 9,
+        id: 8,
         name: "เครื่องจักสานไม้ไผ่",
         price: "200 บาท",
         category: "craft",
         description: "เครื่องจักสานไม้ไผ่แบบดั้งเดิม",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product9.jpg'),
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product8.jpg'),
         producer: "Art Lab"
     },
     {
-        id: 10,
+        id: 9,
         name: "ครีมบำรุงผิวสมุนไพร",
         price: "180 บาท",
         category: "beauty",
         description: "ครีมบำรุงผิวจากสมุนไพรไทย",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product10.jpg'),
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product9.jpg'),
         producer: "S'more town"
     },
     {
-        id: 11,
+        id: 10,
         name: "ผลไม้สดจากสวน",
         price: "80 บาท",
         category: "food",
         description: "ผลไม้สดจากสวนในชุมชน",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product11.jpg'),
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product10.jpg'),
         producer: "นิทานศิลป์ @บ้านดรุณ"
     },
     {
-        id: 12,
+        id: 11,
         name: "เครื่องเงินแฮนด์เมด",
         price: "800 บาท",
         category: "craft",
         description: "เครื่องเงินแฮนด์เมดแบบโบราณ",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product12.jpg'),
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product11.jpg'),
         producer: "บ้านเขียนวาดและภาพพิมพ์"
     },
     {
-        id: 13,
-        name: "น้ำสมุนไพรเพื่อสุขภาพ",
-        price: "70 บาท",
+        id: 12,
+        name: "น้ำสมุนไพรไทย",
+        price: "100 บาท",
         category: "food",
         description: "น้ำสมุนไพรไทยเพื่อสุขภาพ",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product13.jpg'),
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product12.jpg'),
         producer: "วิสาหกิจชุมชนอารยะคลองบางมดสร้างสรรค์"
     },
     {
-        id: 14,
+        id: 13,
         name: "เครื่องแก้วเป่าแฮนด์เมด",
-        price: "400 บาท",
+        price: "500 บาท",
         category: "craft",
         description: "เครื่องแก้วเป่าแฮนด์เมดแบบโบราณ",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product14.jpg'),
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product13.jpg'),
         producer: "Art Lab"
     },
     {
-        id: 15,
+        id: 14,
         name: "แชมพูสมุนไพรธรรมชาติ",
-        price: "120 บาท",
+        price: "150 บาท",
         category: "beauty",
         description: "แชมพูสมุนไพรธรรมชาติ ไม่มีสารเคมี",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product15.jpg'),
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product14.jpg'),
         producer: "เซฟติสท์ฟาร์ม"
     },
     {
-        id: 16,
+        id: 15,
         name: "เครื่องหนังแฮนด์เมด",
         price: "350 บาท",
         category: "craft",
         description: "เครื่องหนังแฮนด์เมดแบบดั้งเดิม",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product16.jpg'),
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product15.jpg'),
         producer: "กัมปงในดงปรือ"
-    },
-    {
-        id: 18,
-        name: "เครื่องไม้แกะสลัก",
-        price: "500 บาท",
-        category: "craft",
-        description: "เครื่องไม้แกะสลักแบบโบราณ",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product18.jpg'),
-        producer: "นิทานศิลป์ @บ้านดรุณ"
-    },
-    {
-        id: 19,
-        name: "น้ำหอมธรรมชาติ",
-        price: "200 บาท",
-        category: "beauty",
-        description: "น้ำหอมธรรมชาติจากดอกไม้ไทย",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product19.jpg'),
-        producer: "S'more town"
-    },
-    {
-        id: 20,
-        name: "เครื่องหินแกะสลัก",
-        price: "600 บาท",
-        category: "craft",
-        description: "เครื่องหินแกะสลักแบบโบราณ",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product20.jpg'),
-        producer: "Art Lab"
-    },
-    {
-        id: 21,
-        name: "น้ำผึ้งธรรมชาติ",
-        price: "150 บาท",
-        category: "food",
-        description: "น้ำผึ้งธรรมชาติจากผึ้งในชุมชน",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product21.jpg'),
-        producer: "เซฟติสท์ฟาร์ม"
-    },
-    {
-        id: 22,
-        name: "เครื่องจักสานกก",
-        price: "180 บาท",
-        category: "craft",
-        description: "เครื่องจักสานกกแบบดั้งเดิม",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product22.jpg'),
-        producer: "กัมปงในดงปรือ"
-    },
-    {
-        id: 23,
-        name: "ครีมอาบน้ำสมุนไพร",
-        price: "120 บาท",
-        category: "beauty",
-        description: "ครีมอาบน้ำจากสมุนไพรไทย",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product23.jpg'),
-        producer: "วิสาหกิจชุมชนอารยะคลองบางมดสร้างสรรค์"
-    },
-    {
-        id: 24,
-        name: "เครื่องปั้นดินเผาแบบโบราณ",
-        price: "400 บาท",
-        category: "craft",
-        description: "เครื่องปั้นดินเผาแบบโบราณ ลวดลายท้องถิ่น",
-        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product24.jpg'),
-        producer: "นิทานศิลป์ @บ้านดรุณ"
     }
 ];
 

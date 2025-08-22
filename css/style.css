@@ -754,8 +754,8 @@ body {
 */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 รายการต่อแถว - แก้ไขได้ที่นี่ */
-    gap: 1.5rem;                           /* ระยะห่างระหว่างสินค้า - แก้ไขได้ที่นี่ */
+    grid-template-columns: repeat(5, 1fr); /* 5 รายการต่อแถว - แก้ไขได้ที่นี่ */
+    gap: 1.2rem;                           /* ระยะห่างระหว่างสินค้า - แก้ไขได้ที่นี่ */
     min-height: 400px;                      /* ความสูงขั้นต่ำของกริด - แก้ไขได้ที่นี่ */
     align-items: start;                     /* จัดสินค้าที่ด้านบน */
 }
@@ -854,9 +854,9 @@ body {
     background: var(--primary-color);
     color: white;
     border: none;
-    padding: 0.5rem 1rem;            /* เล็กลงจากเดิม */
+    padding: 0.4rem 0.8rem;          /* เล็กลงอีก */
     border-radius: 5px;
-    font-size: 0.9rem;               /* ฟอนต์เล็กลง */
+    font-size: 0.85rem;               /* ฟอนต์เล็กลงอีก */
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -864,7 +864,7 @@ body {
     text-decoration: none;
     display: inline-block;
     text-align: center;
-    min-width: 80px;
+    min-width: 70px;
 }
 
 .btn-order:hover {
