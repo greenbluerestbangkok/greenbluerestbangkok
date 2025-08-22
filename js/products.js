@@ -163,6 +163,42 @@ export const productsData = [
         description: "เครื่องหินแกะสลักแบบโบราณ",
         image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product20.jpg'),
         producer: "Art Lab"
+    },
+    {
+        id: 21,
+        name: "น้ำผึ้งธรรมชาติ",
+        price: "150 บาท",
+        category: "food",
+        description: "น้ำผึ้งธรรมชาติจากผึ้งในชุมชน",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product21.jpg'),
+        producer: "เซฟติสท์ฟาร์ม"
+    },
+    {
+        id: 22,
+        name: "เครื่องจักสานกก",
+        price: "180 บาท",
+        category: "craft",
+        description: "เครื่องจักสานกกแบบดั้งเดิม",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product22.jpg'),
+        producer: "กัมปงในดงปรือ"
+    },
+    {
+        id: 23,
+        name: "ครีมอาบน้ำสมุนไพร",
+        price: "120 บาท",
+        category: "beauty",
+        description: "ครีมอาบน้ำจากสมุนไพรไทย",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product23.jpg'),
+        producer: "วิสาหกิจชุมชนอารยะคลองบางมดสร้างสรรค์"
+    },
+    {
+        id: 24,
+        name: "เครื่องปั้นดินเผาแบบโบราณ",
+        price: "400 บาท",
+        category: "craft",
+        description: "เครื่องปั้นดินเผาแบบโบราณ ลวดลายท้องถิ่น",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product24.jpg'),
+        producer: "นิทานศิลป์ @บ้านดรุณ"
     }
 ];
 
@@ -202,7 +238,7 @@ function createProductCard(product) {
                 <p class="product-description">${product.description}</p>
                 <p class="product-price">${product.price}</p>
                 <div class="product-actions">
-                    <a href="https://line.me/R/ti/p/@greenbluerestbangkok?text=สนใจสั่งซื้อ '${product.name}'" target="_blank" class="btn btn-primary">สั่งซื้อ</a>
+                    <button class="btn btn-order">สั่งซื้อ</button>
                     <span class="product-category">${getCategoryName(product.category)}</span>
                 </div>
             </div>

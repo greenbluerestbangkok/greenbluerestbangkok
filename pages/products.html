@@ -94,7 +94,7 @@
                         <p class="product-description">${product.description}</p>
                         <p class="product-producer">ผู้ผลิต: ${product.producer}</p>
                         <div class="product-price">${product.price}</div>
-                        <button class="btn btn-primary">ดูรายละเอียด</button>
+                        <button class="btn btn-order">สั่งซื้อ</button>
                     </div>
                 </div>
             `;
@@ -148,6 +148,15 @@
                         productsGrid.innerHTML = filteredProducts.map(product => createProductCard(product)).join('');
                     }
                 });
+            });
+            
+            // เพิ่ม Event Listener สำหรับปุ่มสั่งซื้อ
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('btn-order')) {
+                    const productName = e.target.closest('.product-card').querySelector('.product-name').textContent;
+                    const lineUrl = `https://line.me/R/ti/p/@greenbluerestbangkok?text=สนใจสั่งซื้อ '${productName}'`;
+                    window.open(lineUrl, '_blank');
+                }
             });
         });
     </script>
