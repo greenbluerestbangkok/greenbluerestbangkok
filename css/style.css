@@ -736,6 +736,137 @@ body {
 }
 
 /* ======================================== */
+/* 🏢 Operators Grid - กริดผู้ประกอบการในชุมชน */
+/* ======================================== */
+.operators-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 รายการต่อแถว */
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.operator-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.operator-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.operator-logo {
+    height: 200px;
+    background: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.operator-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.operator-card:hover .operator-img {
+    transform: scale(1.05);
+}
+
+.operator-info {
+    padding: 1.5rem;
+}
+
+.operator-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.operator-description {
+    color: var(--light-text);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.operator-story h4,
+.operator-activities h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 1rem 0 0.5rem 0;
+}
+
+.operator-story p {
+    color: var(--light-text);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.operator-activities ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.operator-activities li {
+    color: var(--light-text);
+    font-size: 0.9rem;
+    padding: 0.2rem 0;
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.operator-activities li:before {
+    content: "✓";
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.operator-location {
+    color: var(--light-text);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.operator-actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.btn-facebook {
+    background: #1877f2;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-facebook:hover {
+    background: #166fe5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
+}
+
+/* ======================================== */
 /* 🛍️ Product Grid - กริดสินค้าชุมชน */
 /* ======================================== */
 /* 
@@ -778,7 +909,7 @@ body {
 .product-image-container {
     position: relative;               /* ตำแหน่งสัมพัทธ์สำหรับ overlay */
     overflow: hidden;                 /* ซ่อนภาพที่ล้นออกมา */
-    height: 180px;                    /* ความสูงภาพ - แก้ไขได้ที่นี่ */
+    height: 200px;                    /* ความสูงภาพ - แก้ไขได้ที่นี่ */
     background: #f8f9fa;             /* สีพื้นหลังระหว่างโหลดภาพ */
     display: flex;                    /* จัดเรียงเนื้อหา */
     align-items: center;              /* จัดกึ่งกลางแนวตั้ง */
@@ -787,7 +918,7 @@ body {
 
 .product-img {
     width: 100%;                      /* กว้างเต็มการ์ด */
-    height: 180px;                    /* ความสูงภาพ - แก้ไขได้ที่นี่ */
+    height: 200px;                    /* ความสูงภาพ - แก้ไขได้ที่นี่ */
     object-fit: cover;                /* ครอบคลุมพื้นที่โดยไม่บิดเบี้ยว */
     transition: transform 0.3s ease;  /* เอฟเฟกต์ขยายภาพ */
     opacity: 1;                       /* แสดงภาพทันที - แก้ไขปัญหาการกระพริบ */
@@ -1227,6 +1358,114 @@ body {
 .low-carbon-content {
     max-width: 1000px;
     margin: 0 auto;
+}
+
+/* ส่วนข้อมูล Low Carbon */
+.low-carbon-info-section,
+.low-carbon-benefits-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.low-carbon-info-section h3,
+.low-carbon-benefits-section h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.low-carbon-info-section p,
+.low-carbon-benefits-section p {
+    color: var(--light-text);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Features Grid */
+.low-carbon-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-item {
+    padding: 1.5rem;
+    background: var(--background);
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.feature-item h4 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+}
+
+.feature-item p {
+    color: var(--light-text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Benefits Grid */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.benefit-item {
+    padding: 1.5rem;
+    background: var(--background);
+    border-radius: 10px;
+    border-top: 4px solid var(--primary-color);
+}
+
+.benefit-item h4 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.benefit-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.benefit-item li {
+    color: var(--light-text);
+    font-size: 0.9rem;
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.benefit-item li:before {
+    content: "🌱";
+    position: absolute;
+    left: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .low-carbon-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .intro-section {
@@ -1736,7 +1975,39 @@ body {
 }
 
 /* ======================================== */
-/* 📝 Blog & Vlog Styles - สไตล์หน้า Blog และ Vlog */
+/* 🏘️ Operators Cover - สไตล์ส่วน Cover หน้าผู้ประกอบการในชุมชน */
+/* ======================================== */
+.operators-cover {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin: 3rem 0;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.05) 0%, rgba(255, 193, 7, 0.05) 100%);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+/* Responsive Design for Operators Cover */
+@media (max-width: 768px) {
+    .operators-cover {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1.5rem;
+        margin: 2rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .operators-cover {
+        padding: 1rem;
+        margin: 1.5rem 0;
+    }
+}
+
+/* ======================================== */
+/* 📝 บทความ&วิดีโอ Styles - สไตล์หน้า Blog และ Vlog */
 /* ======================================== */
 
 /* Search Bar */
@@ -1840,7 +2111,7 @@ body {
     margin: 2rem 0;
 }
 
-/* Responsive Design for Blog & Vlog Search */
+/* Responsive Design for บทความ&วิดีโอ Search */
 @media (max-width: 768px) {
     .search-container {
         flex-direction: column;
@@ -2308,7 +2579,41 @@ body {
     font-size: 0.9rem;
 }
 
-/* Blog Image */
+/* Blog Main Image */
+.blog-main-image {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.blog-main-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Blog Sub Images */
+.blog-sub-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+}
+
+.sub-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.sub-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Legacy blog image support */
 .blog-image {
     width: 100%;
     margin-bottom: 2rem;
@@ -2531,8 +2836,17 @@ body {
         padding: 1.5rem;
     }
     
-    .blog-image img {
+    .blog-main-image img, .blog-image img {
         height: 250px;
+    }
+    
+    .blog-sub-images {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 1.5rem;
+    }
+    
+    .sub-image img {
+        height: 120px;
     }
     
     .share-buttons {
@@ -2558,8 +2872,18 @@ body {
         padding: 1.2rem;
     }
     
-    .blog-image img {
+    .blog-main-image img, .blog-image img {
         height: 200px;
+    }
+    
+    .blog-sub-images {
+        grid-template-columns: 1fr;
+        padding: 0 1.2rem;
+        gap: 0.8rem;
+    }
+    
+    .sub-image img {
+        height: 150px;
     }
     
     .share-buttons {
@@ -2579,7 +2903,7 @@ body {
 }
 
 /* ======================================== */
-/* 📝 Blog & Vlog Separate Sections - แยกส่วน Blog และ Vlog */
+/* 📝 บทความ&วิดีโอ Separate Sections - แยกส่วน Blog และ Vlog */
 /* ======================================== */
 
 /* Section Headers */

@@ -46,19 +46,25 @@ class BlogDetailManager {
     }
     
     createBlogDetail(blog) {
+        const subImagesHTML = blog.subImages ? blog.subImages.map(img => 
+            `<div class="sub-image"><img src="${img}" alt="${blog.title}" onerror="this.style.display='none'"></div>`
+        ).join('') : '';
+        
         return `
             <header class="blog-header">
                 <div class="blog-meta">
-                    <span class="blog-badge">Blog</span>
+                    <span class="blog-badge">บทความ</span>
                     <time class="blog-date">${this.formatDate(blog.date)}</time>
                 </div>
                 <h1 class="blog-title">${blog.title}</h1>
                 <p class="blog-excerpt">${blog.excerpt}</p>
             </header>
             
-            <div class="blog-image">
-                <img src="${blog.image}" alt="${blog.title}" onerror="this.style.display='none'">
+            <div class="blog-main-image">
+                <img src="${blog.mainImage || blog.image}" alt="${blog.title}" onerror="this.style.display='none'">
             </div>
+            
+            ${subImagesHTML ? `<div class="blog-sub-images">${subImagesHTML}</div>` : ''}
             
             <div class="blog-content">
                 ${blog.content}
@@ -142,7 +148,7 @@ class BlogDetailManager {
                         <div class="related-image">
                             <img src="${isVlog ? item.thumbnail : item.image}" alt="${item.title}">
                             <div class="card-badge ${isVlog ? 'vlog-badge' : 'blog-badge'}">
-                                ${isVlog ? 'Vlog' : 'Blog'}
+                                ${isVlog ? 'วิดีโอ' : 'บทความ'}
                             </div>
                             ${isVlog ? `<div class="video-duration">${item.duration}</div>` : ''}
                         </div>
@@ -165,7 +171,7 @@ class BlogDetailManager {
             <div class="error-message">
                 <h2>ไม่พบเนื้อหาที่ต้องการ</h2>
                 <p>ขออภัย เนื้อหาที่คุณต้องการดูไม่พบหรืออาจถูกลบไปแล้ว</p>
-                <a href="activities.html" class="btn btn-primary">กลับสู่หน้า Blog & Vlog</a>
+                <a href="activities.html" class="btn btn-primary">กลับสู่หน้า บทความ&วิดีโอ</a>
             </div>
         `;
     }

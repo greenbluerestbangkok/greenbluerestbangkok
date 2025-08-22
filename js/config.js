@@ -2,8 +2,15 @@
 // แก้ไขที่นี่เดียวเพื่อแก้ปัญหาทั้งหมด
 
 export const IMAGE_CONFIG = {
-    // Base URL สำหรับ GitHub Pages
-    BASE_URL: '/greenbluerestbangkok',
+    // Base URL สำหรับ Local Server และ GitHub Pages
+    get BASE_URL() {
+        // ตรวจสอบว่าเป็น Local Server หรือ GitHub Pages
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            return ''; // Local Server ไม่มี path
+        } else {
+            return '/greenbluerestbangkok'; // GitHub Pages
+        }
+    },
     
     // Path สำหรับโฟลเดอร์ต่างๆ
     PATHS: {
