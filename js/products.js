@@ -1,4 +1,6 @@
 // ข้อมูลสินค้าชุมชนทั้งหมด 20 รายการ
+import { IMAGE_CONFIG } from './config.js';
+
 const productsData = [
     {
         id: 1,
@@ -6,7 +8,7 @@ const productsData = [
         price: "80 บาท",
         category: "beauty",
         description: "สบู่ธรรมชาติจากน้ำมันมะพร้าวบริสุทธิ์ ไม่มีสารเคมี",
-        image: "../images/product1.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product1.jpg'),
         producer: "เซฟติสท์ฟาร์ม"
     },
     {
@@ -15,7 +17,7 @@ const productsData = [
         price: "50 บาท",
         category: "food",
         description: "น้ำส้มคั้นสดจากสวนผลไม้ในชุมชน ไม่มีน้ำตาลเพิ่ม",
-        image: "../images/product2.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product2.jpg'),
         producer: "เซฟติสท์ฟาร์ม"
     },
     {
@@ -24,7 +26,7 @@ const productsData = [
         price: "120 บาท",
         category: "food",
         description: "ขนมไทยโบราณหลากหลายชนิด ทำสดใหม่ทุกวัน",
-        image: "../images/product3.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product3.jpg'),
         producer: "บ้านเขียนวาดและภาพพิมพ์"
     },
     {
@@ -33,7 +35,7 @@ const productsData = [
         price: "250 บาท",
         category: "craft",
         description: "ผ้าขาวม้าทอมือแบบดั้งเดิม ลวดลายสวยงาม",
-        image: "../images/product4.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product4.jpg'),
         producer: "บ้านเขียนวาดและภาพพิมพ์"
     },
     {
@@ -42,7 +44,7 @@ const productsData = [
         price: "90 บาท",
         category: "food",
         description: "น้ำพริกแกงสูตรโบราณ จากเครื่องเทศแท้",
-        image: "../images/product5.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product5.jpg'),
         producer: "ตลาดมดตะนอย"
     },
     {
@@ -51,7 +53,7 @@ const productsData = [
         price: "300 บาท",
         category: "craft",
         description: "เครื่องปั้นดินเผาแบบโบราณ ลวดลายท้องถิ่น",
-        image: "../images/product6.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product6.jpg'),
         producer: "กัมปงในดงปรือ"
     },
     {
@@ -60,7 +62,7 @@ const productsData = [
         price: "150 บาท",
         category: "beauty",
         description: "น้ำมันหอมระเหยจากสมุนไพรไทยแท้",
-        image: "../images/product7.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product7.jpg'),
         producer: "วิสาหกิจชุมชนอารยะคลองบางมดสร้างสรรค์"
     },
     {
@@ -69,7 +71,7 @@ const productsData = [
         price: "200 บาท",
         category: "craft",
         description: "เครื่องจักสานไม้ไผ่แบบดั้งเดิม",
-        image: "../images/product9.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product9.jpg'),
         producer: "Art Lab"
     },
     {
@@ -78,7 +80,7 @@ const productsData = [
         price: "180 บาท",
         category: "beauty",
         description: "ครีมบำรุงผิวจากสมุนไพรไทย",
-        image: "../images/product10.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product10.jpg'),
         producer: "S'more town"
     },
     {
@@ -87,7 +89,7 @@ const productsData = [
         price: "80 บาท",
         category: "food",
         description: "ผลไม้สดจากสวนในชุมชน",
-        image: "../images/product11.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product11.jpg'),
         producer: "นิทานศิลป์ @บ้านดรุณ"
     },
     {
@@ -96,7 +98,7 @@ const productsData = [
         price: "800 บาท",
         category: "craft",
         description: "เครื่องเงินแฮนด์เมดแบบโบราณ",
-        image: "../images/product12.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product12.jpg'),
         producer: "บ้านเขียนวาดและภาพพิมพ์"
     },
     {
@@ -105,7 +107,7 @@ const productsData = [
         price: "70 บาท",
         category: "food",
         description: "น้ำสมุนไพรไทยเพื่อสุขภาพ",
-        image: "../images/product13.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product13.jpg'),
         producer: "วิสาหกิจชุมชนอารยะคลองบางมดสร้างสรรค์"
     },
     {
@@ -114,7 +116,7 @@ const productsData = [
         price: "400 บาท",
         category: "craft",
         description: "เครื่องแก้วเป่าแฮนด์เมดแบบโบราณ",
-        image: "../images/product14.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product14.jpg'),
         producer: "Art Lab"
     },
     {
@@ -123,7 +125,7 @@ const productsData = [
         price: "120 บาท",
         category: "beauty",
         description: "แชมพูสมุนไพรธรรมชาติ ไม่มีสารเคมี",
-        image: "../images/product15.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product15.jpg'),
         producer: "เซฟติสท์ฟาร์ม"
     },
     {
@@ -132,7 +134,7 @@ const productsData = [
         price: "350 บาท",
         category: "craft",
         description: "เครื่องหนังแฮนด์เมดแบบดั้งเดิม",
-        image: "../images/product16.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product16.jpg'),
         producer: "กัมปงในดงปรือ"
     },
     {
@@ -141,7 +143,7 @@ const productsData = [
         price: "500 บาท",
         category: "craft",
         description: "เครื่องไม้แกะสลักแบบโบราณ",
-        image: "../images/product18.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product18.jpg'),
         producer: "นิทานศิลป์ @บ้านดรุณ"
     },
     {
@@ -150,7 +152,7 @@ const productsData = [
         price: "200 บาท",
         category: "beauty",
         description: "น้ำหอมธรรมชาติจากดอกไม้ไทย",
-        image: "../images/product19.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product19.jpg'),
         producer: "S'more town"
     },
     {
@@ -159,7 +161,7 @@ const productsData = [
         price: "600 บาท",
         category: "craft",
         description: "เครื่องหินแกะสลักแบบโบราณ",
-        image: "../images/product20.jpg",
+        image: IMAGE_CONFIG.getImageUrl('PRODUCTS', 'product20.jpg'),
         producer: "Art Lab"
     }
 ];
