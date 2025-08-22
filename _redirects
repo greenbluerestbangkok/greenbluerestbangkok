@@ -1,11 +1,11 @@
 # Netlify redirects file
 # This helps with proper routing
 
-# Redirect root to main.html
-/  /main.html  200
+# Redirect root to index.html
+/  /index.html  200
 
 # Admin panel route
 /admin  /admin-panel.html  200
 
-# SPA fallback - all other routes go to main.html
-/*  /main.html  200
+# SPA fallback - all other routes go to index.html
+/*  /index.html  200
