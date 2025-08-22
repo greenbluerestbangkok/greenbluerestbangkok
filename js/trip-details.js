@@ -588,6 +588,9 @@ function openGallery(imageSrc) {
     window.open(imageSrc, '_blank');
 }
 
+// Export tripsData สำหรับใช้ในไฟล์อื่น
+export { tripsData };
+
 // ตรวจสอบ URL parameters เมื่อโหลดหน้า
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);

@@ -64,9 +64,9 @@
         </div>
     </footer>
     
-    <script type="module" src="../js/main.js"></script>
-    <script src="../js/trip-details.js"></script>
-    <script>
+    <script type="module">
+        import { tripsData } from '../js/trip-details.js';
+        
         // ฟังก์ชันสร้างการ์ดทริป
         function createTripCard(trip) {
             return `
@@ -82,7 +82,7 @@
                         <p class="card-text">${trip.shortDescription}</p>
                         <div class="trip-meta">
                             <span class="trip-price">💰 ${trip.price}</span>
-                            <span class="trip-duration">⏰ ${trip.duration}</span>
+                            <span class="card-duration">⏰ ${trip.duration}</span>
                         </div>
                         <div class="card-actions">
                             <a href="trip-details.html?id=${trip.id}" class="btn btn-primary">ดูรายละเอียด</a>
