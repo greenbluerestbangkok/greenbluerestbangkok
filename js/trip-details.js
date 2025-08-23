@@ -11,11 +11,11 @@ const tripsData = [
         duration: "3-4 ชั่วโมง",
         capacity: "2-8 คน",
         schedule: "ทุกวัน 8:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(1, 'small', 'kayak-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(1, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(1, 'large', 'kayak-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(1, 'large', 'kayak-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(1, 'large', 'kayak-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(1, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(1, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(1, 'large', 3)
         ],
         highlights: [
             "พายเรือคายัคในคลองบางมด",
@@ -41,11 +41,11 @@ const tripsData = [
         duration: "2-3 ชั่วโมง",
         capacity: "4-12 คน",
         schedule: "ทุกวัน 7:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(2, 'small', 'cycling-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(2, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(2, 'large', 'cycling-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(2, 'large', 'cycling-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(2, 'large', 'cycling-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(2, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(2, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(2, 'large', 3)
         ],
         highlights: [
             "ปั่นจักรยานชมธรรมชาติ",
@@ -71,11 +71,11 @@ const tripsData = [
         duration: "4-5 ชั่วโมง",
         capacity: "2-6 คน",
         schedule: "ทุกวัน 9:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(3, 'small', 'cooking-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(3, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(3, 'large', 'cooking-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(3, 'large', 'cooking-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(3, 'large', 'cooking-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(3, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(3, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(3, 'large', 3)
         ],
         highlights: [
             "เรียนรู้สูตรลับอาหารไทย",
@@ -101,11 +101,11 @@ const tripsData = [
         duration: "2-3 ชั่วโมง",
         capacity: "2-8 คน",
         schedule: "ทุกวัน 6:00-10:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(4, 'small', 'fishing-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(4, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(4, 'large', 'fishing-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(4, 'large', 'fishing-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(4, 'large', 'fishing-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(4, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(4, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(4, 'large', 3)
         ],
         highlights: [
             "ตกปลาแบบดั้งเดิม",
@@ -131,11 +131,11 @@ const tripsData = [
         duration: "3-4 ชั่วโมง",
         capacity: "4-10 คน",
         schedule: "ทุกวันเสาร์ 9:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(5, 'small', 'garden-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(5, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(5, 'large', 'garden-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(5, 'large', 'garden-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(5, 'large', 'garden-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(5, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(5, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(5, 'large', 3)
         ],
         highlights: [
             "เรียนรู้การปลูกผัก",
@@ -161,11 +161,11 @@ const tripsData = [
         duration: "3-4 ชั่วโมง",
         capacity: "2-6 คน",
         schedule: "ทุกวันอาทิตย์ 9:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(6, 'small', 'craft-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(6, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(6, 'large', 'craft-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(6, 'large', 'craft-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(6, 'large', 'craft-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(6, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(6, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(6, 'large', 3)
         ],
         highlights: [
             "เรียนรู้การปั้นดินเผา",
@@ -191,11 +191,11 @@ const tripsData = [
         duration: "2-3 ชั่วโมง",
         capacity: "2-10 คน",
         schedule: "ทุกวัน 17:00-20:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(7, 'small', 'sunset-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(7, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(7, 'large', 'sunset-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(7, 'large', 'sunset-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(7, 'large', 'sunset-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(7, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(7, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(7, 'large', 3)
         ],
         highlights: [
             "ชมพระอาทิตย์ตกสวยงาม",
@@ -221,11 +221,11 @@ const tripsData = [
         duration: "2-3 ชั่วโมง",
         capacity: "4-8 คน",
         schedule: "ทุกวันเสาร์ 14:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(8, 'small', 'nam-prik-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(8, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(8, 'large', 'nam-prik-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(8, 'large', 'nam-prik-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(8, 'large', 'nam-prik-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(8, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(8, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(8, 'large', 3)
         ],
         highlights: [
             "เรียนรู้การทำน้ำพริก",
@@ -251,11 +251,11 @@ const tripsData = [
         duration: "4-5 ชั่วโมง",
         capacity: "2-6 คน",
         schedule: "ทุกวันอาทิตย์ 9:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(9, 'small', 'batik-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(9, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(9, 'large', 'batik-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(9, 'large', 'batik-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(9, 'large', 'batik-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(9, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(9, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(9, 'large', 3)
         ],
         highlights: [
             "เรียนรู้การทำผ้าบาติก",
@@ -281,11 +281,11 @@ const tripsData = [
         duration: "3-4 ชั่วโมง",
         capacity: "4-8 คน",
         schedule: "ทุกวันเสาร์ 9:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(10, 'small', 'dessert-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(10, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(10, 'large', 'dessert-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(10, 'large', 'dessert-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(10, 'large', 'dessert-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(10, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(10, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(10, 'large', 3)
         ],
         highlights: [
             "เรียนรู้การทำขนมไทย",
@@ -311,11 +311,11 @@ const tripsData = [
         duration: "3-4 ชั่วโมง",
         capacity: "2-6 คน",
         schedule: "ทุกวันอาทิตย์ 9:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(11, 'small', 'bamboo-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(11, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(11, 'large', 'bamboo-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(11, 'large', 'bamboo-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(11, 'large', 'bamboo-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(11, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(11, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(11, 'large', 3)
         ],
         highlights: [
             "เรียนรู้การจักสาน",
@@ -341,11 +341,11 @@ const tripsData = [
         duration: "2-3 ชั่วโมง",
         capacity: "4-8 คน",
         schedule: "ทุกวันเสาร์ 14:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(12, 'small', 'herb-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(12, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(12, 'large', 'herb-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(12, 'large', 'herb-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(12, 'large', 'herb-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(12, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(12, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(12, 'large', 3)
         ],
         highlights: [
             "เรียนรู้สมุนไพรไทย",
@@ -371,11 +371,11 @@ const tripsData = [
         duration: "5-6 ชั่วโมง",
         capacity: "2-4 คน",
         schedule: "ทุกวันอาทิตย์ 9:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(13, 'small', 'silver-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(13, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(13, 'large', 'silver-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(13, 'large', 'silver-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(13, 'large', 'silver-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(13, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(13, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(13, 'large', 3)
         ],
         highlights: [
             "เรียนรู้การทำเครื่องเงิน",
@@ -401,11 +401,11 @@ const tripsData = [
         duration: "5-6 ชั่วโมง",
         capacity: "2-4 คน",
         schedule: "ทุกวันอาทิตย์ 9:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(14, 'small', 'gold-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(14, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(14, 'large', 'gold-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(14, 'large', 'gold-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(14, 'large', 'gold-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(14, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(14, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(14, 'large', 3)
         ],
         highlights: [
             "เรียนรู้การทำเครื่องทอง",
@@ -431,11 +431,11 @@ const tripsData = [
         duration: "4-5 ชั่วโมง",
         capacity: "2-6 คน",
         schedule: "ทุกวันเสาร์ 9:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(15, 'small', 'glass-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(15, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(15, 'large', 'glass-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(15, 'large', 'glass-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(15, 'large', 'glass-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(15, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(15, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(15, 'large', 3)
         ],
         highlights: [
             "เรียนรู้การทำเครื่องแก้ว",
@@ -461,11 +461,11 @@ const tripsData = [
         duration: "4-5 ชั่วโมง",
         capacity: "2-6 คน",
         schedule: "ทุกวันอาทิตย์ 9:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(16, 'small', 'leather-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(16, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(16, 'large', 'leather-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(16, 'large', 'leather-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(16, 'large', 'leather-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(16, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(16, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(16, 'large', 3)
         ],
         highlights: [
             "เรียนรู้การทำเครื่องหนัง",
@@ -491,11 +491,11 @@ const tripsData = [
         duration: "4-5 ชั่วโมง",
         capacity: "2-6 คน",
         schedule: "ทุกวันเสาร์ 9:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(17, 'small', 'wood-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(17, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(17, 'large', 'wood-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(17, 'large', 'wood-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(17, 'large', 'wood-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(17, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(17, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(17, 'large', 3)
         ],
         highlights: [
             "เรียนรู้การทำเครื่องไม้",
@@ -521,11 +521,11 @@ const tripsData = [
         duration: "4-5 ชั่วโมง",
         capacity: "2-6 คน",
         schedule: "ทุกวันอาทิตย์ 9:00-17:00",
-        mainImage: IMAGE_CONFIG.getTripImageUrl(18, 'small', 'stone-1.jpg'),
+        mainImage: IMAGE_CONFIG.getTripImageUrlByNumber(18, 'small', 1),
         gallery: [
-            IMAGE_CONFIG.getTripImageUrl(18, 'large', 'stone-1.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(18, 'large', 'stone-2.jpg'),
-            IMAGE_CONFIG.getTripImageUrl(18, 'large', 'stone-3.jpg')
+            IMAGE_CONFIG.getTripImageUrlByNumber(18, 'large', 1),
+            IMAGE_CONFIG.getTripImageUrlByNumber(18, 'large', 2),
+            IMAGE_CONFIG.getTripImageUrlByNumber(18, 'large', 3)
         ],
         highlights: [
             "เรียนรู้การทำเครื่องหิน",

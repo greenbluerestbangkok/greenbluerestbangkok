@@ -21,7 +21,9 @@ export const IMAGE_CONFIG = {
         PRODUCTS: '/images/products',
         LOW_CARBON: '/images/low-carbon',
         HERO: '/images/hero',
-        GENERAL: '/images/general'
+        GENERAL: '/images/general',
+        COVER: '/images/cover',
+        QR: '/images/general'
     },
     
     // ฟังก์ชันสร้าง URL สำหรับภาพ
@@ -32,6 +34,26 @@ export const IMAGE_CONFIG = {
     // ฟังก์ชันสร้าง URL สำหรับภาพทริป
     getTripImageUrl: (tripId, size, filename) => {
         return `${IMAGE_CONFIG.BASE_URL}/images/trip${tripId}/${size}/${filename}`;
+    },
+    
+    // ฟังก์ชันสร้าง URL สำหรับภาพทริปแบบใหม่ (ใช้ระบบเลข)
+    getTripImageUrlByNumber: (tripId, size, imageNumber) => {
+        const paddedTripId = tripId.toString().padStart(2, '0');
+        const paddedImageNumber = imageNumber.toString().padStart(2, '0');
+        return `${IMAGE_CONFIG.BASE_URL}/images/trip${paddedTripId}/${size}/trip_${paddedTripId}_${paddedImageNumber}.jpg`;
+    },
+    
+    // ฟังก์ชันสร้าง URL สำหรับภาพสินค้าแบบใหม่ (ใช้ระบบเลข)
+    getProductImageUrlByNumber: (productNumber) => {
+        const paddedNumber = productNumber.toString().padStart(2, '0');
+        return `${IMAGE_CONFIG.BASE_URL}/images/products/product_${paddedNumber}.jpg`;
+    },
+    
+    // ฟังก์ชันสร้าง URL สำหรับภาพ blog แบบใหม่ (ใช้ระบบเลข)
+    getBlogImageUrlByNumber: (blogNumber, imageNumber = 1) => {
+        const paddedBlogNumber = blogNumber.toString().padStart(2, '0');
+        const paddedImageNumber = imageNumber.toString().padStart(2, '0');
+        return `${IMAGE_CONFIG.BASE_URL}/images/blog/blog_${paddedBlogNumber}_${paddedImageNumber}.jpg`;
     }
 };
 

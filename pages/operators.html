@@ -79,13 +79,14 @@
         </div>
     </footer>
     
+    <script type="module" src="../js/main.js"></script>
     <script type="module">
         // ข้อมูลผู้ประกอบการในชุมชน
         const operatorsData = [
             {
                 id: 1,
                 name: "เซฟติสท์ฟาร์ม",
-                logo: "../images/operators/safetist-farm.png",
+                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'safetist-farm.png'),
                 description: "เกษตรอินทรีย์และผลิตภัณฑ์ธรรมชาติ",
                 story: "เซฟติสท์ฟาร์มเริ่มต้นจากการปลูกผักอินทรีย์ในชุมชนคลองบางมด เมื่อ 10 ปีที่แล้ว ปัจจุบันขยายกิจการไปสู่การผลิตสบู่ธรรมชาติ น้ำมันหอมระเหย และผลิตภัณฑ์ความงามจากสมุนไพรไทย",
                 activities: [
@@ -100,7 +101,7 @@
             {
                 id: 2,
                 name: "บ้านเขียนวาดและภาพพิมพ์",
-                logo: "../images/operators/ban-khian-wad.png",
+                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'ban-khian-wad.png'),
                 description: "ศิลปะและงานฝีมือท้องถิ่น",
                 story: "บ้านเขียนวาดและภาพพิมพ์เป็นศูนย์การเรียนรู้ศิลปะแบบดั้งเดิมที่สืบทอดมา 3 ชั่วอายุคน เน้นการสร้างสรรค์งานศิลปะจากธรรมชาติและวัสดุท้องถิ่น",
                 activities: [
@@ -115,7 +116,7 @@
             {
                 id: 3,
                 name: "ตลาดมดตะนอย",
-                logo: "../images/operators/talad-mod-tanoi.png",
+                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'talad-mod-tanoi.png'),
                 description: "ตลาดชุมชนและอาหารท้องถิ่น",
                 story: "ตลาดมดตะนอยเป็นตลาดชุมชนเก่าแก่ที่มีประวัติยาวนานกว่า 50 ปี เป็นแหล่งรวมอาหารท้องถิ่น เครื่องเทศ และวัตถุดิบสดใหม่จากชุมชน",
                 activities: [
@@ -130,7 +131,7 @@
             {
                 id: 4,
                 name: "กัมปงในดงปรือ",
-                logo: "../images/operators/kampong-nai-dong-pru.png",
+                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'kampong-nai-dong-pru.png'),
                 description: "ชุมชนโบราณและงานฝีมือ",
                 story: "กัมปงในดงปรือเป็นชุมชนโบราณที่มีประวัติศาสตร์ยาวนาน เป็นแหล่งรวมงานฝีมือดั้งเดิม เช่น การทำเครื่องปั้นดินเผา เครื่องจักสาน และเครื่องไม้",
                 activities: [
@@ -145,7 +146,7 @@
             {
                 id: 5,
                 name: "วิสาหกิจชุมชนอารยะคลองบางมดสร้างสรรค์",
-                logo: "../images/operators/visahakit-chumchon-arraya.png",
+                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'visahakit-chumchon-arraya.png'),
                 description: "ผลิตภัณฑ์ชุมชนและสมุนไพร",
                 story: "วิสาหกิจชุมชนอารยะคลองบางมดสร้างสรรค์เป็นองค์กรที่รวมกลุ่มผู้ผลิตในชุมชนเพื่อพัฒนาผลิตภัณฑ์จากสมุนไพรไทยและวัสดุธรรมชาติ",
                 activities: [
@@ -160,7 +161,7 @@
             {
                 id: 6,
                 name: "Art Lab",
-                logo: "../images/operators/art-lab.png",
+                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'art-lab.png'),
                 description: "ศิลปะและงานฝีมือสร้างสรรค์",
                 story: "Art Lab เป็นศูนย์การเรียนรู้ศิลปะสมัยใหม่ที่ผสมผสานเทคนิคดั้งเดิมกับความคิดสร้างสรรค์ เน้นการสร้างสรรค์งานศิลปะจากวัสดุรีไซเคิล",
                 activities: [
@@ -175,7 +176,7 @@
             {
                 id: 7,
                 name: "S'more town",
-                logo: "../images/operators/smore-town.png",
+                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'smore-town.png'),
                 description: "ผลิตภัณฑ์ความงามธรรมชาติ",
                 story: "S'more town เป็นแบรนด์ผลิตภัณฑ์ความงามธรรมชาติที่ใช้สมุนไพรไทยและวัตถุดิบจากชุมชน เน้นการผลิตแบบแฮนด์เมดและเป็นมิตรต่อสิ่งแวดล้อม",
                 activities: [
@@ -190,7 +191,7 @@
             {
                 id: 8,
                 name: "นิทานศิลป์ @บ้านดรุณ",
-                logo: "../images/operators/nitan-sin-baan-darun.png",
+                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'nitan-sin-baan-darun.png'),
                 description: "ศิลปะและงานฝีมือไม้",
                 story: "นิทานศิลป์ @บ้านดรุณเป็นศูนย์การเรียนรู้ศิลปะและงานฝีมือไม้ที่สืบทอดมา 2 ชั่วอายุคน เน้นการสร้างสรรค์งานศิลปะจากไม้และวัสดุธรรมชาติ",
                 activities: [
