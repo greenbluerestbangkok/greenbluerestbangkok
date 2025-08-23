@@ -131,11 +131,12 @@ body {
 
 .navbar {
     display: flex;                  /* จัดเรียงแบบแถว - แก้ไขได้ที่นี่ */
-    justify-content: space-between; /* จัดระยะห่างระหว่าง logo และเมนู - แก้ไขได้ที่นี่ */
+    justify-content: center;        /* จัดเนื้อหากึ่งกลาง - แก้ไขได้ที่นี่ */
     align-items: center;            /* จัดกึ่งกลางแนวตั้ง - แก้ไขได้ที่นี่ */
     padding: 1rem 2rem;            /* ระยะห่างภายใน: บนล่าง 1rem, ซ้ายขวา 2rem - แก้ไขได้ที่นี่ */
-    max-width: 1200px;             /* ความกว้างสูงสุด - แก้ไขได้ที่นี่ */
+    max-width: 1200px;             /* ความกว้างสุด - แก้ไขได้ที่นี่ */
     margin: 0 auto;                /* จัดกึ่งกลางแนวนอน - แก้ไขได้ที่นี่ */
+    position: relative;             /* สำหรับจัดตำแหน่งปุ่ม hamburger */
 }
 
 /* ======================================== */
@@ -159,6 +160,7 @@ body {
     color: var(--primary-color);    /* สี logo - แก้ไขได้ที่ CSS Variables */
     text-decoration: none;          /* ลบเส้นใต้ลิงก์ */
     transition: color 0.3s ease;    /* เอฟเฟกต์เปลี่ยนสี - แก้ไขได้ที่นี่ */
+    margin-right: 2rem;             /* ระยะห่างระหว่าง logo และเมนู */
 }
 
 .nav-logo:hover {
@@ -198,6 +200,8 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    position: absolute;
+    right: 2rem;
 }
 
 .bar {
