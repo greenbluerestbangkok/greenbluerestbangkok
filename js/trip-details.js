@@ -557,29 +557,25 @@ function showTripDetails(tripId) {
     document.getElementById('trip-duration').textContent = trip.duration;
     document.getElementById('trip-capacity').textContent = trip.capacity;
     document.getElementById('trip-schedule').textContent = trip.schedule;
-    document.getElementById('trip-main-image').src = trip.mainImage;
-    document.getElementById('trip-main-image').alt = trip.name;
+    // อัปเดตรูปภาพ 2 รูป
+    const image1 = document.getElementById('trip-image-1');
+    const image2 = document.getElementById('trip-image-2');
+    
+    if (trip.gallery && trip.gallery.length >= 2) {
+        image1.src = trip.gallery[0];
+        image1.alt = `${trip.name} - รูปที่ 1`;
+        image2.src = trip.gallery[1];
+        image2.alt = `${trip.name} - รูปที่ 2`;
+    } else {
+        // ใช้รูปหลักถ้าไม่มีรูปในแกลเลอรี่พอ
+        image1.src = trip.mainImage;
+        image1.alt = `${trip.name} - รูปที่ 1`;
+        image2.src = trip.mainImage;
+        image2.alt = `${trip.name} - รูปที่ 2`;
+    }
 
     // อัปเดตรายละเอียดเพิ่มเติม
     document.getElementById('trip-full-description').innerHTML = `<p>${trip.fullDescription}</p>`;
-
-    // อัปเดตไฮไลท์
-    const highlightsList = document.getElementById('trip-highlights-list');
-    highlightsList.innerHTML = trip.highlights.map(highlight => `<li>${highlight}</li>`).join('');
-
-    // อัปเดตสิ่งที่รวมในทริปท่องเที่ยว
-    const includesList = document.getElementById('trip-includes-list');
-    includesList.innerHTML = trip.includes.map(item => `<li>${item}</li>`).join('');
-
-    // อัปเดตแกลเลอรี่
-    const gallery = document.getElementById('trip-gallery');
-    gallery.innerHTML = trip.gallery.map(img => 
-        `<img src="${img}" alt="ภาพทริปท่องเที่ยว" class="gallery-thumb" onclick="openGallery('${img}')">`
-    ).join('');
-
-    // อัปเดตลิงก์จอง
-    document.getElementById('book-now-btn').href = `#book-${trip.id}`;
-    document.getElementById('contact-btn').href = `contact.html?trip=${trip.id}`;
 }
 
 // ฟังก์ชันเปิดแกลเลอรี่

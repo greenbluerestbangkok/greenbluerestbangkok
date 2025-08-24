@@ -19,6 +19,7 @@
                 <li class="nav-item"><a href="products.html" class="nav-link">สินค้าชุมชน</a></li>
                 <li class="nav-item"><a href="operators.html" class="nav-link">ผู้ประกอบการในชุมชน</a></li>
                 <li class="nav-item"><a href="activities.html" class="nav-link">บทความ&วิดีโอ</a></li>
+                <li class="nav-item"><a href="learning-city.html" class="nav-link">Learning City</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">ติดต่อเรา</a></li>
             </ul>
             <div class="hamburger">
@@ -30,7 +31,7 @@
     <main>
         <section class="container">
             <h2>ทริปท่องเที่ยวทั้งหมดของเรา</h2>
-            <p class="trips-intro">ค้นพบทริปท่องเที่ยวชุมชนวิถีคลองบางมดที่หลากหลาย ครบทั้ง 18 ทริปท่องเที่ยว พร้อมประสบการณ์พิเศษที่ไม่เหมือนใคร</p>
+            <p class="trips-intro">ค้นพบทริปท่องเที่ยวชุมชนวิถีคลองบางมดที่หลากหลาย ครบทั้ง 11 ทริป พร้อมประสบการณ์พิเศษที่ไม่เหมือนใคร</p>
             
             <div class="card-grid" id="trips-grid">
                 <!-- ทริปท่องเที่ยวทั้งหมดจะถูกเพิ่มด้วย JavaScript -->
@@ -52,6 +53,7 @@
                     <li><a href="products.html">สินค้าชุมชน</a></li>
                     <li><a href="operators.html">ผู้ประกอบการในชุมชน</a></li>
                     <li><a href="activities.html">บทความ&วิดีโอ</a></li>
+                    <li><a href="learning-city.html">Learning City</a></li>
                     <li><a href="contact.html">ติดต่อเรา</a></li>
                 </ul>
             </div>
@@ -97,12 +99,13 @@
             `;
         }
 
-        // แสดงทริปท่องเที่ยวทั้งหมดเมื่อโหลดหน้า
+        // แสดงทริปท่องเที่ยวเมื่อโหลดหน้า (แสดงเพียง 11 ทริปแรก)
         document.addEventListener('DOMContentLoaded', function() {
             const tripsGrid = document.getElementById('trips-grid');
             
-            // สร้างการ์ดทริปท่องเที่ยวทั้งหมด
-            tripsGrid.innerHTML = tripsData.map(trip => createTripCard(trip)).join('');
+            // สร้างการ์ดทริปท่องเที่ยว 11 ทริปแรก
+            const displayTrips = tripsData.slice(0, 11);
+            tripsGrid.innerHTML = displayTrips.map(trip => createTripCard(trip)).join('');
         });
     </script>
 </body>
