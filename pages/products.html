@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สินค้าชุมชน - Green Blue Rest Bangkok</title>
+    <!-- Preload และ preconnect สำหรับ Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/layout-fixes.css">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font fallback สำหรับกรณีที่ Google Fonts ไม่โหลด -->
+    <style>
+        * {
+            font-family: 'IBM Plex Sans Thai', 'Sarabun', 'Kanit', 'Noto Sans Thai', 
+                        'Helvetica Neue', Arial, sans-serif !important;
+        }
+        
+        /* เฉพาะ input และ button ให้ใช้ฟอนต์เดียวกัน */
+        input, button, select, textarea {
+            font-family: 'IBM Plex Sans Thai', 'Sarabun', 'Kanit', 'Noto Sans Thai', 
+                        'Helvetica Neue', Arial, sans-serif !important;
+        }
+    </style>
 </head>
 <body>
     <header class="main-header">
