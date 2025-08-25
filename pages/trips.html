@@ -100,9 +100,99 @@
     </footer>
     
     <script type="module" src="../js/main.js"></script>
-    <script type="module">
-        import { tripsData } from '../js/trip-details.js';
-        
+    <script>
+        // ข้อมูลทริปท่องเที่ยวแบบ inline เพื่อป้องกันปัญหา CORS
+        const tripsData = [
+            {
+                id: 1,
+                name: "ทริปท่องเที่ยวพายเรือคายัค ลัดเลาะสวนมะพร้าว",
+                shortDescription: "สัมผัสวิถีชีวิตริมคลอง พร้อมกิจกรรมทำขนมไทยโบราณ",
+                price: "800 บาท/คน",
+                duration: "3-4 ชั่วโมง",
+                mainImage: "../images/trip01/small/trip_01_01.jpg"
+            },
+            {
+                id: 2,
+                name: "ทริปท่องเที่ยวปั่นจักรยานชมสวนผลไม้",
+                shortDescription: "ปั่นชิลๆ ชมธรรมชาติและสวนผลไม้ พร้อมชิมผลไม้สดๆ จากสวน",
+                price: "600 บาท/คน",
+                duration: "2-3 ชั่วโมง",
+                mainImage: "../images/trip02/small/trip_02_01.jpg"
+            },
+            {
+                id: 3,
+                name: "ทริปท่องเที่ยวเรียนรู้วิถีชาวสวน",
+                shortDescription: "เรียนรู้การปลูกผักปลอดสารพิษ และวิถีชีวิตแบบยั่งยืน",
+                price: "700 บาท/คน",
+                duration: "4-5 ชั่วโมง",
+                mainImage: "../images/trip03/small/trip_03_01.jpg"
+            },
+            {
+                id: 4,
+                name: "ทริปท่องเที่ยวตลาดโบราณคลองบางมด",
+                shortDescription: "ช้อปปิ้งของดีในตลาดโบราณ พร้อมชิมอาหารพื้นเมือง",
+                price: "500 บาท/คน",
+                duration: "2-3 ชั่วโมง",
+                mainImage: "../images/trip04/small/trip_04_01.jpg"
+            },
+            {
+                id: 5,
+                name: "ทริปท่องเที่ยวทำอาหารไทยโบราณ",
+                shortDescription: "เรียนรู้การทำอาหารไทยโบราณ พร้อมสูตรลับจากครูท้องถิ่น",
+                price: "900 บาท/คน",
+                duration: "4-5 ชั่วโมง",
+                mainImage: "../images/trip05/small/trip_05_01.jpg"
+            },
+            {
+                id: 6,
+                name: "ทริปท่องเที่ยววัดโบราณและศิลปะท้องถิ่น",
+                shortDescription: "สักการะพระที่เก่าแก่ และชมศิลปะท้องถิ่นที่งดงาม",
+                price: "400 บาท/คน",
+                duration: "2-3 ชั่วโมง",
+                mainImage: "../images/trip06/small/trip_06_01.jpg"
+            },
+            {
+                id: 7,
+                name: "ทริปท่องเที่ยวชมสวนผึ้ง เรียนรู้การเลี้ยงผึ้ง",
+                shortDescription: "เรียนรู้การเลี้ยงผึ้งและผลิตน้ำผึ้งธรรมชาติ",
+                price: "750 บาท/คน",
+                duration: "3-4 ชั่วโมง",
+                mainImage: "../images/trip07/small/trip_07_01.jpg"
+            },
+            {
+                id: 8,
+                name: "ทริปท่องเที่ยวล่องเรือหางยาวชมชุมชน",
+                shortDescription: "ล่องเรือหางยาวชมวิถีชีวิตชาวบ้าน และธรรมชาติริมคลอง",
+                price: "650 บาท/คน",
+                duration: "2-3 ชั่วโมง",
+                mainImage: "../images/trip08/small/trip_08_01.jpg"
+            },
+            {
+                id: 9,
+                name: "ทริปท่องเที่ยวเรียนรู้การทอผ้าโบราณ",
+                shortDescription: "เรียนรู้ศิลปะการทอผ้าแบบโบราณ พร้อมลองทำด้วยตนเอง",
+                price: "850 บาท/คน",
+                duration: "4-5 ชั่วโมง",
+                mainImage: "../images/trip09/small/trip_09_01.jpg"
+            },
+            {
+                id: 10,
+                name: "ทริปท่องเที่ยวชมนกและธรรมชาติ",
+                shortDescription: "ดูนกและสัตว์ป่าในธรรมชาติ พร้อมเรียนรู้ระบบนิเวศ",
+                price: "550 บาท/คน",
+                duration: "3-4 ชั่วโมง",
+                mainImage: "../images/trip10/small/trip_10_01.jpg"
+            },
+            {
+                id: 11,
+                name: "ทริปท่องเที่ยวเรียนรู้การทำขนมไทย",
+                shortDescription: "เรียนรู้การทำขนมไทยโบราณ พร้อมสูตรลับจากปราชญ์ชาวบ้าน",
+                price: "800 บาท/คน",
+                duration: "3-4 ชั่วโมง",
+                mainImage: "../images/trip11/small/trip_11_01.jpg"
+            }
+        ];
+
         // ฟังก์ชันสร้างการ์ดทริปท่องเที่ยว
         function createTripCard(trip) {
             return `
@@ -133,9 +223,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const tripsGrid = document.getElementById('trips-grid');
             
-            // สร้างการ์ดทริปท่องเที่ยว 11 ทริปแรก
-            const displayTrips = tripsData.slice(0, 11);
-            tripsGrid.innerHTML = displayTrips.map(trip => createTripCard(trip)).join('');
+            // สร้างการ์ดทริปท่องเที่ยว 11 ทริปทั้งหมด
+            tripsGrid.innerHTML = tripsData.map(trip => createTripCard(trip)).join('');
         });
     </script>
 </body>

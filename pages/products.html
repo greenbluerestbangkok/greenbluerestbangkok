@@ -98,9 +98,146 @@
     </footer>
     
     <script type="module" src="../js/main.js"></script>
-    <script type="module">
-        import { productsData } from '../js/products.js';
-        
+    <script>
+        // ข้อมูลสินค้าชุมชนแบบ inline เพื่อป้องกันปัญหา CORS
+        const productsData = [
+            {
+                id: 1,
+                name: "สบู่แฮนด์เมดน้ำมันมะพร้าว",
+                price: "80 บาท",
+                category: "beauty",
+                description: "สบู่ธรรมชาติจากน้ำมันมะพร้าวบริสุทธิ์ ไม่มีสารเคมี",
+                image: "../images/products/product_01.jpg",
+                producer: "เซฟติสท์ฟาร์ม"
+            },
+            {
+                id: 2,
+                name: "น้ำส้มคั้นสดจากสวน",
+                price: "50 บาท",
+                category: "food",
+                description: "น้ำส้มคั้นสดจากสวนผลไม้ในชุมชน ไม่มีน้ำตาลเพิ่ม",
+                image: "../images/products/product_02.jpg",
+                producer: "เซฟติสท์ฟาร์ม"
+            },
+            {
+                id: 3,
+                name: "ขนมไทยโบราณ (ชุดรวม)",
+                price: "120 บาท",
+                category: "food",
+                description: "ขนมไทยโบราณหลากหลายชนิด ทำสดใหม่ทุกวัน",
+                image: "../images/products/product_03.jpg",
+                producer: "บ้านเขียนวาดและภาพพิมพ์"
+            },
+            {
+                id: 4,
+                name: "ผ้าขาวม้าทอมือ",
+                price: "250 บาท",
+                category: "craft",
+                description: "ผ้าขาวม้าทอมือแบบดั้งเดิม ลวดลายสวยงาม",
+                image: "../images/products/product_04.jpg",
+                producer: "บ้านเขียนวาดและภาพพิมพ์"
+            },
+            {
+                id: 5,
+                name: "น้ำพริกแกงไทยแท้",
+                price: "90 บาท",
+                category: "food",
+                description: "น้ำพริกแกงสูตรโบราณ จากเครื่องเทศแท้",
+                image: "../images/products/product_05.jpg",
+                producer: "ตลาดมดตะนอย"
+            },
+            {
+                id: 6,
+                name: "หมอนข้าวโพดใยธรรมชาติ",
+                price: "350 บาท",
+                category: "craft",
+                description: "หมอนจากใยข้าวโพดธรรมชาติ นุ่มสบาย ระบายอากาศดี",
+                image: "../images/products/product_06.jpg",
+                producer: "ลิงโดดเฮิร์บ"
+            },
+            {
+                id: 7,
+                name: "ผลไม้อบแห้ง (ชุดรวม)",
+                price: "180 บาท",
+                category: "food",
+                description: "ผลไม้อบแห้งจากสวนเกษตรกรในชุมชน",
+                image: "../images/products/product_07.jpg",
+                producer: "ลิงโดดเฮิร์บ"
+            },
+            {
+                id: 8,
+                name: "ครีมบำรุงผิวสมุนไพรไทย",
+                price: "150 บาท",
+                category: "beauty",
+                description: "ครีมบำรุงจากสมุนไพรไทยแท้ ปราศจากสารเคมี",
+                image: "../images/products/product_08.jpg",
+                producer: "ลิงโดดเฮิร์บ"
+            },
+            {
+                id: 9,
+                name: "กระเป๋าผ้าทอมือ",
+                price: "320 บาท",
+                category: "craft",
+                description: "กระเป๋าผ้าทอมือลายไทย ทนทานและสวยงาม",
+                image: "../images/products/product_09.jpg",
+                producer: "ลิงโดดเฮิร์บ"
+            },
+            {
+                id: 10,
+                name: "ชาสมุนไพรผสม",
+                price: "120 บาท",
+                category: "food",
+                description: "ชาจากสมุนไพรหลากชนิด ดื่มง่าย มีประโยชน์",
+                image: "../images/products/product_10.jpg",
+                producer: "ตลาดมดตะนอย"
+            },
+            {
+                id: 11,
+                name: "น้ำมันหอมระเหยธรรมชาติ",
+                price: "200 บาท",
+                category: "beauty",
+                description: "น้ำมันหอมระเหยจากพืชสมุนไพรไทย",
+                image: "../images/products/product_11.jpg",
+                producer: "ตลาดมดตะนอย"
+            },
+            {
+                id: 12,
+                name: "เสื้อผ้าฝ้ายย้อมสีธรรมชาติ",
+                price: "450 บาท",
+                category: "craft",
+                description: "เสื้อผ้าฝ้ายย้อมด้วยสีธรรมชาติจากพืช",
+                image: "../images/products/product_12.jpg",
+                producer: "บ้านเขียนวาดและภาพพิมพ์"
+            },
+            {
+                id: 13,
+                name: "น้ำผึ้งป่าแท้ 100%",
+                price: "280 บาท",
+                category: "food",
+                description: "น้ำผึ้งจากผึ้งป่าธรรมชาติ หวานหอมแท้",
+                image: "../images/products/product_13.jpg",
+                producer: "เซฟติสท์ฟาร์ม"
+            },
+            {
+                id: 14,
+                name: "พวงกุญแจจากใยมะพร้าว",
+                price: "45 บาท",
+                category: "craft",
+                description: "พวงกุญแจทำจากใยมะพร้าว รูปร่างน่ารัก",
+                image: "../images/products/product_14.jpg",
+                producer: "ลิงโดดเฮิร์บ"
+            },
+            {
+                id: 15,
+                name: "ใบกล้วยธรรมชาติ (แพ็ค 10 ใบ)",
+                price: "30 บาท",
+                category: "food",
+                description: "ใบกล้วยสดสะอาด สำหรับห่ออาหารแบบไทยๆ",
+                image: "../images/products/product_15.jpg",
+                producer: "ตลาดมดตะนอย"
+            }
+        ];
+
         // ฟังก์ชันสร้างการ์ดสินค้า
         function createProductCard(product) {
             return `
