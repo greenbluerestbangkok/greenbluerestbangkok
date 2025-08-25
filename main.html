@@ -25,6 +25,11 @@
     <!-- 🎨 ไฟล์ CSS หลัก - แก้ไขสี ฟอนต์ และการออกแบบได้ที่นี่ -->
     <!-- ======================================== -->
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- ======================================== -->
+    <!-- 🚨 Layout Fixes - แก้ไขปัญหา layout และ responsive -->
+    <!-- ======================================== -->
+    <link rel="stylesheet" href="css/layout-fixes.css">
 </head>
 <body>
     <!-- ======================================== -->
@@ -32,33 +37,19 @@
     <!-- ======================================== -->
     <header class="main-header">
         <nav class="navbar">
-            <!-- ======================================== -->
-            <!-- 🏷️ Logo และชื่อเว็บไซต์ - แก้ไขได้ที่นี่ -->
-            <!-- เปลี่ยนชื่อ "GreenBlueRest" เป็นชื่อที่ต้องการ -->
-            <!-- ======================================== -->
-            <a href="main.html" class="nav-logo">GreenBlueRest Bangkok</a>
-            
-            <!-- ======================================== -->
-            <!-- 📱 เมนูนำทาง - เพิ่ม/ลบ/แก้ไขเมนูได้ที่นี่ -->
-            <!-- class="active" ใช้สำหรับหน้าแรก -->
-            <!-- ======================================== -->
+            <a href="#" class="nav-logo">GreenBlueRest Bangkok</a>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="main.html" class="nav-link active">หน้าแรก</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link">หน้าแรก</a></li>
                 <li class="nav-item"><a href="pages/low-carbon.html" class="nav-link">Low Carbon Tourism</a></li>
                 <li class="nav-item"><a href="pages/trips.html" class="nav-link">ทริปท่องเที่ยว</a></li>
                 <li class="nav-item"><a href="pages/products.html" class="nav-link">สินค้าชุมชน</a></li>
                 <li class="nav-item"><a href="pages/operators.html" class="nav-link">ผู้ประกอบการในชุมชน</a></li>
-                <li class="nav-item"><a href="pages/activities.html" class="nav-link">บทความ&วิดีโอ</a></li>
-                <li class="nav-item"><a href="pages/learning-city.html" class="nav-link">Learning City</a></li>
+                <li class="nav-item"><a href="pages/activities.html" class="nav-link">บทความ&amp;วิดีโอ</a></li>
+                <li class="nav-item"><a href="pages/learning-city.html" class="nav-link active">Learning City</a></li>
                 <li class="nav-item"><a href="pages/contact.html" class="nav-link">ติดต่อเรา</a></li>
             </ul>
-            
-            <!-- ======================================== -->
-            <!-- ☰ ปุ่มเมนูมือถือ (Hamburger Menu) -->
-            <!-- แสดงเมื่อหน้าจอเล็ก -->
-            <!-- ======================================== -->
             <div class="hamburger">
-                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                <span class="bar" style="transform: none; opacity: 1;"></span><span class="bar" style="transform: none; opacity: 1;"></span><span class="bar" style="transform: none; opacity: 1;"></span>
             </div>
         </nav>
     </header>
@@ -135,7 +126,7 @@
             <!-- grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) -->
             <!-- จัดเรียงอัตโนมัติตามขนาดหน้าจอ -->
             <!-- ======================================== -->
-            <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+            <div class="features-grid features-vertical" style="grid-template-columns: 1fr; gap: 1.5rem; max-width: 600px; margin: 0 auto;">
                 <!-- ======================================== -->
                 <!-- 🌱 คุณสมบัติที่ 1 - Low Carbon Tourism -->
                 <!-- แก้ไขข้อความและไอคอนได้ที่นี่ -->
@@ -261,6 +252,11 @@
             }
         });
     </script>
+    
+    <!-- ======================================== -->
+    <!-- 🚨 Cache Buster - ป้องกัน Browser Caching -->
+    <!-- ======================================== -->
+    <script src="js/cache-buster.js"></script>
     
     <!-- ======================================== -->
     <!-- 📜 JavaScript - ไฟล์หลักสำหรับฟังก์ชันต่างๆ -->

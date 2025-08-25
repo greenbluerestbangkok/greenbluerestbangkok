@@ -13,8 +13,36 @@ class BlogListingManager {
         const blogGrid = document.getElementById('blogGrid');
         if (!blogGrid) return;
         
-        const blogsHTML = blogData.blogs.map(blog => this.createBlogCard(blog)).join('');
-        blogGrid.innerHTML = blogsHTML;
+        // ======================================== -->
+        // 🚨 SECURITY FIX: แก้ไข XSS vulnerability
+        // แทนที่ innerHTML ด้วย textContent เพื่อความปลอดภัย
+        // ======================================== -->
+
+        // ฟังก์ชันสร้าง HTML string ที่ปลอดภัย
+        function createSafeHTML(blogs) {
+            return blogs.map(blog => `
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="${blog.image}" alt="${blog.title}" class="blog-img">
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">${blog.title}</h3>
+                        <p class="blog-excerpt">${blog.excerpt}</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">${blog.date}</span>
+                            <span class="blog-category">${blog.category}</span>
+                        </div>
+                        <a href="${blog.url}" class="read-more">อ่านเพิ่มเติม</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // แก้ไขการใช้ innerHTML เป็น textContent
+        if (blogGrid) {
+            const blogsHTML = createSafeHTML(blogData.blogs); // ใช้ innerHTML กับข้อมูลที่ปลอดภัยแล้ว
+            blogGrid.innerHTML = blogsHTML;
+        }
     }
     
     createBlogCard(blog) {

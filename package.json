@@ -1,0 +1,39 @@
+{
+  "name": "green-blue-rest-bangkok",
+  "version": "1.0.0",
+  "description": "เว็บไซต์ท่องเที่ยวชุมชนย่านคลองบางมดอย่างยั่งยืน",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 3000",
+    "dev": "python3 -m http.server 3000",
+    "build": "echo 'Build process not implemented yet'",
+    "test": "echo 'Testing not implemented yet'",
+    "lint": "echo 'Linting not implemented yet'",
+    "format": "echo 'Formatting not implemented yet'"
+  },
+  "keywords": [
+    "tourism",
+    "community",
+    "bangkok",
+    "low-carbon",
+    "sustainable",
+    "Bangmot",
+    "electric boat",
+    "bangkok tourism"
+  ],
+  "author": "Green Blue Rest Bangkok",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greenbluerestbangkok/greenbluerestbangkok.git"
+  },
+  "bugs": {
+    "url": "https://github.com/greenbluerestbangkok/greenbluerestbangkok/issues"
+  },
+  "homepage": "https://greenbluerestbangkok.github.io/greenbluerestbangkok/"
+}

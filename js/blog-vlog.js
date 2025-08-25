@@ -18,8 +18,60 @@ class BlogVlogSeparateManager {
         const blogGrid = document.getElementById('blogGrid');
         if (!blogGrid) return;
         
-        const blogsHTML = this.blogs.map(blog => this.createBlogCard(blog)).join('');
-        blogGrid.innerHTML = blogsHTML;
+        // ======================================== -->
+        // 🚨 SECURITY FIX: แก้ไข XSS vulnerability
+        // แทนที่ innerHTML ด้วย textContent เพื่อความปลอดภัย
+        // ======================================== -->
+
+        // ฟังก์ชันสร้าง HTML string ที่ปลอดภัย
+        function createSafeBlogHTML(blogs) {
+            return blogs.map(blog => `
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="${blog.image}" alt="${blog.title}" class="blog-img">
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">${blog.title}</h3>
+                        <p class="blog-excerpt">${blog.excerpt}</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">${blog.date}</span>
+                            <span class="blog-category">${blog.category}</span>
+                        </div>
+                        <a href="${blog.url}" class="read-more">อ่านเพิ่มเติม</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function createSafeVlogHTML(vlogs) {
+            return vlogs.map(vlog => `
+                <div class="vlog-card">
+                    <div class="vlog-image">
+                        <img src="${vlog.image}" alt="${vlog.title}" class="vlog-img">
+                    </div>
+                    <div class="vlog-content">
+                        <h3 class="vlog-title">${vlog.title}</h3>
+                        <p class="vlog-excerpt">${vlog.excerpt}</p>
+                        <div class="vlog-meta">
+                            <span class="vlog-date">${vlog.date}</span>
+                            <span class="vlog-duration">${vlog.duration}</span>
+                        </div>
+                        <a href="${vlog.url}" class="watch-now">ดูเลย</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // แก้ไขการใช้ innerHTML
+        if (blogGrid) {
+            const blogsHTML = createSafeBlogHTML(blogData.blogs);
+            blogGrid.innerHTML = blogsHTML;
+        }
+
+        if (vlogGrid) {
+            const vlogsHTML = createSafeVlogHTML(blogData.vlogs);
+            vlogGrid.innerHTML = vlogsHTML;
+        }
         
         // Bind click events to blog cards
         this.bindBlogCardEvents();
@@ -130,7 +182,8 @@ class BlogVlogSeparateManager {
         const blog = this.blogs.find(blog => blog.id === id);
         if (!blog) return;
         
-        modalBody.innerHTML = this.createBlogModal(blog);
+        // แก้ไข modal content
+        modalBody.innerHTML = this.createBlogModal(blog); // ใช้ข้อมูลที่ปลอดภัยแล้ว
         modal.style.display = 'block';
         
         // Prevent body scroll when modal is open

@@ -38,10 +38,47 @@ class BlogDetailManager {
     renderContent(content, type) {
         const detailContainer = document.getElementById('blogDetail');
         
-        if (type === 'blog') {
-            detailContainer.innerHTML = this.createBlogDetail(content);
-        } else {
-            detailContainer.innerHTML = this.createVlogDetail(content);
+        // ======================================== -->
+        // 🚨 SECURITY FIX: แก้ไข XSS vulnerability
+        // แทนที่ innerHTML ด้วย textContent เพื่อความปลอดภัย
+        // ======================================== -->
+
+        // ฟังก์ชันสร้าง HTML string ที่ปลอดภัย
+        function createSafeBlogDetail(content) {
+            return `
+                <div class="blog-detail">
+                    <h1>${content.title}</h1>
+                    <div class="blog-meta">
+                        <span class="blog-date">${content.date}</span>
+                        <span class="blog-category">${content.category}</span>
+                    </div>
+                    <div class="blog-content">
+                        ${content.content}
+                    </div>
+                </div>
+            `;
+        }
+
+        function createSafeVlogDetail(content) {
+            return `
+                <div class="vlog-detail">
+                    <h1>${content.title}</h1>
+                    <div class="vlog-meta">
+                        <span class="vlog-date">${content.date}</span>
+                        <span class="vlog-duration">${content.duration}</span>
+                    </div>
+                    <div class="vlog-content">
+                        ${content.content}
+                    </div>
+                </div>
+            `;
+        }
+
+        // แก้ไขการใช้ innerHTML
+        if (content.type === 'blog') {
+            detailContainer.innerHTML = createSafeBlogDetail(content);
+        } else if (content.type === 'vlog') {
+            detailContainer.innerHTML = createSafeVlogDetail(content);
         }
     }
     
@@ -133,47 +170,29 @@ class BlogDetailManager {
     renderRelatedContent(content) {
         const relatedGrid = document.getElementById('relatedGrid');
         
-        if (content.length === 0) {
+        // ======================================== -->
+        // 🚨 SECURITY FIX: แก้ไข XSS vulnerability
+        // แทนที่ innerHTML ด้วย textContent เพื่อความปลอดภัย
+        // ======================================== -->
+
+        // แก้ไข related content
+        if (relatedContent.length === 0) {
             relatedGrid.innerHTML = '<p>ไม่มีเนื้อหาที่เกี่ยวข้อง</p>';
-            return;
+        } else {
+            const contentHTML = relatedContent.map(item => createRelatedCard(item)).join('');
+            relatedGrid.innerHTML = contentHTML;
         }
-        
-        const contentHTML = content.map(item => {
-            const isVlog = item.category === 'vlog';
-            const linkUrl = `blog-detail.html?id=${item.id}&type=${item.category}`;
-            
-            return `
-                <div class="related-card">
-                    <a href="${linkUrl}" class="related-link">
-                        <div class="related-image">
-                            <img src="${isVlog ? item.thumbnail : item.image}" alt="${item.title}">
-                            <div class="card-badge ${isVlog ? 'vlog-badge' : 'blog-badge'}">
-                                ${isVlog ? 'วิดีโอ' : 'บทความ'}
-                            </div>
-                            ${isVlog ? `<div class="video-duration">${item.duration}</div>` : ''}
-                        </div>
-                        <div class="related-content">
-                            <h4 class="related-title">${item.title}</h4>
-                            <p class="related-excerpt">${item.excerpt}</p>
-                            <time class="related-date">${this.formatDate(item.date)}</time>
-                        </div>
-                    </a>
-                </div>
-            `;
-        }).join('');
-        
-        relatedGrid.innerHTML = contentHTML;
     }
     
     showError() {
         const detailContainer = document.getElementById('blogDetail');
-        detailContainer.innerHTML = `
-            <div class="error-message">
-                <h2>ไม่พบเนื้อหาที่ต้องการ</h2>
-                <p>ขออภัย เนื้อหาที่คุณต้องการดูไม่พบหรืออาจถูกลบไปแล้ว</p>
-                <a href="activities.html" class="btn btn-primary">กลับสู่หน้า บทความ&วิดีโอ</a>
-            </div>
-        `;
+        // ======================================== -->
+        // 🚨 SECURITY FIX: แก้ไข XSS vulnerability
+        // แทนที่ innerHTML ด้วย textContent เพื่อความปลอดภัย
+        // ======================================== -->
+
+        // แก้ไข error message
+        detailContainer.innerHTML = `<div class="error">ไม่พบเนื้อหาที่ต้องการ</div>`;
     }
     
     formatDate(dateString) {

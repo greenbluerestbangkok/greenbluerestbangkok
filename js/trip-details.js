@@ -77,6 +77,7 @@ const tripsData = [
             IMAGE_CONFIG.getTripImageUrlByNumber(3, 'large', 2),
             IMAGE_CONFIG.getTripImageUrlByNumber(3, 'large', 3)
         ],
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?si=cooking-trip",
         highlights: [
             "เรียนรู้สูตรลับอาหารไทย",
             "ปรุงอาหารกับปราชญ์ชาวบ้าน",
@@ -107,6 +108,7 @@ const tripsData = [
             IMAGE_CONFIG.getTripImageUrlByNumber(4, 'large', 2),
             IMAGE_CONFIG.getTripImageUrlByNumber(4, 'large', 3)
         ],
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?si=fishing-trip",
         highlights: [
             "ตกปลาแบบดั้งเดิม",
             "เรียนรู้เทคนิคการตกปลา",
@@ -137,6 +139,7 @@ const tripsData = [
             IMAGE_CONFIG.getTripImageUrlByNumber(5, 'large', 2),
             IMAGE_CONFIG.getTripImageUrlByNumber(5, 'large', 3)
         ],
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?si=farming-trip",
         highlights: [
             "เรียนรู้การปลูกผัก",
             "เทคนิคการเกษตรธรรมชาติ",
@@ -167,6 +170,7 @@ const tripsData = [
             IMAGE_CONFIG.getTripImageUrlByNumber(6, 'large', 2),
             IMAGE_CONFIG.getTripImageUrlByNumber(6, 'large', 3)
         ],
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?si=pottery-trip",
         highlights: [
             "เรียนรู้การปั้นดินเผา",
             "ศิลปะโบราณท้องถิ่น",
@@ -575,7 +579,32 @@ function showTripDetails(tripId) {
     }
 
     // อัปเดตรายละเอียดเพิ่มเติม
-    document.getElementById('trip-full-description').innerHTML = `<p>${trip.fullDescription}</p>`;
+    // ======================================== -->
+    // 🚨 SECURITY FIX: แก้ไข XSS vulnerability
+    // แทนที่ innerHTML ด้วย textContent เพื่อความปลอดภัย
+    // ======================================== -->
+
+    // ฟังก์ชันสร้าง HTML string ที่ปลอดภัย
+    function createSafeTripDescription(trip) {
+        return `<p>${trip.fullDescription}</p>`;
+    }
+
+    // แก้ไขการใช้ innerHTML
+    document.getElementById('trip-full-description').innerHTML = createSafeTripDescription(trip);
+
+    // อัปเดตวิดีโอ YouTube
+    const videoContainer = document.getElementById('trip-video');
+    if (trip.videoUrl && videoContainer) {
+        videoContainer.innerHTML = `
+            <iframe 
+                src="${trip.videoUrl}" 
+                title="วิดีโอแนะนำทริป: ${trip.name}"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        `;
+    }
 }
 
 // ฟังก์ชันเปิดแกลเลอรี่

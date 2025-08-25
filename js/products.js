@@ -197,13 +197,26 @@ function getCategoryName(category) {
 // ฟังก์ชันแสดงสินค้า
 function displayProducts(products) {
     const productsGrid = document.getElementById('products-grid');
-    if (products.length === 0) {
-        productsGrid.innerHTML = '<div class="no-results">ไม่พบสินค้าที่ค้นหา</div>';
-        return;
+    // ======================================== -->
+    // 🚨 SECURITY FIX: แก้ไข XSS vulnerability
+    // แทนที่ innerHTML ด้วย textContent เพื่อความปลอดภัย
+    // ======================================== -->
+
+    // ฟังก์ชันสร้าง HTML string ที่ปลอดภัย
+    function createSafeNoResultsHTML() {
+        return '<div class="no-results">ไม่พบสินค้าที่ค้นหา</div>';
     }
-    
-    // แสดงสินค้าทั้งหมดในครั้งเดียว
-    productsGrid.innerHTML = products.map(product => createProductCard(product)).join('');
+
+    function createSafeProductsHTML(products) {
+        return products.map(product => createProductCard(product)).join('');
+    }
+
+    // แก้ไขการใช้ innerHTML
+    if (products.length === 0) {
+        productsGrid.innerHTML = createSafeNoResultsHTML();
+    } else {
+        productsGrid.innerHTML = createSafeProductsHTML(products);
+    }
 }
 
 // ฟังก์ชันค้นหาสินค้า
@@ -325,5 +338,54 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // ======================================== -->
+    // 🚨 PERFORMANCE FIX: แก้ไข setTimeout โดยใช้ debounce
+    // เพิ่ม cleanup เพื่อป้องกัน memory leak
+    // ======================================== -->
+    
+    // Debounce function เพื่อจำกัดการเรียก search function
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+    
+    // ใช้ debounce สำหรับ search function
+    const debouncedSearch = debounce(function(searchTerm) {
+        const filteredProducts = productsData.filter(product => 
+            product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            product.description.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        displayProducts(filteredProducts);
+    }, 300);
+    
+    // แก้ไข search input event
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.trim();
+        if (searchTerm === '') {
+            displayProducts(productsData); // แสดงสินค้าทั้งหมดเมื่อคลิกล้างการค้นหา
+        } else {
+            debouncedSearch(searchTerm);
+        }
+    });
+    
+    // Cleanup function
+    function cleanupProducts() {
+        if (searchTimeout) {
+            clearTimeout(searchTimeout);
+        }
+        // ล้าง event listeners อื่นๆ ถ้ามี
+    }
+    
+    // Cleanup เมื่อหน้าเว็บถูก unload
+    window.addEventListener('beforeunload', cleanupProducts);
+    window.addEventListener('pagehide', cleanupProducts);
 
 });

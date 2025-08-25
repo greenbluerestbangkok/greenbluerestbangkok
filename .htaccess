@@ -1,0 +1,28 @@
+# ======================================== -->
+# 🚨 ป้องกัน Browser Caching
+# Green Blue Rest Bangkok Website
+# ======================================== -->
+
+# ป้องกันการ cache ไฟล์ CSS และ JavaScript
+<FilesMatch "\.(css|js)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</FilesMatch>
+
+# ป้องกันการ cache ไฟล์ HTML
+<FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</FilesMatch>
+
+# เพิ่ม version parameter ให้กับไฟล์ CSS และ JS
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(.+)\.(css|js)$ $1.$2?v=%{TIME} [L]
+
+# ป้องกันการ cache รูปภาพ
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|avif)$">
+    Header set Cache-Control "max-age=3600, must-revalidate"
+</FilesMatch>

@@ -3,53 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>รายละเอียดบทความ - Green Blue Rest</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>หน้าแรก - Green Blue Rest Bangkok</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout-fixes.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="main-header">
         <nav class="navbar">
-            <a href="../index.html" class="nav-logo">GreenBlueRest Bangkok</a>
+            <a href="index.html" class="nav-logo">GreenBlueRest Bangkok</a>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="../index.html" class="nav-link">หน้าแรก</a></li>
-                <li class="nav-item"><a href="low-carbon.html" class="nav-link">Low Carbon Tourism</a></li>
-                <li class="nav-item"><a href="trips.html" class="nav-link">ทริปท่องเที่ยว</a></li>
-                <li class="nav-item"><a href="products.html" class="nav-link">สินค้าชุมชน</a></li>
-                <li class="nav-item"><a href="operators.html" class="nav-link">ผู้ประกอบการในชุมชน</a></li>
-                <li class="nav-item"><a href="activities.html" class="nav-link">บทความ&วิดีโอ</a></li>
-                <li class="nav-item"><a href="learning-city.html" class="nav-link">Learning City</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">ติดต่อเรา</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link">หน้าแรก</a></li>
+                <li class="nav-item"><a href="pages/low-carbon.html" class="nav-link">Low Carbon Tourism</a></li>
+                <li class="nav-item"><a href="pages/trips.html" class="nav-link active">ทริปท่องเที่ยว</a></li>
+                <li class="nav-item"><a href="pages/products.html" class="nav-link">สินค้าชุมชน</a></li>
+                <li class="nav-item"><a href="pages/operators.html" class="nav-link">ผู้ประกอบการในชุมชน</a></li>
+                <li class="nav-item"><a href="pages/activities.html" class="nav-link">บทความ&amp;วิดีโอ</a></li>
+                <li class="nav-item"><a href="pages/learning-city.html" class="nav-link">Learning City</a></li>
+                <li class="nav-item"><a href="pages/contact.html" class="nav-link">ติดต่อเรา</a></li>
             </ul>
             <div class="hamburger">
-                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                <span class="bar" style="transform: none; opacity: 1;"></span><span class="bar" style="transform: none; opacity: 1;"></span><span class="bar" style="transform: none; opacity: 1;"></span>
             </div>
         </nav>
     </header>
 
     <main>
-        <div class="container">
-            <nav class="breadcrumb">
-                <a href="activities.html">บทความ&วิดีโอ</a> / 
-                <span id="breadcrumbTitle">รายละเอียดบทความ</span>
-            </nav>
-            
-            <article class="blog-detail" id="blogDetail">
-                <!-- Content will be dynamically loaded here -->
-                <div class="loading">กำลังโหลด...</div>
-            </article>
-            
-            <div class="blog-navigation">
-                <a href="activities.html" class="btn btn-outline">← กลับสู่หน้า บทความ&วิดีโอ</a>
-            </div>
-            
-            <section class="related-content">
-                <h3>บทความที่เกี่ยวข้อง</h3>
-                <div class="related-grid" id="relatedGrid">
-                    <!-- Related content will be loaded here -->
-                </div>
-            </section>
-        </div>
+        <section class="container">
+            <h2>ทดสอบ Navigation</h2>
+            <p>หน้าทดสอบเพื่อตรวจสอบ navigation ว่าทำงานเหมือนหน้าอื่นๆ หรือไม่</p>
+        </section>
     </main>
     
     <footer class="main-footer">
@@ -97,7 +80,6 @@
         </div>
     </footer>
     
-    <script type="module" src="../js/main.js"></script>
-    <script type="module" src="../js/blog-detail.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
