@@ -170,15 +170,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // --- Active Navigation Link ---
-    const currentPage = window.location.pathname;
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href');
-        if (linkPath && currentPage.includes(linkPath.replace('.html', ''))) {
-            link.classList.add('active');
-        }
-    });
+    // ใช้ active class ที่กำหนดไว้ใน HTML แล้ว ไม่ต้องใช้ JavaScript
+    // เพื่อป้องกันปัญหาการเปลี่ยนสีฟอนต์ที่ไม่ถูกต้อง
     
     // --- Lazy Loading สำหรับรูปภาพ ---
     if ('IntersectionObserver' in window) {

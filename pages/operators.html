@@ -4,7 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ผู้ประกอบการในชุมชน - Green Blue Rest Bangkok</title>
+    <meta name="description" content="ทำความรู้จักกับผู้ประกอบการในชุมชนคลองบางมด รวม 8 กลุ่ม ตั้งแต่ เซฟติสท์ฟาร์ม บ้านเขียนวาด ตลาดมดตะนอย และอื่นๆ">
+    <meta name="keywords" content="ผู้ประกอบการ, ชุมชน, คลองบางมด, เซฟติสท์ฟาร์ม, บ้านเขียนวาด, ตลาดมดตะนอย, ลิงโดดเฮิร์บ">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="ผู้ประกอบการในชุมชน - Green Blue Rest Bangkok">
+    <meta property="og:description" content="ทำความรู้จักกับผู้ประกอบการในชุมชนคลองบางมด รวม 8 กลุ่ม">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://greenbluerestbangkok.com/pages/operators.html">
+    <meta property="og:image" content="https://greenbluerestbangkok.com/images/cover/operators-cover.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ผู้ประกอบการในชุมชน">
+    <meta name="twitter:description" content="ทำความรู้จักกับผู้ประกอบการในชุมชนคลองบางมด">
+    
+    <link rel="canonical" href="https://greenbluerestbangkok.com/pages/operators.html">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/button-fixes.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -57,7 +74,10 @@
         </div>
 
         <section class="container">
-            <h2>รายชื่อผู้ประกอบการ</h2>
+            <div class="page-header">
+                <h1>รายชื่อผู้ประกอบการ</h1>
+                <p>ร่วมมือกับผู้ประกอบการท้องถิ่น 8 ราย เพื่อสร้างการท่องเที่ยวอย่างยั่งยืนในชุมชนคลองบางมด</p>
+            </div>
             
             <div class="operators-grid" id="operators-grid">
                 <!-- ผู้ประกอบการทั้งหมดจะถูกเพิ่มด้วย JavaScript -->
@@ -94,18 +114,13 @@
         </div>
     </footer>
     
-    <script type="module" src="../js/main.js"></script>
-    <script type="module" src="../js/config.js"></script>
-    <script type="module">
-        // Import IMAGE_CONFIG
-        import { IMAGE_CONFIG } from '../js/config.js';
-        
+    <script>
         // ข้อมูลผู้ประกอบการในชุมชน
         const operatorsData = [
             {
                 id: 1,
                 name: "เซฟติสท์ฟาร์ม",
-                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'safetist-farm.png'),
+                logo: "../images/operators/safetist-farm.png",
                 description: "เกษตรอินทรีย์และผลิตภัณฑ์ธรรมชาติ",
                 story: "เซฟติสท์ฟาร์มเริ่มต้นจากการปลูกผักอินทรีย์ในชุมชนคลองบางมด เมื่อ 10 ปีที่แล้ว ปัจจุบันขยายกิจการไปสู่การผลิตสบู่ธรรมชาติ น้ำมันหอมระเหย และผลิตภัณฑ์ความงามจากสมุนไพรไทย",
                 activities: [
@@ -120,7 +135,7 @@
             {
                 id: 2,
                 name: "บ้านเขียนวาดและภาพพิมพ์",
-                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'ban-khian-wad.png'),
+                logo: "../images/operators/ban-khian-wad.png",
                 description: "ศิลปะและงานฝีมือท้องถิ่น",
                 story: "บ้านเขียนวาดและภาพพิมพ์เป็นศูนย์การเรียนรู้ศิลปะแบบดั้งเดิมที่สืบทอดมา 3 ชั่วอายุคน เน้นการสร้างสรรค์งานศิลปะจากธรรมชาติและวัสดุท้องถิ่น",
                 activities: [
@@ -135,7 +150,7 @@
             {
                 id: 3,
                 name: "ตลาดมดตะนอย",
-                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'talad-mod-tanoi.png'),
+                logo: "../images/operators/talad-mod-tanoi.png",
                 description: "ตลาดชุมชนและอาหารท้องถิ่น",
                 story: "ตลาดมดตะนอยเป็นตลาดชุมชนเก่าแก่ที่มีประวัติยาวนานกว่า 50 ปี เป็นแหล่งรวมอาหารท้องถิ่น เครื่องเทศ และวัตถุดิบสดใหม่จากชุมชน",
                 activities: [
@@ -150,7 +165,7 @@
             {
                 id: 4,
                 name: "กัมปงในดงปรือ",
-                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'kampong-nai-dong-pru.png'),
+                logo: "../images/operators/kampong-nai-dong-pru.png",
                 description: "ชุมชนโบราณและงานฝีมือ",
                 story: "กัมปงในดงปรือเป็นชุมชนโบราณที่มีประวัติศาสตร์ยาวนาน เป็นแหล่งรวมงานฝีมือดั้งเดิม เช่น การทำเครื่องปั้นดินเผา เครื่องจักสาน และเครื่องไม้",
                 activities: [
@@ -165,7 +180,7 @@
             {
                 id: 5,
                 name: "วิสาหกิจชุมชนอารยะคลองบางมดสร้างสรรค์",
-                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'visahakit-chumchon-arraya.png'),
+                logo: "../images/operators/visahakit-chumchon-arraya.png",
                 description: "ผลิตภัณฑ์ชุมชนและสมุนไพร",
                 story: "วิสาหกิจชุมชนอารยะคลองบางมดสร้างสรรค์เป็นองค์กรที่รวมกลุ่มผู้ผลิตในชุมชนเพื่อพัฒนาผลิตภัณฑ์จากสมุนไพรไทยและวัสดุธรรมชาติ",
                 activities: [
@@ -180,7 +195,7 @@
             {
                 id: 6,
                 name: "Art Lab",
-                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'art-lab.png'),
+                logo: "../images/operators/art-lab.png",
                 description: "ศิลปะและงานฝีมือสร้างสรรค์",
                 story: "Art Lab เป็นศูนย์การเรียนรู้ศิลปะสมัยใหม่ที่ผสมผสานเทคนิคดั้งเดิมกับความคิดสร้างสรรค์ เน้นการสร้างสรรค์งานศิลปะจากวัสดุรีไซเคิล",
                 activities: [
@@ -195,7 +210,7 @@
             {
                 id: 7,
                 name: "S'more town",
-                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'smore-town.png'),
+                logo: "../images/operators/smore-town.png",
                 description: "ผลิตภัณฑ์ความงามธรรมชาติ",
                 story: "S'more town เป็นแบรนด์ผลิตภัณฑ์ความงามธรรมชาติที่ใช้สมุนไพรไทยและวัตถุดิบจากชุมชน เน้นการผลิตแบบแฮนด์เมดและเป็นมิตรต่อสิ่งแวดล้อม",
                 activities: [
@@ -210,7 +225,7 @@
             {
                 id: 8,
                 name: "นิทานศิลป์ @บ้านดรุณ",
-                logo: IMAGE_CONFIG.getImageUrl('OPERATORS', 'nitan-sin-baan-darun.png'),
+                logo: "../images/operators/nitan-sin-baan-darun.png",
                 description: "ศิลปะและงานฝีมือไม้",
                 story: "นิทานศิลป์ @บ้านดรุณเป็นศูนย์การเรียนรู้ศิลปะและงานฝีมือไม้ที่สืบทอดมา 2 ชั่วอายุคน เน้นการสร้างสรรค์งานศิลปะจากไม้และวัสดุธรรมชาติ",
                 activities: [
@@ -256,15 +271,46 @@
             `;
         }
 
-        // แสดงผู้ประกอบการทั้งหมดเมื่อโหลดหน้า
-        document.addEventListener('DOMContentLoaded', function() {
+        // แสดงผู้ประกอบการทันทีที่ script โหลด
+        console.log('Script loaded, operatorsData length:', operatorsData.length);
+        
+        function initOperators() {
             const operatorsGrid = document.getElementById('operators-grid');
+            console.log('operatorsGrid element:', operatorsGrid);
             
-            // สร้างการ์ดผู้ประกอบการทั้งหมด
-            operatorsGrid.innerHTML = operatorsData.map(operator => createOperatorCard(operator)).join('');
+            if (operatorsGrid && operatorsData.length > 0) {
+                const html = operatorsData.map(operator => createOperatorCard(operator)).join('');
+                console.log('Generated HTML length:', html.length);
+                operatorsGrid.innerHTML = html;
+                console.log('Operators cards added successfully');
+                return true;
+            } else {
+                console.error('operatorsGrid not found or operatorsData is empty');
+                return false;
+            }
+        }
+        
+        // ลองรันทันที
+        if (!initOperators()) {
+            // ถ้าไม่สำเร็จ ลองอีกครั้งเมื่อ DOM ready
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('DOMContentLoaded - retry operators init');
+                initOperators();
+            });
+        }
+        
+        // Hamburger menu functionality - รอให้ DOM พร้อม
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
         });
     </script>
-    
-    <script type="module" src="../js/main.js"></script>
 </body>
 </html>

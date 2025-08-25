@@ -3,33 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- ======================================== -->
-    <!-- 🎯 ชื่อเว็บไซต์ - แก้ไขได้ที่นี่ -->
-    <!-- ======================================== -->
     <title>เที่ยวชุมชนวิถีคลองบางมด - Green Blue Rest Bangkok</title>
+    <meta name="description" content="ค้นพบประสบการณ์ใหม่ในกรุงเทพฯ ที่คุณไม่เคยเห็น พร้อมทริปท่องเที่ยวชุมชนที่หลากหลายครบทั้ง 11 ทริป สัมผัสเสน่ห์ Low Carbon Tourism ย่านคลองบางมด">
+    <meta name="keywords" content="ท่องเที่ยวชุมชน, คลองบางมด, กรุงเทพฯ, Low Carbon Tourism, ทริปท่องเที่ยว, สินค้าชุมชน, Learning City">
     
-    <!-- ======================================== -->
-    <!-- 🔗 Google Fonts - ฟอนต์ IBM Plex Sans Thai -->
-    <!-- สามารถเปลี่ยนฟอนต์ได้ที่: https://fonts.google.com/ -->
-    <!-- ======================================== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:title" content="เที่ยวชุมชนวิถีคลองบางมด - Green Blue Rest Bangkok">
+    <meta property="og:description" content="ค้นพบประสบการณ์ใหม่ในกรุงเทพฯ ที่คุณไม่เคยเห็น พร้อมทริปท่องเที่ยวชุมชนที่หลากหลายครบทั้ง 11 ทริป">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://greenbluerestbangkok.com">
+    <meta property="og:image" content="https://greenbluerestbangkok.com/images/cover/hero-image.jpg">
+    <meta property="og:site_name" content="Green Blue Rest Bangkok">
+    <meta property="og:locale" content="th_TH">
     
-    <!-- ======================================== -->
-    <!-- 🖼️ PhotoSwipe CSS - สำหรับแสดงภาพแบบ Lightbox -->
-    <!-- ======================================== -->
-    <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="เที่ยวชุมชนวิถีคลองบางมด - Green Blue Rest Bangkok">
+    <meta name="twitter:description" content="ค้นพบประสบการณ์ใหม่ในกรุงเทพฯ ที่คุณไม่เคยเห็น พร้อมทริปท่องเที่ยวชุมชนที่หลากหลายครบทั้ง 11 ทริป">
+    <meta name="twitter:image" content="https://greenbluerestbangkok.com/images/cover/hero-image.jpg">
     
-    <!-- ======================================== -->
-    <!-- 🎨 ไฟล์ CSS หลัก - แก้ไขสี ฟอนต์ และการออกแบบได้ที่นี่ -->
-    <!-- ======================================== -->
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Green Blue Rest Bangkok">
+    <link rel="canonical" href="https://greenbluerestbangkok.com">
+    
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- ======================================== -->
-    <!-- 🚨 Layout Fixes - แก้ไขปัญหา layout และ responsive -->
-    <!-- ======================================== -->
-    <link rel="stylesheet" href="css/layout-fixes.css">
+    <link rel="stylesheet" href="css/button-fixes.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- ======================================== -->
@@ -39,13 +39,13 @@
         <nav class="navbar">
             <a href="index.html" class="nav-logo">GreenBlueRest Bangkok</a>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link">หน้าแรก</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link active">หน้าแรก</a></li>
                 <li class="nav-item"><a href="pages/low-carbon.html" class="nav-link">Low Carbon Tourism</a></li>
                 <li class="nav-item"><a href="pages/trips.html" class="nav-link">ทริปท่องเที่ยว</a></li>
                 <li class="nav-item"><a href="pages/products.html" class="nav-link">สินค้าชุมชน</a></li>
                 <li class="nav-item"><a href="pages/operators.html" class="nav-link">ผู้ประกอบการในชุมชน</a></li>
                 <li class="nav-item"><a href="pages/activities.html" class="nav-link">บทความ&amp;วิดีโอ</a></li>
-                <li class="nav-item"><a href="pages/learning-city.html" class="nav-link active">Learning City</a></li>
+                <li class="nav-item"><a href="pages/learning-city.html" class="nav-link">Learning City</a></li>
                 <li class="nav-item"><a href="pages/contact.html" class="nav-link">ติดต่อเรา</a></li>
             </ul>
             <div class="hamburger">
@@ -209,10 +209,58 @@
     <!-- ======================================== -->
     <!-- 📜 JavaScript สำหรับโหลดทริปท่องเที่ยวแนะนำ -->
     <!-- ======================================== -->
-    <script type="module">
-        // นำเข้าข้อมูลทริปท่องเที่ยวจาก trip-details.js
-        import { tripsData } from './js/trip-details.js';
-        import { IMAGE_CONFIG } from './js/config.js';
+    <script>
+        // ข้อมูลทริปท่องเที่ยวแบบ inline เพื่อป้องกันปัญหา CORS
+        const tripsData = [
+            {
+                id: 1,
+                name: "ทริปท่องเที่ยวพายเรือคายัค ลัดเลาะสวนมะพร้าว",
+                shortDescription: "สัมผัสวิถีชีวิตริมคลอง พร้อมกิจกรรมทำขนมไทยโบราณ",
+                price: "800 บาท/คน",
+                duration: "3-4 ชั่วโมง",
+                mainImage: "images/trip1/small/placeholder.jpg"
+            },
+            {
+                id: 2,
+                name: "ทริปท่องเที่ยวปั่นจักรยานชมสวนผลไม้",
+                shortDescription: "ปั่นชิลๆ ชมธรรมชาติและสวนผลไม้ พร้อมชิมผลไม้สดๆ จากสวน",
+                price: "600 บาท/คน",
+                duration: "2-3 ชั่วโมง",
+                mainImage: "images/trip2/small/placeholder.jpg"
+            },
+            {
+                id: 3,
+                name: "ทริปท่องเที่ยวเรียนทำอาหารไทย",
+                shortDescription: "เรียนรู้สูตรลับอาหารท้องถิ่นกับปราชญ์ชาวบ้าน",
+                price: "1000 บาท/คน",
+                duration: "4-5 ชั่วโมง",
+                mainImage: "images/trip3/small/placeholder.jpg"
+            },
+            {
+                id: 4,
+                name: "ทริปท่องเที่ยวตกปลาในคลอง",
+                shortDescription: "สัมผัสประสบการณ์การตกปลาแบบดั้งเดิมริมคลอง",
+                price: "500 บาท/คน",
+                duration: "2-3 ชั่วโมง",
+                mainImage: "images/trip4/small/placeholder.jpg"
+            },
+            {
+                id: 5,
+                name: "ทริปท่องเที่ยวชมแหล่งผลิตสบู่ธรรมชาติ",
+                shortDescription: "เรียนรู้กระบวนการผลิตสบู่ธรรมชาติและลองทำเอง",
+                price: "700 บาท/คน",
+                duration: "3 ชั่วโมง",
+                mainImage: "images/trip5/small/placeholder.jpg"
+            },
+            {
+                id: 6,
+                name: "ทริปท่องเที่ยวชมการทำงานฝีมือ",
+                shortDescription: "ชมการทำงานฝีมือท้องถิ่น ตั้งแต่การทอผ้าไปจนถึงการจักสาน",
+                price: "650 บาท/คน",
+                duration: "3-4 ชั่วโมง",
+                mainImage: "images/trip6/small/placeholder.jpg"
+            }
+        ];
         
         // ฟังก์ชันสร้างการ์ดทริปท่องเที่ยว
         function createTripCard(trip) {
@@ -240,13 +288,13 @@
             `;
         }
         
-        // โหลดทริปท่องเที่ยวแนะนำ 9 อันแรกเมื่อหน้าเว็บโหลดเสร็จ
+        // โหลดทริปท่องเที่ยวแนะนำ 6 อันแรกเมื่อหน้าเว็บโหลดเสร็จ
         document.addEventListener('DOMContentLoaded', function() {
             const recommendedTripsGrid = document.getElementById('recommended-trips-grid');
             
             if (recommendedTripsGrid) {
-                // เลือกทริปท่องเที่ยว 9 อันแรกจากข้อมูลทั้งหมด
-                const recommendedTrips = tripsData.slice(0, 9);
+                // เลือกทริปท่องเที่ยว 6 อันแรกจากข้อมูลทั้งหมด
+                const recommendedTrips = tripsData.slice(0, 6);
                 
                 // สร้างการ์ดทริปท่องเที่ยวและแสดงผล
                 recommendedTripsGrid.innerHTML = recommendedTrips.map(trip => createTripCard(trip)).join('');
