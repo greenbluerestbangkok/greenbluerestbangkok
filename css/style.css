@@ -1161,6 +1161,8 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    justify-content: flex-start;
+    text-align: left;
 }
 
 .operator-location::before {
@@ -1171,9 +1173,10 @@ body {
 /* แก้ไขปัญหาการแสดงผลบนมือถือ */
 @media (max-width: 480px) {
     .operator-location {
-        flex-direction: column;
+        flex-direction: row;
         gap: 0.3rem;
-        text-align: center;
+        text-align: left;
+        justify-content: flex-start;
     }
     
     .operator-location::before {
@@ -1421,6 +1424,8 @@ body {
         font-size: 0.7rem;
         padding: 0.3rem 0;
         margin-bottom: 0.6rem;
+        text-align: left;
+        justify-content: flex-start;
     }
     
     .btn-facebook,
