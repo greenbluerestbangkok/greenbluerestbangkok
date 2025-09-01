@@ -3,26 +3,23 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-    
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-      
-    concurrency:
-      group: "pages"
-      cancel-in-progress: false
-      
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -30,50 +27,6 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v4
       
-    - name: Build site
-      run: |
-        echo "🚀 Building Green Blue Rest Bangkok website..."
-        
-        # Generate build timestamp for cache busting
-        BUILD_TIME=$(date +%s)
-        echo "📅 Build time: $BUILD_TIME"
-        
-        # Copy main.html to index.html for GitHub Pages
-        cp main.html index.html
-        echo "✅ Copied main.html to index.html"
-        
-        # Add cache busting to CSS and JS files
-        echo "🔄 Adding cache busting parameters..."
-        find . -name "*.html" -exec sed -i "s/\.css\"/\.css?v=$BUILD_TIME\"/g" {} \;
-        find . -name "*.html" -exec sed -i "s/\.js\"/\.js?v=$BUILD_TIME\"/g" {} \;
-        
-        # Ensure all assets are properly linked
-        find . -name "*.html" -exec sed -i 's/href="pages\//href="pages\//g' {} \;
-        find . -name "*.html" -exec sed -i 's/src="js\//src="js\//g' {} \;
-        find . -name "*.html" -exec sed -i 's/href="css\//href="css\//g' {} \;
-        
-        # Add cache-buster script to all HTML files if not present
-        echo "🔧 Ensuring cache-buster is loaded..."
-        for html_file in $(find . -name "*.html"); do
-          if ! grep -q "cache-buster.js" "$html_file"; then
-            sed -i 's|</head>|    <script src="js/cache-buster.js?v='$BUILD_TIME'"></script>\n</head>|' "$html_file"
-          fi
-        done
-        
-        # Create a build info file
-        echo "📋 Creating build info..."
-        cat > build-info.json << EOF
-        {
-          "buildTime": "$BUILD_TIME",
-          "buildDate": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-          "commit": "$GITHUB_SHA",
-          "branch": "$GITHUB_REF_NAME",
-          "workflow": "$GITHUB_RUN_ID"
-        }
-        EOF
-        
-        echo "✅ Build completed successfully"
-        
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
