@@ -2719,9 +2719,21 @@ body {
     }
     
     .footer-container {
-        grid-template-columns: 1fr 1fr;   /* จัด footer เป็น 2 คอลัมน์บนมือถือ */
+        grid-template-columns: 1fr;   /* จัด footer เป็น 1 คอลัมน์บนแท็บเล็ท */
         text-align: center;           /* จัดข้อความกึ่งกลาง */
-        gap: 2rem;                    /* เพิ่มระยะห่างบนมือถือ */
+        gap: 1.5rem;                  /* ลดระยะห่างบนแท็บเล็ท */
+        padding: 0 1rem;              /* ลดระยะห่างซ้ายขวา */
+    }
+    
+    .footer-column h4 {
+        font-size: 1rem;              /* ลดขนาดฟอนต์หัวข้อ */
+        margin-bottom: 0.8rem;        /* ลดระยะห่าง */
+    }
+    
+    .footer-column p,
+    .footer-column li {
+        font-size: 0.9rem;            /* ลดขนาดฟอนต์เนื้อหา */
+        margin-bottom: 0.4rem;        /* ลดระยะห่าง */
     }
     
     /* ปรับขนาดสินค้าบนแท็บเล็ต */
@@ -2905,9 +2917,25 @@ body {
     }
     
     .footer-container {
-        grid-template-columns: 1fr 1fr;   /* จัด footer เป็น 2 คอลัมน์บนมือถือขนาดเล็ก */
+        grid-template-columns: 1fr;   /* จัด footer เป็น 1 คอลัมน์บนมือถือ */
         text-align: center;           /* จัดข้อความกึ่งกลาง */
-        gap: 1.5rem;                  /* ลดระยะห่างบนมือถือขนาดเล็ก */
+        gap: 1rem;                    /* ลดระยะห่างบนมือถือ */
+        padding: 0 0.8rem;            /* ลดระยะห่างซ้ายขวา */
+    }
+    
+    .footer-column h4 {
+        font-size: 0.9rem;            /* ลดขนาดฟอนต์หัวข้อ */
+        margin-bottom: 0.6rem;        /* ลดระยะห่าง */
+    }
+    
+    .footer-column p,
+    .footer-column li {
+        font-size: 0.8rem;            /* ลดขนาดฟอนต์เนื้อหา */
+        margin-bottom: 0.3rem;        /* ลดระยะห่าง */
+    }
+    
+    .footer-column ul {
+        margin-bottom: 1rem;          /* เพิ่มระยะห่างด้านล่างของเมนู */
     }
     
     .operators-grid {
