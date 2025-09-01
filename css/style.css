@@ -2727,7 +2727,7 @@ body {
     }
     
     .operators-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-columns: 1fr !important;
         gap: 1rem !important;
     }
     
@@ -2829,6 +2829,11 @@ body {
         text-align: center;           /* จัดข้อความกึ่งกลาง */
         gap: 1.5rem;                  /* ลดระยะห่างบนมือถือขนาดเล็ก */
     }
+    
+    .operators-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
 }
 
 /* --- Cross-browser Compatibility --- */
@@ -2858,7 +2863,7 @@ body {
     }
     
     .operators-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-columns: 1fr !important;
     }
     
     .feature-card, .operator-card {
