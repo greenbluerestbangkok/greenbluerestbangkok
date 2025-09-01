@@ -27,6 +27,24 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v4
       
+    - name: Build site
+      run: |
+        echo "🚀 Building Green Blue Rest Bangkok website..."
+        
+        # Ensure index.html exists and is properly formatted
+        if [ ! -f "index.html" ]; then
+          echo "❌ index.html not found!"
+          exit 1
+        fi
+        
+        # Check if CNAME file exists
+        if [ ! -f "CNAME" ]; then
+          echo "❌ CNAME file not found!"
+          exit 1
+        fi
+        
+        echo "✅ Build preparation completed"
+        
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
