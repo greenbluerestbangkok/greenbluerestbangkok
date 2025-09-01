@@ -1898,7 +1898,7 @@ h1, h2, h3, .menu-heading {
 @media (max-width: 768px) {
     .footer-container,
     .footer-2-column {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: clamp(1.5rem, 3vw, 2rem) !important;
         text-align: center !important;
     }

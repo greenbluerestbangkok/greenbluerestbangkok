@@ -2671,7 +2671,7 @@ body {
     }
     
     .footer-container {
-        grid-template-columns: 1fr;   /* จัด footer เป็น 1 คอลัมน์บนมือถือ */
+        grid-template-columns: 1fr 1fr;   /* จัด footer เป็น 2 คอลัมน์บนมือถือ */
         text-align: center;           /* จัดข้อความกึ่งกลาง */
         gap: 2rem;                    /* เพิ่มระยะห่างบนมือถือ */
     }
@@ -2822,6 +2822,12 @@ body {
     .features-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;                  /* เพิ่มระยะห่างระหว่างการ์ดบนมือถือขนาดเล็ก */
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr 1fr;   /* จัด footer เป็น 2 คอลัมน์บนมือถือขนาดเล็ก */
+        text-align: center;           /* จัดข้อความกึ่งกลาง */
+        gap: 1.5rem;                  /* ลดระยะห่างบนมือถือขนาดเล็ก */
     }
 }
 
