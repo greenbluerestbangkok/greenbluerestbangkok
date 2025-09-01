@@ -60,7 +60,9 @@
             <!-- แสดงเมื่อหน้าจอเล็ก -->
             <!-- ======================================== -->
             <div class="hamburger">
-                <span class="bar" style="transform: none; opacity: 1;"></span><span class="bar" style="transform: none; opacity: 1;"></span><span class="bar" style="transform: none; opacity: 1;"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </nav>
     </header>
@@ -364,18 +366,7 @@
             });
         }
         
-        // Hamburger menu functionality - รอให้ DOM พร้อม
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            if (hamburger && navMenu) {
-                hamburger.addEventListener('click', function() {
-                    hamburger.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-                });
-            }
-        });
+        // Hamburger menu functionality is handled by main.js
     </script>
     
     <script type="module" src="../js/main.js"></script>
