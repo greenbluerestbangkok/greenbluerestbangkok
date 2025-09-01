@@ -5973,3 +5973,87 @@ iframe:hover {
         gap: 1rem;
     }
 }
+
+/* ======================================== */
+/* 🌱 LOW CARBON PAGE - Operators Grid Specific */
+/* ======================================== */
+
+/* Low Carbon Page Operators Grid - 4 columns on mobile/tablet */
+.low-carbon-content .operators-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* Desktop: 2 columns */
+    gap: 2rem !important;
+    margin-top: 2rem !important;
+    padding: 0 !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Tablet (≤768px) - 4 columns */
+@media (max-width: 768px) {
+    .low-carbon-content .operators-grid {
+        grid-template-columns: repeat(4, 1fr) !important; /* แท็บเล็ท: 4 คอลัมน์ */
+        gap: 1.2rem !important;
+        margin-top: 2rem !important;
+        padding: 0 0.8rem !important;
+        max-width: 100% !important;
+    }
+    
+    .low-carbon-content .operator-card {
+        border-radius: 16px;
+        min-height: 200px;
+        padding: 1rem;
+    }
+    
+    .low-carbon-content .operator-card h4 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .low-carbon-content .operator-card p {
+        font-size: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+}
+
+/* Mobile (≤480px) - 4 columns */
+@media (max-width: 480px) {
+    .low-carbon-content .operators-grid {
+        grid-template-columns: repeat(4, 1fr) !important; /* มือถือ: 4 คอลัมน์ */
+        gap: 0.8rem !important;
+        margin-top: 1.5rem !important;
+        padding: 0 0.5rem !important;
+        max-width: 100% !important;
+    }
+    
+    .low-carbon-content .operator-card {
+        border-radius: 12px;
+        min-height: 180px;
+        padding: 0.8rem;
+    }
+    
+    .low-carbon-content .operator-card h4 {
+        font-size: 0.8rem;
+        margin-bottom: 0.4rem;
+        line-height: 1.2;
+    }
+    
+    .low-carbon-content .operator-card p {
+        font-size: 0.7rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.3;
+    }
+    
+    .low-carbon-content .operator-logo {
+        aspect-ratio: 1/1;
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 0.6rem;
+    }
+    
+    .low-carbon-content .operator-logo img {
+        width: 80%;
+        height: 80%;
+    }
+}
