@@ -1460,7 +1460,8 @@ body {
     }
     
     .operator-image {
-        height: 120px;
+        aspect-ratio: 4/3;
+        height: auto;
     }
     
     .operator-main-img {
