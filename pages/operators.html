@@ -22,7 +22,14 @@
     <link rel="canonical" href="https://greenbluerestbangkok.com/pages/operators.html">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/button-fixes.css">
+    <link rel="stylesheet" href="../css/hamburger-animation.css">
+    <link rel="stylesheet" href="../css/video-enhancements.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- ======================================== -->
+    <!-- 🖼️ PhotoSwipe CSS - สำหรับแสดงภาพแบบ Lightbox -->
+    <!-- ======================================== -->
+    <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css" onerror="this.onerror=null;this.href='../css/photoswipe-fallback.css';">
 </head>
 <body>
     <header class="main-header">
@@ -64,7 +71,13 @@
         <!-- ======================================== -->
         <div class="operators-cover">
             <div class="cover-image">
-                <img src="../images/operators/cover.jpg" alt="ผู้ประกอบการในชุมชน Cover" class="cover-img">
+                <img src="../images/webp/operators/community-operators-cover.webp" 
+                     alt="ผู้ประกอบการในชุมชน Cover" 
+                     class="cover-img clickable-image" 
+                     data-lightbox="community-operators-cover"
+                     data-title="ผู้ประกอบการในชุมชน - Community Operators"
+                     onerror="this.src='../images/logo_001.webp'; this.alt='รูปภาพไม่สามารถโหลดได้';"
+                     style="cursor: pointer;">
             </div>
             <div class="cover-content">
                 <h3>ผู้ประกอบการในชุมชน</h3>
@@ -120,7 +133,8 @@
             {
                 id: 1,
                 name: "เซฟติสท์ฟาร์ม",
-                logo: "../images/operators/safetist-farm.png",
+                logo: "../images/webp/operators/operator6-logo.webp",
+                image: "../images/webp/operators/operator6-card.webp",
                 description: "เกษตรอินทรีย์และผลิตภัณฑ์ธรรมชาติ",
                 story: "เซฟติสท์ฟาร์มเริ่มต้นจากการปลูกผักอินทรีย์ในชุมชนคลองบางมด เมื่อ 10 ปีที่แล้ว ปัจจุบันขยายกิจการไปสู่การผลิตสบู่ธรรมชาติ น้ำมันหอมระเหย และผลิตภัณฑ์ความงามจากสมุนไพรไทย",
                 activities: [
@@ -130,12 +144,18 @@
                     "ชิมผลไม้สดจากสวน"
                 ],
                 facebook: "https://www.facebook.com/safetistfarm",
-                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ"
+                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ",
+                coordinates: {
+                    lat: 13.5561,
+                    lng: 100.5033
+                },
+                googleMapsUrl: "https://maps.google.com/?q=13.5561,100.5033"
             },
             {
                 id: 2,
                 name: "บ้านเขียนวาดและภาพพิมพ์",
-                logo: "../images/operators/ban-khian-wad.png",
+                logo: "../images/webp/operators/operator3-logo.webp",
+                image: "../images/webp/operators/operator3-main.webp",
                 description: "ศิลปะและงานฝีมือท้องถิ่น",
                 story: "บ้านเขียนวาดและภาพพิมพ์เป็นศูนย์การเรียนรู้ศิลปะแบบดั้งเดิมที่สืบทอดมา 3 ชั่วอายุคน เน้นการสร้างสรรค์งานศิลปะจากธรรมชาติและวัสดุท้องถิ่น",
                 activities: [
@@ -145,12 +165,18 @@
                     "ชมผลงานศิลปินท้องถิ่น"
                 ],
                 facebook: "https://www.facebook.com/ban-khian-wad",
-                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ"
+                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ",
+                coordinates: {
+                    lat: 13.5565,
+                    lng: 100.5038
+                },
+                googleMapsUrl: "https://maps.google.com/?q=13.5565,100.5038"
             },
             {
                 id: 3,
                 name: "ตลาดมดตะนอย",
-                logo: "../images/operators/talad-mod-tanoi.png",
+                logo: "../images/webp/operators/operator8-logo.webp",
+                image: "../images/webp/operators/operator8-main.webp",
                 description: "ตลาดชุมชนและอาหารท้องถิ่น",
                 story: "ตลาดมดตะนอยเป็นตลาดชุมชนเก่าแก่ที่มีประวัติยาวนานกว่า 50 ปี เป็นแหล่งรวมอาหารท้องถิ่น เครื่องเทศ และวัตถุดิบสดใหม่จากชุมชน",
                 activities: [
@@ -160,12 +186,18 @@
                     "สัมผัสวิถีชีวิตชุมชน"
                 ],
                 facebook: "https://www.facebook.com/talad-mod-tanoi",
-                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ"
+                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ",
+                coordinates: {
+                    lat: 13.5570,
+                    lng: 100.5042
+                },
+                googleMapsUrl: "https://maps.google.com/?q=13.5570,100.5042"
             },
             {
                 id: 4,
                 name: "กัมปงในดงปรือ",
-                logo: "../images/operators/kampong-nai-dong-pru.png",
+                logo: "../images/webp/operators/operator4-logo.webp",
+                image: "../images/webp/operators/operator4-main.webp",
                 description: "ชุมชนโบราณและงานฝีมือ",
                 story: "กัมปงในดงปรือเป็นชุมชนโบราณที่มีประวัติศาสตร์ยาวนาน เป็นแหล่งรวมงานฝีมือดั้งเดิม เช่น การทำเครื่องปั้นดินเผา เครื่องจักสาน และเครื่องไม้",
                 activities: [
@@ -175,12 +207,18 @@
                     "สัมผัสวัฒนธรรมชุมชน"
                 ],
                 facebook: "https://www.facebook.com/kampong-nai-dong-pru",
-                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ"
+                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ",
+                coordinates: {
+                    lat: 13.5575,
+                    lng: 100.5047
+                },
+                googleMapsUrl: "https://maps.google.com/?q=13.5575,100.5047"
             },
             {
                 id: 5,
                 name: "วิสาหกิจชุมชนอารยะคลองบางมดสร้างสรรค์",
-                logo: "../images/operators/visahakit-chumchon-arraya.png",
+                logo: "../images/webp/operators/operator9-logo.webp",
+                image: "../images/webp/operators/operator9-main.webp",
                 description: "ผลิตภัณฑ์ชุมชนและสมุนไพร",
                 story: "วิสาหกิจชุมชนอารยะคลองบางมดสร้างสรรค์เป็นองค์กรที่รวมกลุ่มผู้ผลิตในชุมชนเพื่อพัฒนาผลิตภัณฑ์จากสมุนไพรไทยและวัสดุธรรมชาติ",
                 activities: [
@@ -190,12 +228,18 @@
                     "ซื้อผลิตภัณฑ์ชุมชน"
                 ],
                 facebook: "https://www.facebook.com/visahakit-chumchon-arraya",
-                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ"
+                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ",
+                coordinates: {
+                    lat: 13.5580,
+                    lng: 100.5052
+                },
+                googleMapsUrl: "https://maps.google.com/?q=13.5580,100.5052"
             },
             {
                 id: 6,
                 name: "Art Lab",
-                logo: "../images/operators/art-lab.png",
+                logo: "../images/webp/operators/operator2-logo.webp",
+                image: "../images/webp/operators/operator2-main.webp",
                 description: "ศิลปะและงานฝีมือสร้างสรรค์",
                 story: "Art Lab เป็นศูนย์การเรียนรู้ศิลปะสมัยใหม่ที่ผสมผสานเทคนิคดั้งเดิมกับความคิดสร้างสรรค์ เน้นการสร้างสรรค์งานศิลปะจากวัสดุรีไซเคิล",
                 activities: [
@@ -205,12 +249,18 @@
                     "แสดงผลงานศิลปินรุ่นใหม่"
                 ],
                 facebook: "https://www.facebook.com/artlab-bangkok",
-                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ"
+                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ",
+                coordinates: {
+                    lat: 13.5585,
+                    lng: 100.5057
+                },
+                googleMapsUrl: "https://maps.google.com/?q=13.5585,100.5057"
             },
             {
                 id: 7,
                 name: "S'more town",
-                logo: "../images/operators/smore-town.png",
+                logo: "../images/webp/operators/operator7-logo.webp",
+                image: "../images/webp/operators/operator7-main.webp",
                 description: "ผลิตภัณฑ์ความงามธรรมชาติ",
                 story: "S'more town เป็นแบรนด์ผลิตภัณฑ์ความงามธรรมชาติที่ใช้สมุนไพรไทยและวัตถุดิบจากชุมชน เน้นการผลิตแบบแฮนด์เมดและเป็นมิตรต่อสิ่งแวดล้อม",
                 activities: [
@@ -220,12 +270,18 @@
                     "ชมกระบวนการผลิต"
                 ],
                 facebook: "https://www.facebook.com/smoretown",
-                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ"
+                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ",
+                coordinates: {
+                    lat: 13.5590,
+                    lng: 100.5062
+                },
+                googleMapsUrl: "https://maps.google.com/?q=13.5590,100.5062"
             },
             {
                 id: 8,
                 name: "นิทานศิลป์ @บ้านดรุณ",
-                logo: "../images/operators/nitan-sin-baan-darun.png",
+                logo: "../images/webp/operators/operator5-logo.webp",
+                image: "../images/webp/operators/operator5-main.webp",
                 description: "ศิลปะและงานฝีมือไม้",
                 story: "นิทานศิลป์ @บ้านดรุณเป็นศูนย์การเรียนรู้ศิลปะและงานฝีมือไม้ที่สืบทอดมา 2 ชั่วอายุคน เน้นการสร้างสรรค์งานศิลปะจากไม้และวัสดุธรรมชาติ",
                 activities: [
@@ -235,7 +291,12 @@
                     "ชมผลงานศิลปินไม้"
                 ],
                 facebook: "https://www.facebook.com/nitan-sin-baan-darun",
-                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ"
+                location: "ชุมชนคลองบางมด เขตทุ่งครุ กรุงเทพฯ",
+                coordinates: {
+                    lat: 13.5595,
+                    lng: 100.5067
+                },
+                googleMapsUrl: "https://maps.google.com/?q=13.5595,100.5067"
             }
         ];
 
@@ -246,6 +307,9 @@
                     <div class="operator-logo">
                         <img src="${operator.logo}" alt="${operator.name}" class="operator-img">
                     </div>
+                    <div class="operator-image">
+                        <img src="${operator.image}" alt="${operator.name} - รูปภาพ" class="operator-main-img">
+                    </div>
                     <div class="operator-info">
                         <h3 class="operator-name">${operator.name}</h3>
                         <p class="operator-description">${operator.description}</p>
@@ -255,16 +319,15 @@
                         </div>
                         <div class="operator-activities">
                             <h4>กิจกรรมเด่น</h4>
-                            <ul>
-                                ${operator.activities.map(activity => `<li>${activity}</li>`).join('')}
-                            </ul>
+                            <p>${operator.activities.join(', ')}</p>
                         </div>
                         <div class="operator-location">
-                            <strong>📍 ที่ตั้ง:</strong> ${operator.location}
+                            <h4>ที่ตั้ง</h4>
+                            <p>${operator.location}</p>
                         </div>
                         <div class="operator-actions">
                             <a href="${operator.facebook}" target="_blank" class="btn btn-facebook">ติดตาม Facebook</a>
-                            <a href="low-carbon.html#operator-${operator.id}" class="btn btn-secondary">ดูข้อมูลเพิ่มเติม</a>
+                            <a href="${operator.googleMapsUrl}" target="_blank" class="btn btn-location">📍 ดูใน Google Maps</a>
                         </div>
                     </div>
                 </div>
@@ -290,6 +353,8 @@
             }
         }
         
+
+        
         // ลองรันทันที
         if (!initOperators()) {
             // ถ้าไม่สำเร็จ ลองอีกครั้งเมื่อ DOM ready
@@ -310,6 +375,49 @@
                     navMenu.classList.toggle('active');
                 });
             }
+        });
+    </script>
+    
+    <script type="module" src="../js/main.js"></script>
+    <script type="module">
+        // ======================================== -->
+        // 🖼️ PhotoSwipe JavaScript - สำหรับ Lightbox -->
+        // ======================================== -->
+        import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js').then(PhotoSwipe => {
+            import('https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js').then(PhotoSwipeLightbox => {
+                
+                // สร้าง PhotoSwipe Lightbox
+                const lightbox = new PhotoSwipeLightbox.default({
+                    gallery: '.operators-cover',
+                    children: '.cover-img',
+                    pswpModule: PhotoSwipe.default
+                });
+                
+                // เริ่มต้น PhotoSwipe
+                lightbox.init();
+                
+                // จัดการการคลิกภาพ
+                document.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('cover-img')) {
+                        e.preventDefault();
+                        
+                        // สร้างข้อมูลภาพสำหรับ PhotoSwipe
+                        const items = [{
+                            src: e.target.src,
+                            width: e.target.naturalWidth || 1200,
+                            height: e.target.naturalHeight || 800,
+                            alt: e.target.alt || 'ผู้ประกอบการในชุมชน Cover'
+                        }];
+                        
+                        // เปิด PhotoSwipe
+                        const pswp = new PhotoSwipe.default({
+                            dataSource: items,
+                            ...PhotoSwipe.default.defaults
+                        });
+                        pswp.init();
+                    }
+                });
+            });
         });
     </script>
 </body>

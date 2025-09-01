@@ -1,0 +1,269 @@
+/* 🎒 Trip Details Enhancements CSS - ปรับปรุงหน้ารายละเอียดทริป */
+
+/* ======================================== */
+/* 🖼️ Trip Media Layout - การจัดวางสื่อทริป */
+/* ======================================== */
+
+.trip-media-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.trip-image-item {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.trip-video-item {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ======================================== */
+/* 🖼️ Clickable Images - ภาพที่คลิกได้ */
+/* ======================================== */
+
+.clickable-image {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+}
+
+.clickable-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--primary-color, #22c55e);
+}
+
+.clickable-image:active {
+    transform: scale(0.98);
+}
+
+/* ======================================== */
+/* 🎥 Video Container - คอนเทนเนอร์วิดีโอ */
+/* ======================================== */
+
+.trip-video-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.trip-video-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.trip-video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+    background: #000;
+    transition: all 0.3s ease;
+}
+
+/* ======================================== */
+/* 📱 Responsive Design - การออกแบบตอบสนอง */
+/* ======================================== */
+
+@media (max-width: 768px) {
+    .trip-media-vertical {
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+    }
+    
+    .trip-image-item,
+    .trip-video-item {
+        max-width: 100%;
+    }
+    
+    .clickable-image {
+        aspect-ratio: 3/2;
+        border-radius: 8px;
+    }
+    
+    .trip-video-container {
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .trip-media-vertical {
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .clickable-image {
+        aspect-ratio: 4/3;
+        border-radius: 6px;
+    }
+    
+    .trip-video-container {
+        border-radius: 6px;
+    }
+    
+    .clickable-image:hover {
+        transform: none; /* ปิด hover effect บนมือถือ */
+    }
+}
+
+/* ======================================== */
+/* 🎨 Image Loading States - สถานะการโหลดภาพ */
+/* ======================================== */
+
+.clickable-image.loading {
+    background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+    animation: loading-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* ======================================== */
+/* 🚫 Image Error States - สถานะข้อผิดพลาด */
+/* ======================================== */
+
+.clickable-image.error {
+    background: #fee;
+    border: 2px solid #f56565;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c53030;
+    font-weight: 500;
+    min-height: 200px;
+}
+
+.clickable-image.error::before {
+    content: "⚠️ ภาพไม่สามารถโหลดได้";
+    text-align: center;
+    padding: 2rem;
+}
+
+/* ======================================== */
+/* 🔍 PhotoSwipe Integration - การรวม PhotoSwipe */
+/* ======================================== */
+
+.pswp {
+    z-index: 9999;
+}
+
+.pswp__bg {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.pswp__top-bar {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.pswp__button {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    transition: all 0.3s ease;
+}
+
+.pswp__button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.pswp__caption {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* ======================================== */
+/* 🎯 Focus States - สถานะการโฟกัส */
+/* ======================================== */
+
+.clickable-image:focus {
+    outline: 3px solid var(--primary-color, #22c55e);
+    outline-offset: 2px;
+}
+
+/* ======================================== */
+/* 🌙 Dark Mode Support - รองรับโหมดมืด */
+/* ======================================== */
+
+@media (prefers-color-scheme: dark) {
+    .clickable-image {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .clickable-image:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    
+    .trip-video-container {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+    
+    .trip-video-container:hover {
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* ======================================== */
+/* ♿ Accessibility - การเข้าถึง */
+/* ======================================== */
+
+.clickable-image[aria-label]::after {
+    content: "🔍 คลิกเพื่อดูภาพใหญ่";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.clickable-image:hover[aria-label]::after {
+    opacity: 1;
+}
+
+/* ======================================== */
+/* 🎨 Custom Scrollbar - แถบเลื่อนแบบกำหนดเอง */
+/* ======================================== */
+
+.trip-media-vertical::-webkit-scrollbar {
+    width: 8px;
+}
+
+.trip-media-vertical::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.trip-media-vertical::-webkit-scrollbar-thumb {
+    background: var(--primary-color, #22c55e);
+    border-radius: 4px;
+}
+
+.trip-media-vertical::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color-dark, #16a34a);
+}

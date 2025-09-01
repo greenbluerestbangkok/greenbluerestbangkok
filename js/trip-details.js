@@ -570,13 +570,25 @@ function showTripDetails(tripId) {
         image1.alt = `${trip.name} - รูปที่ 1`;
         image2.src = trip.gallery[1];
         image2.alt = `${trip.name} - รูปที่ 2`;
+        
+        // ตั้งค่า PhotoSwipe attributes
+        image1.setAttribute('data-pswp-src', trip.gallery[0]);
+        image2.setAttribute('data-pswp-src', trip.gallery[1]);
     } else {
         // ใช้รูปหลักถ้าไม่มีรูปในแกลเลอรี่พอ
         image1.src = trip.mainImage;
         image1.alt = `${trip.name} - รูปที่ 1`;
         image2.src = trip.mainImage;
         image2.alt = `${trip.name} - รูปที่ 2`;
+        
+        // ตั้งค่า PhotoSwipe attributes
+        image1.setAttribute('data-pswp-src', trip.mainImage);
+        image2.setAttribute('data-pswp-src', trip.mainImage);
     }
+    
+    // เพิ่ม event listeners สำหรับการคลิกภาพ
+    image1.addEventListener('click', () => openGallery(image1.src));
+    image2.addEventListener('click', () => openGallery(image2.src));
 
     // อัปเดตรายละเอียดเพิ่มเติม
     // ======================================== -->
@@ -601,20 +613,146 @@ function showTripDetails(tripId) {
                 title="วิดีโอแนะนำทริป: ${trip.name}"
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
+                allowfullscreen
+                loading="lazy">
             </iframe>
         `;
+        
+        // เพิ่ม class สำหรับการแสดงผลที่ดีขึ้น
+        videoContainer.classList.add('trip-video-container');
     }
 }
 
-// ฟังก์ชันเปิดแกลเลอรี่
+// ฟังก์ชันเปิดแกลเลอรี่ด้วย PhotoSwipe
 function openGallery(imageSrc) {
     // ใช้ PhotoSwipe หรือเปิดภาพในแท็บใหม่
-    window.open(imageSrc, '_blank');
+    if (typeof PhotoSwipe !== 'undefined') {
+        // ใช้ PhotoSwipe
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: '.trip-media-vertical',
+            children: '.clickable-image',
+            pswpModule: PhotoSwipe
+        });
+        lightbox.init();
+        lightbox.open();
+    } else {
+        // Fallback: เปิดภาพในแท็บใหม่
+        window.open(imageSrc, '_blank');
+    }
 }
 
-// Export tripsData สำหรับใช้ในไฟล์อื่น
-export { tripsData };
+// ฟังก์ชันตั้งค่า PhotoSwipe สำหรับภาพทริป
+function setupPhotoSwipe() {
+    if (typeof PhotoSwipe !== 'undefined') {
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: '.trip-media-vertical',
+            children: '.clickable-image',
+            pswpModule: PhotoSwipe,
+            showHideAnimationType: 'fade',
+            showAnimationDuration: 300,
+            hideAnimationDuration: 300,
+            easing: 'ease-in-out'
+        });
+        
+        lightbox.on('uiRegister', function() {
+            lightbox.pswp.ui.registerElement({
+                name: 'custom-caption',
+                order: 9,
+                isButton: false,
+                appendTo: 'wrapper',
+                html: 'Caption text',
+                onInit: (el, pswp) => {
+                    lightbox.pswp.on('change', () => {
+                        const currSlideElement = lightbox.pswp.currSlide.data.element;
+                        const captionEl = el;
+                        if (currSlideElement) {
+                            const captionText = currSlideElement.querySelector('img').alt;
+                            captionEl.innerHTML = captionText;
+                        }
+                    });
+                }
+            });
+        });
+        
+        lightbox.init();
+    }
+}
+
+// ฟังก์ชันสร้างการ์ดทริปท่องเที่ยว
+function createTripCard(trip) {
+    // ตรวจสอบว่าอยู่ในหน้าไหนเพื่อกำหนด path ที่ถูกต้อง
+    const isMainPage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+    const imagePath = isMainPage ? 'images/logo_001.webp' : '../images/logo_001.webp';
+    const tripDetailsPath = isMainPage ? 'pages/trip-details.html' : 'trip-details.html';
+    const tripsPath = isMainPage ? 'pages/trips.html' : 'trips.html';
+    
+    return `
+        <div class="card">
+            <div class="card-image-container">
+                <img src="${trip.mainImage}" alt="${trip.name}" class="card-img" onerror="this.src='${imagePath}'; this.alt='รูปภาพไม่สามารถโหลดได้';">
+                <div class="card-overlay">
+                    <a href="${tripDetailsPath}?id=${trip.id}" class="btn btn-secondary btn-overlay">ดูรายละเอียด</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">${trip.name}</h3>
+                <p class="card-text">${trip.shortDescription}</p>
+                <div class="trip-meta">
+                    <span class="trip-price">💰 ${trip.price}</span>
+                    <span class="trip-duration">⏰ ${trip.duration}</span>
+                </div>
+                <div class="card-actions">
+                    <a href="${tripDetailsPath}?id=${trip.id}" class="btn btn-primary">ดูรายละเอียด</a>
+                    <a href="${tripsPath}" class="btn btn-secondary">ดูทริปท่องเที่ยวอื่นๆ</a>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// ฟังก์ชันโหลดทริปท่องเที่ยวทั้งหมด
+function loadTripsGrid() {
+    const tripsGrid = document.getElementById('trips-grid');
+    
+    if (tripsGrid) {
+        // สร้างการ์ดทริปท่องเที่ยวทั้งหมด
+        tripsGrid.innerHTML = tripsData.map(trip => createTripCard(trip)).join('');
+        
+        // เพิ่ม error handling สำหรับรูปภาพ
+        const images = tripsGrid.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('error', function() {
+                this.src = '../images/logo_001.webp';
+                this.alt = 'รูปภาพไม่สามารถโหลดได้';
+            });
+        });
+    }
+}
+
+// ฟังก์ชันโหลดทริปท่องเที่ยวแนะนำ (สำหรับหน้าแรก)
+function loadRecommendedTrips() {
+    const recommendedTripsGrid = document.getElementById('recommended-trips-grid');
+    
+    if (recommendedTripsGrid) {
+        // เลือกทริปท่องเที่ยว 6 อันแรกจากข้อมูลทั้งหมด
+        const recommendedTrips = tripsData.slice(0, 6);
+        
+        // สร้างการ์ดทริปท่องเที่ยวและแสดงผล
+        recommendedTripsGrid.innerHTML = recommendedTrips.map(trip => createTripCard(trip)).join('');
+        
+        // เพิ่ม error handling สำหรับรูปภาพ
+        const images = recommendedTripsGrid.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('error', function() {
+                this.src = 'images/logo_001.webp';
+                this.alt = 'รูปภาพไม่สามารถโหลดได้';
+            });
+        });
+    }
+}
+
+// Export functions สำหรับใช้ในไฟล์อื่น
+export { tripsData, createTripCard, loadTripsGrid, loadRecommendedTrips };
 
 // ตรวจสอบ URL parameters เมื่อโหลดหน้า
 document.addEventListener('DOMContentLoaded', function() {
@@ -624,4 +762,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (tripId) {
         showTripDetails(tripId);
     }
+    
+    // ตั้งค่า PhotoSwipe หลังจากโหลดหน้าเสร็จ
+    setTimeout(() => {
+        setupPhotoSwipe();
+    }, 500);
 });

@@ -3,18 +3,21 @@
 // ใช้ version ที่เฉพาะเจาะจงและเพิ่ม fallback
 // ======================================== -->
 
-// นำเข้า PhotoSwipe จากไลบรารี - ใช้ version ที่เฉพาะเจาะจง
-import PhotoSwipe from 'https://unpkg.com/photoswipe@5.3.8/dist/photoswipe.esm.js';
+// PhotoSwipe จะถูกโหลดผ่าน script tag ใน HTML
+// ตรวจสอบว่า PhotoSwipe โหลดสำเร็จหรือไม่
+function checkPhotoSwipe() {
+    if (typeof PhotoSwipe === 'undefined') {
+        console.warn('PhotoSwipe failed to load, using fallback lightbox');
+        // ใช้ fallback lightbox หรือแสดงรูปภาพในแท็บใหม่
+        return false;
+    }
+    return true;
+}
 
 // Fallback function ถ้า PhotoSwipe โหลดไม่สำเร็จ
 function handlePhotoSwipeError() {
     console.warn('PhotoSwipe failed to load, using fallback lightbox');
     // ใช้ fallback lightbox หรือแสดงรูปภาพในแท็บใหม่
-}
-
-// ตรวจสอบว่า PhotoSwipe โหลดสำเร็จหรือไม่
-if (typeof PhotoSwipe === 'undefined') {
-    handlePhotoSwipeError();
 }
 
 // ======================================== -->

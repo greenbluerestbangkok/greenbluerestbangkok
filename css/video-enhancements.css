@@ -1,0 +1,252 @@
+/* 🎥 Video Enhancements CSS - ปรับปรุงการแสดงผลวิดีโอ */
+
+/* ======================================== */
+/* 🎬 Video Container Base Styles */
+/* ======================================== */
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    margin: 1.5rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.video-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* ======================================== */
+/* 🎥 iframe Video Styles */
+/* ======================================== */
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+    background: #000;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.video-container iframe:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ======================================== */
+/* 🎬 YouTube Video Specific Styles */
+/* ======================================== */
+
+.video-container iframe[src*="youtube.com"],
+.video-container iframe[src*="youtu.be"] {
+    background: #000;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.video-container iframe[src*="youtube.com"]:hover,
+.video-container iframe[src*="youtu.be"]:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ======================================== */
+/* 📱 Responsive Video Design */
+/* ======================================== */
+
+@media (max-width: 768px) {
+    .video-container {
+        padding-bottom: 56.25%; /* Maintain 16:9 ratio on tablet */
+        margin: 1rem 0;
+        border-radius: 10px;
+    }
+    
+    .video-container iframe {
+        border-radius: 10px;
+    }
+    
+    .video-container:hover {
+        transform: scale(1.01);
+    }
+}
+
+@media (max-width: 480px) {
+    .video-container {
+        padding-bottom: 56.25%; /* Maintain 16:9 ratio on mobile */
+        margin: 0.8rem 0;
+        border-radius: 8px;
+    }
+    
+    .video-container iframe {
+        border-radius: 8px;
+    }
+    
+    .video-container:hover {
+        transform: none; /* Disable hover effect on small mobile */
+    }
+}
+
+/* ======================================== */
+/* 🎬 Special Video Container Types */
+/* ======================================== */
+
+/* Vlog Video Container */
+.vlog-video-container {
+    border-radius: 15px;
+    margin: 2rem 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.vlog-video-container iframe {
+    border-radius: 15px;
+}
+
+/* Blog Video Container */
+.blog-video-container {
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.blog-video-container iframe {
+    border-radius: 10px;
+}
+
+/* Trip Video Container */
+.trip-video-container {
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.trip-video-container iframe {
+    border-radius: 12px;
+}
+
+/* ======================================== */
+/* 🎥 Video Loading States */
+/* ======================================== */
+
+.video-container.loading {
+    background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+    animation: loading-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* ======================================== */
+/* 🎬 Video Error States */
+/* ======================================== */
+
+.video-container.error {
+    background: #fee;
+    border: 2px solid #f56565;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c53030;
+    font-weight: 500;
+}
+
+.video-container.error::before {
+    content: "⚠️ วิดีโอไม่สามารถโหลดได้";
+    text-align: center;
+    padding: 2rem;
+}
+
+/* ======================================== */
+/* 🎥 Video Placeholder */
+/* ======================================== */
+
+.video-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+.video-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color, #22c55e);
+}
+
+.video-placeholder p {
+    margin: 0;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* ======================================== */
+/* 🎬 Video Controls Enhancement */
+/* ======================================== */
+
+.video-container.with-controls {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.video-container.with-controls:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ======================================== */
+/* 📱 High DPI Display Support */
+/* ======================================== */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .video-container {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .video-container:hover {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* ======================================== */
+/* 🌙 Dark Mode Support */
+/* ======================================== */
+
+@media (prefers-color-scheme: dark) {
+    .video-container {
+        background: #111;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+    
+    .video-container:hover {
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+    
+    .video-container iframe[src*="youtube.com"],
+    .video-container iframe[src*="youtu.be"] {
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .video-container iframe[src*="youtube.com"]:hover,
+    .video-container iframe[src*="youtu.be"]:hover {
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+}

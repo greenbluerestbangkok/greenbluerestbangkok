@@ -1,0 +1,386 @@
+/* 🛍️ Product Image Enhancements CSS - ปรับปรุงภาพสินค้า */
+
+/* ======================================== */
+/* 🎨 Product Grid Layout - โครงสร้างกริดสินค้า */
+/* ======================================== */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Desktop: 5 คอลัมน์ */
+    gap: 1.5rem;                           /* ระยะห่างระหว่างสินค้า */
+    min-height: 400px;
+    align-items: start;
+}
+
+/* ======================================== */
+/* 🎨 Product Card Layout - โครงสร้างการ์ดสินค้า */
+/* ======================================== */
+
+.product-card {
+    background: #ffffff;              /* โทนสีสว่าง - พื้นหลังขาว */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    height: 420px;                    /* ปรับความสูงให้สมดุล */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid #e5e7eb;        /* ขอบสีเทาอ่อน */
+    position: relative;
+    margin-bottom: 0;                 /* ลบ margin เพราะใช้ gap ใน grid */
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-color: #d1d5db;
+}
+
+/* ======================================== */
+/* 🖼️ Product Image Container - คอนเทนเนอร์ภาพสินค้า */
+/* ======================================== */
+
+.product-image-container {
+    position: relative;
+    overflow: hidden;
+    width: 160px;                     /* ขนาดภาพที่สมดุล */
+    height: 160px;
+    background: #f8f9fa;              /* พื้นหลังสีอ่อน */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto 0.8rem auto;    /* ระยะห่างที่สมดุล */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.product-image-container:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+}
+
+/* ======================================== */
+/* 🖼️ Product Image - ภาพสินค้า */
+/* ======================================== */
+
+.product-img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+    opacity: 1;
+    border-radius: 6px;
+}
+
+.product-img:hover {
+    transform: scale(1.05);
+}
+
+/* ======================================== */
+/* 📝 Product Info - ข้อมูลสินค้า */
+/* ======================================== */
+
+.product-info {
+    padding: 0.8rem 1rem 1.2rem 1rem; /* ระยะห่างที่สมดุล */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;                      /* ระยะห่างระหว่างองค์ประกอบ */
+}
+
+.product-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;                   /* ข้อความสีเข้ม */
+    margin: 0;
+    line-height: 1.3;
+    min-height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-description {
+    font-size: 0.8rem;
+    color: #6b7280;                   /* ข้อความสีอ่อน */
+    line-height: 1.4;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+}
+
+.product-producer {
+    font-size: 0.75rem;
+    color: #9ca3af;                   /* ข้อความสีอ่อน */
+    margin: 0;
+    font-weight: 500;
+    padding: 0.2rem 0.5rem;
+    background: #f3f4f6;              /* พื้นหลังสีอ่อน */
+    border-radius: 12px;
+    display: inline-block;
+    align-self: center;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #059669;                   /* สีเขียว */
+    margin: 0;
+    padding: 0.3rem 0;
+}
+
+.btn-order {
+    background: #059669;              /* สีเขียว */
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(5, 150, 105, 0.2);
+    margin-top: 0.3rem;
+    width: fit-content;               /* ความกว้างพอดีกับข้อความ */
+    min-width: 80px;                  /* ความกว้างขั้นต่ำ */
+    max-width: 120px;                 /* ความกว้างสูงสุด */
+    align-self: center;               /* จัดกึ่งกลางในคอนเทนเนอร์ */
+    white-space: nowrap;              /* ป้องกันข้อความแตก */
+    text-align: center;               /* จัดข้อความกึ่งกลาง */
+}
+
+.btn-order:hover {
+    background: #047857;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(5, 150, 105, 0.3);
+}
+
+/* ======================================== */
+/* 🎨 Image Loading States - สถานะการโหลดภาพ */
+/* ======================================== */
+
+.product-img.loading {
+    background: #f3f4f6;              /* พื้นหลังสีอ่อน */
+    animation: loading-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* ======================================== */
+/* 🚫 Image Error States - สถานะข้อผิดพลาด */
+/* ======================================== */
+
+.product-img.error {
+    background: #fef2f2;              /* พื้นหลังสีแดงอ่อน */
+    border: 1px solid #fecaca;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #dc2626;                   /* สีแดง */
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.product-img.error::before {
+    content: "⚠️ ภาพไม่สามารถโหลดได้";
+    text-align: center;
+    padding: 0.5rem;
+}
+
+/* ======================================== */
+/* 📱 Responsive Design - การออกแบบตอบสนอง */
+/* ======================================== */
+
+/* Tablet (768px and below) - แสดง 2 คอลัมน์ */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* แสดง 2 คอลัมน์ */
+        gap: 1.2rem;                                     /* ระยะห่างที่เหมาะสม */
+    }
+    
+    .product-card {
+        height: 400px;                /* ลดความสูงบนแท็บเล็ต */
+    }
+    
+    .product-image-container {
+        width: 140px;                 /* ลดขนาดภาพบนแท็บเล็ต */
+        height: 140px;
+        border-radius: 6px;
+        margin: 0.8rem auto 0.6rem auto;
+    }
+    
+    .product-img {
+        width: 140px;                 /* ลดขนาดภาพบนแท็บเล็ต */
+        height: 140px;
+        border-radius: 4px;
+    }
+    
+    .product-info {
+        padding: 0.6rem 0.8rem 1rem 0.8rem;
+        gap: 0.4rem;
+    }
+    
+    .product-name {
+        font-size: 0.9rem;
+        min-height: 2rem;
+    }
+    
+    .product-description {
+        font-size: 0.75rem;
+        min-height: 1.8rem;
+    }
+    
+    .product-price {
+        font-size: 1rem;
+    }
+    
+    .btn-order {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.8rem;
+        min-width: 70px;              /* ลดความกว้างขั้นต่ำบนแท็บเล็ต */
+        max-width: 100px;             /* ลดความกว้างสูงสุดบนแท็บเล็ต */
+    }
+}
+
+/* Mobile (480px and below) - แสดง 2 คอลัมน์ */
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* แสดง 2 คอลัมน์ */
+        gap: 1rem;                                       /* ระยะห่างที่เหมาะสม */
+    }
+    
+    .product-card {
+        height: 380px;                /* ลดความสูงบนมือถือ */
+    }
+    
+    .product-image-container {
+        width: 120px;                 /* ลดขนาดภาพบนมือถือ */
+        height: 120px;
+        border-radius: 4px;
+        margin: 0.6rem auto 0.4rem auto;
+    }
+    
+    .product-img {
+        width: 120px;                 /* ลดขนาดภาพบนมือถือ */
+        height: 120px;
+        border-radius: 3px;
+    }
+    
+    .product-info {
+        padding: 0.5rem 0.6rem 0.8rem 0.6rem;
+        gap: 0.3rem;
+    }
+    
+    .product-name {
+        font-size: 0.85rem;
+        min-height: 1.8rem;
+    }
+    
+    .product-description {
+        font-size: 0.7rem;
+        min-height: 1.6rem;
+    }
+    
+    .product-producer {
+        font-size: 0.7rem;
+        padding: 0.15rem 0.4rem;
+    }
+    
+    .product-price {
+        font-size: 0.95rem;
+    }
+    
+    .btn-order {
+        padding: 0.4rem 1rem;
+        font-size: 0.75rem;
+        min-width: 60px;              /* ลดความกว้างขั้นต่ำบนมือถือ */
+        max-width: 90px;              /* ลดความกว้างสูงสุดบนมือถือ */
+    }
+}
+
+/* ======================================== */
+/* 🎯 Focus States - สถานะการโฟกัส */
+/* ======================================== */
+
+.product-img:focus {
+    outline: 2px solid #059669;
+    outline-offset: 2px;
+}
+
+.btn-order:focus {
+    outline: 2px solid #059669;
+    outline-offset: 2px;
+}
+
+/* ======================================== */
+/* ♿ Accessibility - การเข้าถึง */
+/* ======================================== */
+
+.product-img[alt]::after {
+    content: "🔍 คลิกเพื่อดูภาพใหญ่";
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.product-img:hover[alt]::after {
+    opacity: 1;
+}
+
+/* ======================================== */
+/* 🎨 Custom Scrollbar - แถบเลื่อนแบบกำหนดเอง */
+/* ======================================== */
+
+.product-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.product-grid::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.product-grid::-webkit-scrollbar-thumb {
+    background: #059669;
+    border-radius: 3px;
+}
+
+.product-grid::-webkit-scrollbar-thumb:hover {
+    background: #047857;
+}
+
+/* ======================================== */
+/* 🚀 Performance Optimizations - การเพิ่มประสิทธิภาพ */
+/* ======================================== */
+
+.product-img {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.product-image-container {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.product-card {
+    will-change: transform;
+    backface-visibility: hidden;
+}

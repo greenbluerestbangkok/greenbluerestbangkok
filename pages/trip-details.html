@@ -6,6 +6,9 @@
     <title>รายละเอียดทริปท่องเที่ยว - Green Blue Rest</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/button-fixes.css">
+    <link rel="stylesheet" href="../css/hamburger-animation.css">
+    <link rel="stylesheet" href="../css/video-enhancements.css">
+    <link rel="stylesheet" href="../css/trip-details-enhancements.css">
     <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -52,17 +55,22 @@
             
             <div class="trip-detail-content">
                 <div class="trip-images">
-                    <div class="trip-media-grid">
-                        <div class="media-item">
-                            <img id="trip-image-1" src="" alt="ภาพทริปท่องเที่ยว 1" class="trip-img">
+                    <div class="trip-media-vertical">
+                        <!-- ภาพที่ 1 - อยู่บนสุด -->
+                        <div class="media-item trip-image-item">
+                            <img id="trip-image-1" src="" alt="ภาพทริปท่องเที่ยว 1" class="trip-img clickable-image" data-pswp-src="" data-pswp-width="800" data-pswp-height="600">
                         </div>
-                        <div class="media-item">
-                            <img id="trip-image-2" src="" alt="ภาพทริปท่องเที่ยว 2" class="trip-img">
+                        
+                        <!-- ภาพที่ 2 - อยู่กลาง -->
+                        <div class="media-item trip-image-item">
+                            <img id="trip-image-2" src="" alt="ภาพทริปท่องเที่ยว 2" class="trip-img clickable-image" data-pswp-src="" data-pswp-width="800" data-pswp-height="600">
                         </div>
-                        <div class="media-item video-container">
-                            <div id="trip-video" class="video-container">
+                        
+                        <!-- วิดีโอ - อยู่ล่างสุด -->
+                        <div class="media-item trip-video-item">
+                            <div id="trip-video" class="video-container trip-video-container">
                                 <iframe 
-                                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=example" 
+                                    src="https://www.youtube.com/embed/dQw4w9WgXQ?si=example" 
                                     title="วิดีโอแนะนำทริปท่องเที่ยว"
                                     frameborder="0" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -159,7 +167,45 @@
         </div>
     </footer>
     
+    <!-- PhotoSwipe Container -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="ปิด (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="แชร์"></button>
+                    <button class="pswp__button pswp__button--fs" title="เต็มหน้าจอ"></button>
+                    <button class="pswp__button pswp__button--zoom" title="ซูม +/-"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="ก่อนหน้า (arrow left)"></button>
+                <button class="pswp__button pswp__button--arrow--right" title="ถัดไป (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="../js/main.js"></script>
     <script src="../js/trip-details.js"></script>
+    <script src="https://unpkg.com/photoswipe@5/dist/photoswipe.umd.js"></script>
+    <script src="https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.umd.js"></script>
 </body>
 </html>
