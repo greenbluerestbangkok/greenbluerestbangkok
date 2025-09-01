@@ -1352,8 +1352,8 @@ body {
     
     .operator-actions {
         flex-direction: column;
-        gap: 0.5rem;
-        margin-top: 0.8rem;
+        gap: 0.4rem;
+        margin-top: 0.6rem;
     }
     
     .operator-actions .btn {
@@ -1362,9 +1362,11 @@ body {
         max-width: none;
         justify-content: center;
         text-align: center;
-        padding: 0.4rem 0.6rem;
-        font-size: 0.75rem;
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
         width: 100%;
+        height: auto;
+        min-height: 36px;
     }
 }
 
@@ -1460,8 +1462,8 @@ body {
     /* แก้ไขปัญหาการแสดงผลบนมือถือ */
     .operator-actions {
         flex-direction: column;
-        gap: 0.5rem;
-        margin-top: 0.8rem;
+        gap: 0.4rem;
+        margin-top: 0.6rem;
     }
     
     .operator-actions .btn {
@@ -1470,20 +1472,24 @@ body {
         max-width: none;
         justify-content: center;
         text-align: center;
-        padding: 0.4rem 0.6rem;
-        font-size: 0.75rem;
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
         width: 100%;
+        height: auto;
+        min-height: 36px;
     }
     
     .btn-facebook,
     .btn-location {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.75rem;
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
         border-radius: 6px;
+        height: auto;
+        min-height: 36px;
     }
     
     .btn-facebook::before {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
     }
 }
 
@@ -2775,8 +2781,8 @@ body {
     
     .operator-actions {
         flex-direction: column;
-        gap: 0.4rem;
-        margin-top: 0.6rem;
+        gap: 0.3rem;
+        margin-top: 0.5rem;
     }
     
     .operator-actions .btn {
@@ -2785,20 +2791,24 @@ body {
         max-width: none;
         justify-content: center;
         text-align: center;
-        padding: 0.3rem 0.5rem;
-        font-size: 0.7rem;
+        padding: 0.25rem 0.4rem;
+        font-size: 0.65rem;
         width: 100%;
+        height: auto;
+        min-height: 32px;
     }
     
     .btn-facebook,
     .btn-location {
-        padding: 0.3rem 0.5rem;
-        font-size: 0.7rem;
+        padding: 0.25rem 0.4rem;
+        font-size: 0.65rem;
         border-radius: 4px;
+        height: auto;
+        min-height: 32px;
     }
     
     .btn-facebook::before {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
     }
 }
 
