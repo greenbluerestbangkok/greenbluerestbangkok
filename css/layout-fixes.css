@@ -163,7 +163,7 @@ section {
     width: 100% !important;
 }
 
-/* Operators Grid - แสดงเป็น 2 คอลัมน์บน Desktop, 4 คอลัมน์บน Tablet/Mobile */
+/* Operators Grid - แสดงเป็น 2 คอลัมน์บน Desktop, 1 คอลัมน์บน Tablet/Mobile */
 .operators-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
