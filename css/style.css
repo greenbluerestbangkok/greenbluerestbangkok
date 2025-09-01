@@ -2727,7 +2727,7 @@ body {
     }
     
     .operators-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-columns: repeat(4, 1fr) !important;
         gap: 1rem !important;
     }
     
@@ -2852,7 +2852,7 @@ body {
     }
     
     .operators-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-columns: repeat(4, 1fr) !important;
     }
     
     .feature-card, .operator-card {
@@ -2864,8 +2864,8 @@ body {
 /* --- Mobile Styles (480px and below) --- */
 @media (max-width: 480px) {
     .operators-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;                    /* เพิ่มระยะห่างระหว่างการ์ดบนมือถือขนาดเล็ก */
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1rem !important;                    /* เพิ่มระยะห่างระหว่างการ์ดบนมือถือขนาดเล็ก */
     }
 }
 
