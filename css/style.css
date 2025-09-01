@@ -1346,8 +1346,25 @@ body {
     
     .btn-facebook,
     .btn-location {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+    
+    .operator-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.8rem;
+    }
+    
+    .operator-actions .btn {
+        flex: none;
+        min-width: auto;
+        max-width: none;
+        justify-content: center;
+        text-align: center;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+        width: 100%;
     }
 }
 
@@ -1442,23 +1459,31 @@ body {
     
     /* แก้ไขปัญหาการแสดงผลบนมือถือ */
     .operator-actions {
-        flex-direction: row;
-        gap: 0.4rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.8rem;
     }
     
     .operator-actions .btn {
-        flex: 1;
+        flex: none;
         min-width: auto;
         max-width: none;
         justify-content: center;
         text-align: center;
-        padding: 0.5rem 0.8rem;
-        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+        width: 100%;
     }
     
-    .btn-facebook {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.8rem;
+    .btn-facebook,
+    .btn-location {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+        border-radius: 6px;
+    }
+    
+    .btn-facebook::before {
+        font-size: 0.7rem;
     }
 }
 
@@ -2746,6 +2771,34 @@ body {
     
     .operator-card p {
         font-size: 0.7rem;
+    }
+    
+    .operator-actions {
+        flex-direction: column;
+        gap: 0.4rem;
+        margin-top: 0.6rem;
+    }
+    
+    .operator-actions .btn {
+        flex: none;
+        min-width: auto;
+        max-width: none;
+        justify-content: center;
+        text-align: center;
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+        width: 100%;
+    }
+    
+    .btn-facebook,
+    .btn-location {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+        border-radius: 4px;
+    }
+    
+    .btn-facebook::before {
+        font-size: 0.65rem;
     }
 }
 
