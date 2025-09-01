@@ -163,7 +163,7 @@ section {
     width: 100% !important;
 }
 
-/* Operators Grid - แสดงเป็น 2 คอลัมน์บน Desktop, 2 คอลัมน์บน Tablet/Mobile */
+/* Operators Grid - แสดงเป็น 2 คอลัมน์บน Desktop, 4 คอลัมน์บน Tablet/Mobile */
 .operators-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
@@ -243,8 +243,8 @@ section {
     }
     
     .operators-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 1.75rem !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1.5rem !important;
     }
     
     .features-grid {
@@ -261,8 +261,8 @@ section {
     }
     
     .operators-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 1.5rem !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1.2rem !important;
     }
     
     .features-grid {
@@ -279,8 +279,8 @@ section {
     }
     
     .operators-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 1.25rem !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1rem !important;
     }
     
     .features-grid {
@@ -297,8 +297,8 @@ section {
     }
     
     .operators-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.8rem !important;
     }
     
     .features-grid {
