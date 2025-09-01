@@ -1272,50 +1272,41 @@ body {
 /* ======================================== */
 @media (max-width: 1024px) {
     .operators-grid {
-        grid-template-columns: repeat(2, 1fr); /* ยังคงแถวละ 2 คอลัมน์ */
-        gap: 1.8rem;
-        padding: 0 1rem;
-        max-width: 100%;
+        grid-template-columns: repeat(4, 1fr) !important; /* แท็บเล็ท: 4 คอลัมน์ */
+        gap: 1.5rem !important;
+        padding: 0 1rem !important;
+        max-width: 100% !important;
+    }
+    
+    .operator-card {
+        min-height: 350px;
+    }
+    
+    .operator-info {
+        padding: 1.2rem;
+    }
+    
+    .operator-name {
+        font-size: 1.1rem;
+    }
+    
+    .operator-description {
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 768px) {
     .operators-grid {
-        grid-template-columns: repeat(2, 1fr); /* ยังคงแถวละ 2 คอลัมน์ */
-        gap: 1.5rem;
-        margin-top: 2rem;
-        padding: 0 0.5rem;
-        max-width: 100%;
-    }
-    
-    .operator-card {
-        border-radius: 18px;
-    }
-    
-    .operator-info {
-        padding: 1.5rem;
-    }
-    
-    .operator-name {
-        font-size: 1.3rem;
-    }
-    
-    .operator-description {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .operators-grid {
-        grid-template-columns: repeat(2, 1fr); /* มือถือยังคงเป็น 2 คอลัมน์ */
-        gap: 1rem;
-        margin-top: 1.5rem;
-        padding: 0 0.5rem;
-        max-width: 100%;
+        grid-template-columns: repeat(4, 1fr) !important; /* แท็บเล็ท: 4 คอลัมน์ */
+        gap: 1.2rem !important;
+        margin-top: 2rem !important;
+        padding: 0 0.8rem !important;
+        max-width: 100% !important;
     }
     
     .operator-card {
         border-radius: 16px;
+        min-height: 320px;
     }
     
     .operator-info {
@@ -1323,7 +1314,7 @@ body {
     }
     
     .operator-name {
-        font-size: 1.1rem;
+        font-size: 1rem;
         margin-bottom: 0.5rem;
     }
     
@@ -1334,39 +1325,114 @@ body {
     
     .operator-story h4,
     .operator-activities h4 {
-        font-size: 0.95rem;
-        margin: 0.8rem 0 0.5rem 0;
+        font-size: 0.9rem;
+        margin: 0.6rem 0 0.4rem 0;
     }
     
     .operator-story p {
-        font-size: 0.85rem;
-        margin-bottom: 0.8rem;
+        font-size: 0.8rem;
+        margin-bottom: 0.6rem;
     }
     
-    .operator-activities li {
-        font-size: 0.85rem;
-        padding: 0.3rem 0.5rem;
-        padding-left: 1.5rem;
+    .operator-activities p {
+        font-size: 0.8rem;
     }
     
     .operator-location {
-        font-size: 0.85rem;
-        padding: 0.4rem 0;
-        margin-bottom: 1rem;
+        font-size: 0.8rem;
+        padding: 0.3rem 0;
+        margin-bottom: 0.8rem;
     }
     
-    .btn-facebook {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
+    .btn-facebook,
+    .btn-location {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .operators-grid {
+        grid-template-columns: repeat(4, 1fr) !important; /* มือถือ: 4 คอลัมน์ */
+        gap: 0.8rem !important;
+        margin-top: 1.5rem !important;
+        padding: 0 0.5rem !important;
+        max-width: 100% !important;
+    }
+    
+    .operator-card {
+        border-radius: 12px;
+        min-height: 280px;
+    }
+    
+    .operator-info {
+        padding: 0.8rem;
+    }
+    
+    .operator-name {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+        line-height: 1.2;
+    }
+    
+    .operator-description {
+        font-size: 0.75rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.3;
+    }
+    
+    .operator-story h4,
+    .operator-activities h4 {
+        font-size: 0.8rem;
+        margin: 0.5rem 0 0.3rem 0;
+    }
+    
+    .operator-story p {
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+    
+    .operator-activities p {
+        font-size: 0.7rem;
+        line-height: 1.3;
+    }
+    
+    .operator-location {
+        font-size: 0.7rem;
+        padding: 0.3rem 0;
+        margin-bottom: 0.6rem;
+    }
+    
+    .btn-facebook,
+    .btn-location {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.7rem;
+        margin: 0.2rem 0;
     }
     
     /* แก้ไขปัญหาการแสดงผลบนมือถือขนาดเล็ก */
     .operator-logo {
         aspect-ratio: 1/1;
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 1rem;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 0.8rem;
     }
+    
+    .operator-logo img {
+        width: 80%;
+        height: 80%;
+    }
+    
+    .operator-image {
+        height: 120px;
+    }
+    
+    .operator-main-img {
+        height: 100%;
+        object-fit: cover;
+    }
+}
     
     .operator-img {
         width: 100%;
@@ -1390,7 +1456,8 @@ body {
         font-size: 0.8rem;
     }
     
-    .btn-facebook {
+    .btn-facebook,
+    .btn-location {
         padding: 0.5rem 0.8rem;
         font-size: 0.8rem;
     }
