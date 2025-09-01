@@ -1280,7 +1280,7 @@ body {
 /* ======================================== */
 @media (max-width: 1024px) {
     .operators-grid {
-        grid-template-columns: repeat(4, 1fr) !important; /* แท็บเล็ท: 4 คอลัมน์ */
+        grid-template-columns: 1fr !important; /* แท็บเล็ท: 1 คอลัมน์ */
         gap: 1.5rem !important;
         padding: 0 1rem !important;
         max-width: 100% !important;
@@ -1305,7 +1305,7 @@ body {
 
 @media (max-width: 768px) {
     .operators-grid {
-        grid-template-columns: repeat(4, 1fr) !important; /* แท็บเล็ท: 4 คอลัมน์ */
+        grid-template-columns: 1fr !important; /* แท็บเล็ท: 1 คอลัมน์ */
         gap: 1.2rem !important;
         margin-top: 2rem !important;
         padding: 0 0.8rem !important;
@@ -1380,7 +1380,7 @@ body {
 
 @media (max-width: 480px) {
     .operators-grid {
-        grid-template-columns: repeat(4, 1fr) !important; /* มือถือ: 4 คอลัมน์ */
+        grid-template-columns: 1fr !important; /* มือถือ: 1 คอลัมน์ */
         gap: 0.8rem !important;
         margin-top: 1.5rem !important;
         padding: 0 0.5rem !important;
