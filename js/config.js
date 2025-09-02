@@ -40,13 +40,17 @@ export const IMAGE_CONFIG = {
     getTripImageUrlByNumber: (tripId, size, imageNumber) => {
         const paddedTripId = tripId.toString().padStart(2, '0');
         const paddedImageNumber = imageNumber.toString().padStart(2, '0');
-        return `${IMAGE_CONFIG.BASE_URL}/images/trip${paddedTripId}/${size}/trip_${paddedTripId}_${paddedImageNumber}.jpg`;
+        
+        // ตรวจสอบว่าเป็นรูปที่ 1 ใช้ main, รูปอื่นใช้ sub
+        const imageName = imageNumber === 1 ? 'main' : `sub${imageNumber - 1}`;
+        
+        return `${IMAGE_CONFIG.BASE_URL}/images/trip${tripId}/${size}/trip${tripId}-${imageName}.webp`;
     },
     
     // ฟังก์ชันสร้าง URL สำหรับภาพสินค้าแบบใหม่ (ใช้ระบบเลข)
     getProductImageUrlByNumber: (productNumber) => {
         const paddedNumber = productNumber.toString().padStart(2, '0');
-        return `${IMAGE_CONFIG.BASE_URL}/images/products/product_${paddedNumber}.jpg`;
+        return `${IMAGE_CONFIG.BASE_URL}/images/products/product${productNumber}-main.webp`;
     },
     
     // ฟังก์ชันสร้าง URL สำหรับภาพ blog แบบใหม่ (ใช้ระบบเลข)
