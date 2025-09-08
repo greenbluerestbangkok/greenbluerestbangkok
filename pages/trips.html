@@ -4,26 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ทริปท่องเที่ยว - Green Blue Rest Bangkok</title>
-    <meta name="description" content="เลือกจากทริปท่องเที่ยวชุมชน 11 แพ็คเกจ สัมผัสวิถีชีวิตท้องถิ่น เรียนรู้วัฒนธรรม ชมอาหารไทย และทำกิจกรรม ย่านคลองบางมด เริ่มต้น 500 บาท">
-    <meta name="keywords" content="ทริปท่องเที่ยว, คลองบางมด, ท่องเที่ยวชุมชน, วัฒนธรรมไทย, กิจกรรมชุมชน, Low Carbon Tourism">
+    <meta name="description" content="เลือกจากทริปท่องเที่ยวชุมชน 11 แพ็คเกจ สัมผัสวิถีชีวิตท้องถิ่น เรียนรู้วัฒนธรรม ชมอาหารไทย และทำกิจกรรม ย่านคลองบางมด ร่วมกับผู้ประกอบการท้องถิ่น 8 กลุ่ม เริ่มต้น 500 บาท">
+    <meta name="keywords" content="ทริปท่องเที่ยว, คลองบางมด, ท่องเที่ยวชุมชน, วัฒนธรรมไทย, กิจกรรมชุมชน, Low Carbon Tourism, เซฟติสท์ฟาร์ม, บ้านเขียนวาด, ตลาดมดตะนอย, กัมปงในดงปรือ, Art Lab, S'more Town, นิทานศิลป์">
     
     <!-- Open Graph Tags -->
     <meta property="og:title" content="ทริปท่องเที่ยวชุมชน 11 แพ็คเกจ - Green Blue Rest Bangkok">
-    <meta property="og:description" content="เลือกจากทริปท่องเที่ยวชุมชน 11 แพ็คเกจ สัมผัสวิถีชีวิตท้องถิ่นย่านคลองบางมด">
+    <meta property="og:description" content="เลือกจากทริปท่องเที่ยวชุมชน 11 แพ็คเกจ สัมผัสวิถีชีวิตท้องถิ่นย่านคลองบางมด ร่วมกับผู้ประกอบการท้องถิ่น 8 กลุ่ม">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://greenbluerestbangkok.com/pages/trips.html">
-    <meta property="og:image" content="https://greenbluerestbangkok.com/images/cover/trips-cover.jpg">
+    <meta property="og:image" content="https://greenbluerestbangkok.com/images/cover/ทริปท่องเที่ยวชุมชน Cover.webp">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ทริปท่องเที่ยวชุมชน 11 แพ็คเกจ">
-    <meta name="twitter:description" content="เลือกจากทริปท่องเที่ยวชุมชน 11 แพ็คเกจ สัมผัสวิถีชีวิตท้องถิ่นย่านคลองบางมด">
+    <meta name="twitter:description" content="เลือกจากทริปท่องเที่ยวชุมชน 11 แพ็คเกจ สัมผัสวิถีชีวิตท้องถิ่นย่านคลองบางมด ร่วมกับผู้ประกอบการท้องถิ่น 8 กลุ่ม">
     
     <link rel="canonical" href="https://greenbluerestbangkok.com/pages/trips.html">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/button-fixes.css">
     <link rel="stylesheet" href="../css/hamburger-animation.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Modal CSS สำหรับภาพขยาย -->
+    <style>
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .image-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-back {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .modal-back:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+            
+            .modal-close {
+                top: -35px;
+                width: 35px;
+                height: 35px;
+                font-size: 25px;
+            }
+            
+            .modal-back {
+                top: -35px;
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="main-header">
@@ -66,6 +176,20 @@
             <div class="page-header">
                 <h1>ทริปท่องเที่ยวทั้งหมดของเรา</h1>
                 <p>ค้นพบทริปท่องเที่ยวชุมชนวิถีคลองบางมดที่หลากหลาย ครบทั้ง 11 ทริป พร้อมประสบการณ์พิเศษที่ไม่เหมือนใคร</p>
+            </div>
+            
+            <!-- ======================================== -->
+            <!-- 🌟 Trips Cover - ส่วน Cover หน้าทริปท่องเที่ยว -->
+            <!-- ======================================== -->
+            <div class="trips-cover">
+                <div class="cover-image">
+                    <img src="../images/cover/ทริปท่องเที่ยวชุมชน Cover.webp" alt="ทริปท่องเที่ยวชุมชน Cover" class="cover-img" id="trips-cover-img">
+                </div>
+                <div class="cover-content">
+                    <h3>ทริปท่องเที่ยวชุมชนที่หลากหลาย</h3>
+                    <p>เลือกจากทริปท่องเที่ยวชุมชน 11 แพ็คเกจ ที่ออกแบบมาเพื่อให้คุณได้สัมผัสวิถีชีวิตท้องถิ่นอย่างแท้จริง</p>
+                    <p>ตั้งแต่การพายเรือคายัคในคลอง การเรียนรู้การทำอาหารไทย การทำเครื่องปั้นดินเผา ไปจนถึงการทำผ้าบาติก ทุกทริปล้วนเต็มไปด้วยประสบการณ์ที่คุณจะไม่มีวันลืม</p>
+                </div>
             </div>
             
             <div class="card-grid" id="trips-grid">
@@ -119,6 +243,19 @@
         </div>
     </footer>
     
+    <!-- Modal สำหรับภาพขยาย -->
+    <div id="imageModal" class="image-modal">
+        <div class="modal-content">
+            <button class="modal-back" onclick="closeModal()">
+                ← กลับ
+            </button>
+            <button class="modal-close" onclick="closeModal()">
+                ×
+            </button>
+            <img id="modalImage" class="modal-image" src="" alt="">
+        </div>
+    </div>
+    
     <script type="module" src="../js/main.js"></script>
     <script type="module">
         import { loadTripsGrid } from '../js/trip-details.js';
@@ -126,6 +263,55 @@
         // โหลดทริปท่องเที่ยวทั้งหมดเมื่อหน้าเว็บโหลดเสร็จ
         document.addEventListener('DOMContentLoaded', function() {
             loadTripsGrid();
+        });
+    </script>
+    
+    <script>
+        // Modal สำหรับภาพขยาย
+        function openModal(imageSrc, imageAlt) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            modalImage.src = imageSrc;
+            modalImage.alt = imageAlt;
+            modal.classList.add('show');
+            
+            // ป้องกันการ scroll ของ body
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+            
+            // เปิดการ scroll ของ body กลับ
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const coverImg = document.getElementById('trips-cover-img');
+            
+            if (coverImg) {
+                coverImg.addEventListener('click', function() {
+                    openModal(this.src, this.alt);
+                });
+            }
+            
+            // ปิด modal เมื่อคลิกที่พื้นหลัง
+            const modal = document.getElementById('imageModal');
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // ปิด modal เมื่อกด ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
         });
     </script>
 </body>

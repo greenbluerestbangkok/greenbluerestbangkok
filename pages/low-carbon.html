@@ -4,26 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Low Carbon Tourism - Green Blue Rest Bangkok</title>
-    <meta name="description" content="เรียนรู้เกี่ยวกับการท่องเที่ยวแบบ Low Carbon Tourism หรือการท่องเที่ยวคาร์บอนต่ำ ที่ลดผลกระทบต่อสิ่งแวดล้อม เพื่อรักษาธรรมชาติให้คนรุ่นหลัง">
-    <meta name="keywords" content="Low Carbon Tourism, ท่องเที่ยวคาร์บอนต่ำ, ท่องเที่ยวยั่งยืน, สิ่งแวดล้อม, การท่องเที่ยวรับผิดชอบ, คลองบางมด">
+    <meta name="description" content="เรียนรู้เกี่ยวกับการท่องเที่ยวแบบ Low Carbon Tourism หรือการท่องเที่ยวคาร์บอนต่ำ ที่ลดผลกระทบต่อสิ่งแวดล้อม เพื่อรักษาธรรมชาติให้คนรุ่นหลัง ร่วมกับผู้ประกอบการท้องถิ่น 8 กลุ่ม">
+    <meta name="keywords" content="Low Carbon Tourism, ท่องเที่ยวคาร์บอนต่ำ, ท่องเที่ยวยั่งยืน, สิ่งแวดล้อม, การท่องเที่ยวรับผิดชอบ, คลองบางมด, เซฟติสท์ฟาร์ม, บ้านเขียนวาด, ตลาดมดตะนอย, กัมปงในดงปรือ, Art Lab, S'more Town, นิทานศิลป์">
     
     <!-- Open Graph Tags -->
     <meta property="og:title" content="Low Carbon Tourism - การท่องเที่ยวคาร์บอนต่ำ">
-    <meta property="og:description" content="เรียนรู้เกี่ยวกับการท่องเที่ยวแบบ Low Carbon Tourism ที่ลดผลกระทบต่อสิ่งแวดล้อม">
+    <meta property="og:description" content="เรียนรู้เกี่ยวกับการท่องเที่ยวแบบ Low Carbon Tourism ที่ลดผลกระทบต่อสิ่งแวดล้อม ร่วมกับผู้ประกอบการท้องถิ่น 8 กลุ่ม">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://greenbluerestbangkok.com/pages/low-carbon.html">
-    <meta property="og:image" content="https://greenbluerestbangkok.com/images/cover/low-carbon-cover.jpg">
+    <meta property="og:image" content="https://greenbluerestbangkok.com/images/cover/Cover Low Carbon Tourism.webp">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Low Carbon Tourism - การท่องเที่ยวคาร์บอนต่ำ">
-    <meta name="twitter:description" content="เรียนรู้เกี่ยวกับการท่องเที่ยวแบบ Low Carbon Tourism">
+    <meta name="twitter:description" content="เรียนรู้เกี่ยวกับการท่องเที่ยวแบบ Low Carbon Tourism ร่วมกับผู้ประกอบการท้องถิ่น 8 กลุ่ม">
     
     <link rel="canonical" href="https://greenbluerestbangkok.com/pages/low-carbon.html">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/button-fixes.css">
     <link rel="stylesheet" href="../css/hamburger-animation.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Modal CSS สำหรับภาพขยาย -->
+    <style>
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .image-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-back {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .modal-back:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+            
+            .modal-close {
+                top: -35px;
+                width: 35px;
+                height: 35px;
+                font-size: 25px;
+            }
+            
+            .modal-back {
+                top: -35px;
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- ======================================== -->
@@ -76,7 +186,7 @@
                 <!-- ======================================== -->
                 <div class="low-carbon-cover">
                     <div class="cover-image">
-                        <img src="../images/webp/low-carbon/cover.webp" alt="Low Carbon Tourism Cover" class="cover-img">
+                        <img src="../images/cover/Cover Low Carbon Tourism.webp" alt="Low Carbon Tourism Cover" class="cover-img" id="low-carbon-cover-img" data-pswp-src="../images/cover/Cover Low Carbon Tourism.webp">
                     </div>
                     <div class="cover-content">
                         <h3>การท่องเที่ยวอย่างยั่งยืน</h3>
@@ -283,6 +393,68 @@
         </div>
     </footer>
     
+    <!-- Modal สำหรับภาพขยาย -->
+    <div id="imageModal" class="image-modal">
+        <div class="modal-content">
+            <button class="modal-back" onclick="closeModal()">
+                ← กลับ
+            </button>
+            <button class="modal-close" onclick="closeModal()">
+                ×
+            </button>
+            <img id="modalImage" class="modal-image" src="" alt="">
+        </div>
+    </div>
+    
     <script type="module" src="../js/main.js"></script>
+    
+    <script>
+        // Modal สำหรับภาพขยาย
+        function openModal(imageSrc, imageAlt) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            modalImage.src = imageSrc;
+            modalImage.alt = imageAlt;
+            modal.classList.add('show');
+            
+            // ป้องกันการ scroll ของ body
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+            
+            // เปิดการ scroll ของ body กลับ
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const coverImg = document.getElementById('low-carbon-cover-img');
+            
+            if (coverImg) {
+                coverImg.addEventListener('click', function() {
+                    openModal(this.src, this.alt);
+                });
+            }
+            
+            // ปิด modal เมื่อคลิกที่พื้นหลัง
+            const modal = document.getElementById('imageModal');
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // ปิด modal เมื่อกด ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

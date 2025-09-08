@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สินค้าชุมชน - Green Blue Rest Bangkok</title>
-    <meta name="description" content="ค้นหาและสั่งซื้อสินค้าคุณภาพดีจากชุมชนคลองบางมด สบู่ธรรมชาติ อาหารไทยโบราณ งานฝีมือ และของใช้ในบ้าน จากผู้ผลิตท้องถิ่น">
-    <meta name="keywords" content="สินค้าชุมชน, สบู่ธรรมชาติ, อาหารไทย, งานฝีมือ, ของที่ระลึก, คลองบางมด">
+    <meta name="description" content="ค้นหาและสั่งซื้อสินค้าคุณภาพดีจากชุมชนคลองบางมด สบู่ธรรมชาติ อาหารไทยโบราณ งานฝีมือ และของใช้ในบ้าน จากผู้ผลิตท้องถิ่น 8 กลุ่ม รวม 24 สินค้า">
+    <meta name="keywords" content="สินค้าชุมชน, สบู่ธรรมชาติ, อาหารไทย, งานฝีมือ, ของที่ระลึก, คลองบางมด, เซฟติสท์ฟาร์ม, กัมปงในดงปรือ, ตลาดมดตะนอย, สวนส้มลุงสมจิตร, Cafe Can Do">
     
     <!-- Open Graph Tags -->
     <meta property="og:title" content="สินค้าชุมชนคลองบางมด - Green Blue Rest Bangkok">
-    <meta property="og:description" content="ค้นหาและสั่งซื้อสินค้าคุณภาพดีจากชุมชนคลองบางมด">
+    <meta property="og:description" content="ค้นหาและสั่งซื้อสินค้าคุณภาพดีจากชุมชนคลองบางมด จากผู้ผลิตท้องถิ่น 8 กลุ่ม รวม 24 สินค้า">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://greenbluerestbangkok.com/pages/products.html">
     <meta property="og:image" content="https://greenbluerestbangkok.com/images/cover/products-cover.jpg">
@@ -17,7 +17,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="สินค้าชุมชนคลองบางมด">
-    <meta name="twitter:description" content="ค้นหาและสั่งซื้อสินค้าคุณภาพดีจากชุมชนคลองบางมด">
+    <meta name="twitter:description" content="ค้นหาและสั่งซื้อสินค้าคุณภาพดีจากชุมชนคลองบางมด จากผู้ผลิตท้องถิ่น 8 กลุ่ม รวม 24 สินค้า">
     
     <link rel="canonical" href="https://greenbluerestbangkok.com/pages/products.html">
     <link rel="stylesheet" href="../css/style.css">
@@ -122,140 +122,226 @@
     <script>
         // ข้อมูลสินค้าชุมชนแบบ inline เพื่อป้องกันปัญหา CORS
         const productsData = [
+            // สินค้าจากเซฟติสท์ฟาร์ม
             {
                 id: 1,
-                name: "สบู่แฮนด์เมดน้ำมันมะพร้าว",
-                price: "80 บาท",
+                name: "สบู่ชาโคล",
+                price: "99 บาท",
                 category: "beauty",
-                description: "สบู่ธรรมชาติจากน้ำมันมะพร้าวบริสุทธิ์ ไม่มีสารเคมี",
+                description: "สบู่น้ำมันธรรมชาติ (Natural Oil Soap) ผลิตจากน้ำมันพืชธรรมชาติหลายชนิด เช่น น้ำมันมะพร้าว น้ำมันมะกอก น้ำมันปาล์ม ฯลฯ โดยไม่ใช้สารเคมี ให้ความชุ่มชื้น ลดการระคายเคือง ทำความสะอาดอย่างอ่อนโยน สำหรับผิวมัน มีผงถ่านธรรมชาติช่วยทำความสะอาด กำจัดสิ่งสกปรก ลดสิว พร้อมวิตามิน E ช่วยให้ผิวชุ่มชื้นและกระจ่างใส",
                 image: "../images/webp/products/product_01.webp",
                 producer: "เซฟติสท์ฟาร์ม"
             },
             {
                 id: 2,
-                name: "น้ำส้มคั้นสดจากสวน",
-                price: "50 บาท",
-                category: "food",
-                description: "น้ำส้มคั้นสดจากสวนผลไม้ในชุมชน ไม่มีน้ำตาลเพิ่ม",
+                name: "สบู่ส้ม",
+                price: "99 บาท",
+                category: "beauty",
+                description: "สบู่น้ำมันธรรมชาติจากน้ำมันพืช 6 ชนิด ผสมส้มธรรมชาติประจำฤดูกาล ช่วยทำความสะอาด เพิ่มความชุ่มชื้น ผิวไม่แห้งตึง และช่วยปรับผิวให้กระจ่างใส",
                 image: "../images/webp/products/product_02.webp",
                 producer: "เซฟติสท์ฟาร์ม"
             },
             {
                 id: 3,
-                name: "ขนมไทยโบราณ (ชุดรวม)",
-                price: "120 บาท",
-                category: "food",
-                description: "ขนมไทยโบราณหลากหลายชนิด ทำสดใหม่ทุกวัน",
+                name: "สบู่นมแพะ",
+                price: "99 บาท",
+                category: "beauty",
+                description: "สบู่น้ำมันธรรมชาติผสมนมแพะ น้ำผึ้ง 100% และน้ำมันธรรมชาติ 6 ชนิด ช่วยทำความสะอาด ทำให้ผิวนุ่มและชุ่มชื้น เหมาะสำหรับผิวแห้งมาก",
                 image: "../images/webp/products/product_03.webp",
-                producer: "บ้านเขียนวาดและภาพพิมพ์"
-            },
-            {
-                id: 4,
-                name: "ผ้าขาวม้าทอมือ",
-                price: "250 บาท",
-                category: "craft",
-                description: "ผ้าขาวม้าทอมือแบบดั้งเดิม ลวดลายสวยงาม",
-                image: "../images/webp/products/product_04.webp",
-                producer: "บ้านเขียนวาดและภาพพิมพ์"
-            },
-            {
-                id: 5,
-                name: "น้ำพริกแกงไทยแท้",
-                price: "90 บาท",
-                category: "food",
-                description: "น้ำพริกแกงสูตรโบราณ จากเครื่องเทศแท้",
-                image: "../images/webp/products/product_05.webp",
-                producer: "ตลาดมดตะนอย"
-            },
-            {
-                id: 6,
-                name: "หมอนข้าวโพดใยธรรมชาติ",
-                price: "350 บาท",
-                category: "craft",
-                description: "หมอนจากใยข้าวโพดธรรมชาติ นุ่มสบาย ระบายอากาศดี",
-                image: "../images/webp/products/product_06.webp",
-                producer: "ลิงโดดเฮิร์บ"
-            },
-            {
-                id: 7,
-                name: "ผลไม้อบแห้ง (ชุดรวม)",
-                price: "180 บาท",
-                category: "food",
-                description: "ผลไม้อบแห้งจากสวนเกษตรกรในชุมชน",
-                image: "../images/webp/products/product_07.webp",
-                producer: "ลิงโดดเฮิร์บ"
-            },
-            {
-                id: 8,
-                name: "ครีมบำรุงผิวสมุนไพรไทย",
-                price: "150 บาท",
-                category: "beauty",
-                description: "ครีมบำรุงจากสมุนไพรไทยแท้ ปราศจากสารเคมี",
-                image: "../images/webp/products/product_08.webp",
-                producer: "ลิงโดดเฮิร์บ"
-            },
-            {
-                id: 9,
-                name: "กระเป๋าผ้าทอมือ",
-                price: "320 บาท",
-                category: "craft",
-                description: "กระเป๋าผ้าทอมือลายไทย ทนทานและสวยงาม",
-                image: "../images/webp/products/product_09.webp",
-                producer: "ลิงโดดเฮิร์บ"
-            },
-            {
-                id: 10,
-                name: "ชาสมุนไพรผสม",
-                price: "120 บาท",
-                category: "food",
-                description: "ชาจากสมุนไพรหลากชนิด ดื่มง่าย มีประโยชน์",
-                image: "../images/webp/products/product_10.webp",
-                producer: "ตลาดมดตะนอย"
-            },
-            {
-                id: 11,
-                name: "น้ำมันหอมระเหยธรรมชาติ",
-                price: "200 บาท",
-                category: "beauty",
-                description: "น้ำมันหอมระเหยจากพืชสมุนไพรไทย",
-                image: "../images/webp/products/product_11.webp",
-                producer: "ตลาดมดตะนอย"
-            },
-            {
-                id: 12,
-                name: "เสื้อผ้าฝ้ายย้อมสีธรรมชาติ",
-                price: "450 บาท",
-                category: "craft",
-                description: "เสื้อผ้าฝ้ายย้อมด้วยสีธรรมชาติจากพืช",
-                image: "../images/webp/products/product_12.webp",
-                producer: "บ้านเขียนวาดและภาพพิมพ์"
-            },
-            {
-                id: 13,
-                name: "น้ำผึ้งป่าแท้ 100%",
-                price: "280 บาท",
-                category: "food",
-                description: "น้ำผึ้งจากผึ้งป่าธรรมชาติ หวานหอมแท้",
-                image: "../images/webp/products/product_13.webp",
                 producer: "เซฟติสท์ฟาร์ม"
             },
             {
+                id: 4,
+                name: "ยาดมสูตรธรรมชาติ",
+                price: "69 บาท",
+                category: "beauty",
+                description: "ยาดมสมุนไพรจาก 6 ชนิด ได้แก่ ลูกระวาน ดอกจันทน์ กานพลู ผิวมะกรูด พริกไทยดำ อบเชย หอมสดชื่น",
+                image: "../images/webp/products/product_04.webp",
+                producer: "เซฟติสท์ฟาร์ม"
+            },
+            {
+                id: 5,
+                name: "ยาดมสูตรโรสแมรี่",
+                price: "69 บาท",
+                category: "beauty",
+                description: "สูตรเพิ่มใบโรสแมรี่แห้งและน้ำมันหอมระเหยโรสแมรี่ ช่วยเพิ่มความหอม ผ่อนคลาย",
+                image: "../images/webp/products/product_05.webp",
+                producer: "เซฟติสท์ฟาร์ม"
+            },
+            {
+                id: 6,
+                name: "น้ำผึ้งมะนาวใบหูเสือ",
+                price: "50 บาท",
+                category: "food",
+                description: "เครื่องดื่มจากใบหูเสือ กลิ่นคล้ายออริกาโน่ แก้ไอ เจ็บคอ ต้านหวัดฤดูฝน ให้ความสดชื่น",
+                image: "../images/webp/products/product_06.webp",
+                producer: "เซฟติสท์ฟาร์ม"
+            },
+            {
+                id: 7,
+                name: "กาแฟอเมริกาโน่",
+                price: "50 บาท",
+                category: "food",
+                description: "กาแฟดำเข้มข้นผสมกับน้ำร้อน ให้รสชาติเต็มอิ่มไม่เข้มข้นเท่าเอสเพรสโซ่บริสุทธิ์",
+                image: "../images/webp/products/product_07.webp",
+                producer: "เซฟติสท์ฟาร์ม"
+            },
+            // สินค้าจากกัมปงในดงปรือ
+            {
+                id: 8,
+                name: "ผงโรยข้าว",
+                price: "69 บาท",
+                category: "food",
+                description: "ผลิตจากปลาบูดู (ปลาน้ำจืดหมักรสกลมกล่อม) แปรรูปโดยชุมชนท้องถิ่น ใช้โรยบนข้าวสวย เพิ่มกลิ่นหอมและสัมผัสกรุบกรอบ รสชาติคล้าย Furikake ญี่ปุ่นแต่ใช้วัตถุดิบไทย",
+                image: "../images/webp/products/product_08.webp",
+                producer: "กัมปงในดงปรือ"
+            },
+            {
+                id: 9,
+                name: "ข้าวหมกไก่",
+                price: "60 บาท",
+                category: "food",
+                description: "เมนูฮาลาล ใช้เครื่องเทศท้องถิ่น เช่น หอมแดง กระเทียม ขิง รากผักชี และอบเชย ปรุงกับเนื้อไก่และข้าวขมิ้นสีเหลืองสวย เป็นกิจกรรมเวิร์กช็อปท่องเที่ยวเชิงเกษตรชุมชน",
+                image: "../images/webp/products/product_09.webp",
+                producer: "กัมปงในดงปรือ"
+            },
+            {
+                id: 10,
+                name: "นมแพะพร้อมดื่ม",
+                price: "25 บาท",
+                category: "food",
+                description: "ผลิตจากแพะพันธุ์ซาแนน เลี้ยงด้วยหญ้าธรรมชาติ รีดมือสะอาด ไม่มีรสกลิ่นสาบ มีทั้งแบบสดและแบบบรรจุขวด/กล่อง เก็บได้นาน",
+                image: "../images/webp/products/product_10.webp",
+                producer: "กัมปงในดงปรือ"
+            },
+            {
+                id: 11,
+                name: "ปลาบูดูหลน",
+                price: "50 บาท",
+                category: "food",
+                description: "ผสมปลาบูดูทอดกรอบกับกระเทียมเผา หอมแดงเผา พริกจินดาเผา หอมกลิ่นสมุนไพร รสชาติจัดจ้าน เค็มหวานลงตัว เป็นเมนูฮาลาลที่สะท้อนภูมิปัญญาท้องถิ่น",
+                image: "../images/webp/products/product_11.webp",
+                producer: "กัมปงในดงปรือ"
+            },
+            {
+                id: 12,
+                name: "ปลาบูดูสด",
+                price: "ครึ่งกิโลกรัม 80 บาท, 1 กิโลกรัม 150 บาท",
+                category: "food",
+                description: "ปลาบูดูดั้งเดิมหมักปลาน้ำจืดสูตรโบราณ สะอาดปลอดภัย เหมาะทำเมนูท้องถิ่น เช่น ปลาบูดูทอด หรือหลน เสิร์ฟคู่ผักสดและข้าวสวยร้อน",
+                image: "../images/webp/products/product_12.webp",
+                producer: "กัมปงในดงปรือ"
+            },
+            {
+                id: 13,
+                name: "ทองม้วนนมแพะ",
+                price: "กล่องละ 50-60 บาท",
+                category: "food",
+                description: "ขนมทองม้วนสูตรเฉพาะของชุมชน ใช้นมแพะสดแท้ มีหลายรสชาติ เช่น นมแพะ, พริกเผา, กาแฟ, ปาปริก้า, ชาร์โคล",
+                image: "../images/webp/products/product_13.webp",
+                producer: "กัมปงในดงปรือ"
+            },
+            {
                 id: 14,
-                name: "พวงกุญแจจากใยมะพร้าว",
-                price: "45 บาท",
-                category: "craft",
-                description: "พวงกุญแจทำจากใยมะพร้าว รูปร่างน่ารัก",
+                name: "สบู่นมแพะ",
+                price: "ก้อนละ 50-100 บาท",
+                category: "beauty",
+                description: "ผลิตจากนมแพะแท้ ใช้วิธีธรรมชาติ ไม่ใช้สารกันบูด อ่อนโยนสำหรับทุกวัย ได้รับรองคุณภาพฮาลาล มีการพัฒนาบรรจุภัณฑ์โดยมหาวิทยาลัย",
                 image: "../images/webp/products/product_14.webp",
-                producer: "ลิงโดดเฮิร์บ"
+                producer: "กัมปงในดงปรือ"
             },
             {
                 id: 15,
-                name: "ใบกล้วยธรรมชาติ (แพ็ค 10 ใบ)",
-                price: "30 บาท",
+                name: "หอยทอดถาด",
+                price: "50 บาท",
                 category: "food",
-                description: "ใบกล้วยสดสะอาด สำหรับห่ออาหารแบบไทยๆ",
+                description: "หอยทอดสูตรดั้งเดิมแบบโบราณ ใช้ไข่และแป้งนิ่ม เสิร์ฟร้อน ๆ จากกระทะถาดกลมแบบดั้งเดิม",
                 image: "../images/webp/products/product_15.webp",
-                producer: "ตลาดมดตะนอย"
+                producer: "กัมปงในดงปรือ"
+            },
+            {
+                id: 16,
+                name: "ไอกือเรง ซูซู กาเมง",
+                price: "40 บาท",
+                category: "food",
+                description: "อาหารท้องถิ่นสูตรดั้งเดิม",
+                image: "../images/webp/products/product_16.webp",
+                producer: "กัมปงในดงปรือ"
+            },
+            // สินค้าจาก Triple F
+            {
+                id: 17,
+                name: "เมนูเบอร์เกอร์ (ฮาลาล)",
+                price: "เบอร์เกอร์เนื้อ 69 บาท, เบอร์เกอร์ไก่ทอด 49 บาท, เบอร์สเต็กไก่ซอสครีมเห็ด 89 บาท, เบอร์เกอร์เนื้อซอสครีมเห็ด 89 บาท",
+                category: "food",
+                description: "เมนูเบอร์เกอร์ฮาลาลหลากหลายรสชาติ ใช้เนื้อและไก่คุณภาพดี",
+                image: "../images/webp/products/product_17.webp",
+                producer: "Triple F"
+            },
+            // สินค้าจากบ้านฮา-นะ (ตลาดมดตะนอย)
+            {
+                id: 18,
+                name: "แต่งหน้าขนมปังสีธรรมชาติ",
+                price: "80 บาท",
+                category: "food",
+                description: "Workshop แต่งหน้าขนมปังโดยใช้สีธรรมชาติจากผงดอกอัญชัน, สาหร่ายสไปรูลินา, ขมิ้น, บีตรูต, และอื่น ๆ สร้างสรรค์หน้าขนมปังสีสันสดใส ปลอดภัยสำหรับการรับประทาน",
+                image: "../images/webp/products/product_18.webp",
+                producer: "บ้านฮา-นะ (ตลาดมดตะนอย)"
+            },
+            {
+                id: 19,
+                name: "กล้วยเคลือบช็อกโกแลตไม้",
+                price: "50 บาทต่อไม้",
+                category: "food",
+                description: "Workshop ทำกล้วยชุบช็อกโกแลตด้วยตัวเอง มีให้เลือกช็อกโกแลตหลายชนิด ตกแต่งด้วยถั่วบด ช็อกชิพ และเมล็ดธัญพืช",
+                image: "../images/webp/products/product_19.webp",
+                producer: "บ้านฮา-นะ (ตลาดมดตะนอย)"
+            },
+            {
+                id: 20,
+                name: "น้ำอัญชันมะนาวโซดา",
+                price: "69 บาท",
+                category: "food",
+                description: "Workshop เครื่องดื่มน้ำอัญชันมะนาวโซดา ผสมศิลปะและวิทยาศาสตร์ผสมกัน สนุกและกินได้",
+                image: "../images/webp/products/product_20.webp",
+                producer: "บ้านฮา-นะ (ตลาดมดตะนอย)"
+            },
+            // สินค้าจากสวนส้มลุงสมจิตร
+            {
+                id: 21,
+                name: "ต้นส้มบางมดลุงสมจิตร",
+                price: "150 - 500 บาท",
+                category: "food",
+                description: "สวนส้มอนุรักษ์พันธุ์ส้มบางมดเก่าแก่ตามพระราชดำริ ส้มเขียวหวานเปลือกบาง ปอกง่าย รสชาติหวานอมเปรี้ยว มีทัวร์สวนส้มและจำหน่ายกิ่งพันธุ์ส้มนำไปปลูกต่อได้",
+                image: "../images/webp/products/product_21.webp",
+                producer: "สวนส้มลุงสมจิตร"
+            },
+            // สินค้าจาก Cafe Can Do
+            {
+                id: 22,
+                name: "เมนูเครื่องดื่ม (Café Can Do)",
+                price: "50 - 60 บาท",
+                category: "food",
+                description: "อเมริกาโน่เย็น (Americano) — กาแฟดำหอมเข้ม ผสมผสานความเข้มข้นของเอสเพรสโซ่กับน้ำร้อนอย่างลงตัว ให้รสชาติเต็มอิ่ม สดชื่น เหมาะสำหรับดับร้อน",
+                producer: "Cafe Can Do (คาเฟ่ แคนคู)"
+            },
+            {
+                id: 23,
+                name: "เมนู non-Coffee (Café Can Do)",
+                price: "50 - 60 บาท",
+                category: "food",
+                description: "ชาไทย (Thai Milk Tea) — ชาไทยรสหวานมัน กลิ่นชาเข้มข้น ผสมนมข้นและนมสดอย่างลงตัว ดื่มง่ายได้ทุกเวลา ชาเขียว (Milk Tea) — ชาเขียวนมสไตล์คาเฟ่ กลมกล่อม หอมชาเขียว ให้ความสดชื่นกำลังดี เมนู non-Coffee ราคา 60 บาท โกโก้เย็น (Ice Cocoa) — โกโก้เข้มข้น ผสมนมสด"
+                image: "../images/webp/products/product_23.webp",
+                producer: "Cafe Can Do (คาเฟ่ แคนคู)"
+            },
+            {
+                id: 24,
+                name: "Italian Soda",
+                price: "45 บาท",
+                category: "food",
+                description: "พีชโซดา, ลิ้นจี่โซดา, บลูฮาวาย, ยูซุ, บลูเบอร์รี่, สตอร์เบอร์รี่, เสาวรส, บลูเลมอน, กีวี, แดงโซดา, เขียวโซดา, แดงมะนาวโซดา, น้ำผึ่งมะนาวโซดา",
+                image: "../images/webp/products/product_24.webp",
+                producer: "Cafe Can Do (คาเฟ่ แคนคู)"
             }
         ];
 
@@ -283,6 +369,32 @@
             
             // สร้างการ์ดสินค้าทั้งหมด
             productsGrid.innerHTML = productsData.map(product => createProductCard(product)).join('');
+
+            // Masonry: ปรับ span ของแถวตามความสูงจริงของการ์ด
+            const grid = productsGrid;
+            function resizeGridItem(item) {
+                const styles = window.getComputedStyle(grid);
+                const rowHeight = parseInt(styles.getPropertyValue('grid-auto-rows')) || 8;
+                const rowGap = parseInt(styles.getPropertyValue('gap')) || 12;
+                const contentHeight = item.offsetHeight;
+                const span = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
+                item.style.gridRowEnd = `span ${span}`;
+            }
+            function resizeAll() {
+                grid.querySelectorAll('.product-card').forEach(resizeGridItem);
+            }
+            // เรียกหลังจาก render
+            requestAnimationFrame(resizeAll);
+            // ปรับเมื่อรูปโหลด
+            grid.querySelectorAll('img.product-img').forEach(img => {
+                if (img.complete) resizeAll();
+                else {
+                    img.addEventListener('load', resizeAll);
+                    img.addEventListener('error', resizeAll);
+                }
+            });
+            // ปรับเมื่อย่อ/ขยายหน้าต่าง
+            window.addEventListener('resize', resizeAll);
             
             // ฟังก์ชันค้นหา
             const searchInput = document.getElementById('searchInput');
@@ -298,6 +410,7 @@
                 );
                 
                 productsGrid.innerHTML = filteredProducts.map(product => createProductCard(product)).join('');
+                requestAnimationFrame(resizeAll);
             }
             
             searchBtn.addEventListener('click', filterProducts);
@@ -305,6 +418,7 @@
             clearSearch.addEventListener('click', () => {
                 searchInput.value = '';
                 productsGrid.innerHTML = productsData.map(product => createProductCard(product)).join('');
+                requestAnimationFrame(resizeAll);
             });
             
             // ฟังก์ชันกรองหมวดหมู่
@@ -324,6 +438,12 @@
                         const filteredProducts = productsData.filter(product => product.category === category);
                         productsGrid.innerHTML = filteredProducts.map(product => createProductCard(product)).join('');
                     }
+                    requestAnimationFrame(() => {
+                        grid.querySelectorAll('img.product-img').forEach(img => {
+                            if (img.complete) resizeAll(); else img.addEventListener('load', resizeAll);
+                        });
+                        resizeAll();
+                    });
                 });
             });
             
