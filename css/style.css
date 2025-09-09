@@ -1653,13 +1653,15 @@ body {
 */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 รายการต่อแถวบน desktop */
-    gap: 1.2rem;                           /* ระยะห่างระหว่างสินค้า - แก้ไขได้ที่นี่ */
-    min-height: 400px;                      /* ความสูงขั้นต่ำของกริด - แก้ไขได้ที่นี่ */
-    align-items: start;                     /* จัดสินค้าที่ด้านบน */
-    grid-auto-rows: 8px;                    /* หน่วยแถวพื้นฐานสำหรับคำนวณ span */
-    grid-auto-flow: dense;                  /* ลดช่องว่างเมื่อมีการ span หลายแถว */
+    grid-template-columns: repeat(3, 1fr); /* 3 รายการต่อแถวบน desktop */
+    gap: 1.5rem;                            /* ระยะห่างระหว่างสินค้า - อ่านง่ายขึ้น */
+    min-height: 400px;                       /* ความสูงขั้นต่ำของกริด - แก้ไขได้ที่นี่ */
+    align-items: start;                      /* จัดสินค้าที่ด้านบน */
+    grid-auto-rows: 8px;                     /* หน่วยแถวพื้นฐานสำหรับคำนวณ span */
+    grid-auto-flow: dense;                   /* ลดช่องว่างเมื่อมีการ span หลายแถว */
 }
+
+/* คง Masonry บน Desktop เพื่อให้การ์ดไม่ต้องมีขนาดเท่ากัน */
 
 .product-card {
     background: var(--white);        /* สีพื้นหลัง - แก้ไขได้ที่ CSS Variables */
@@ -1671,7 +1673,7 @@ body {
     height: auto;                    /* สูงตามเนื้อหา ไม่ตัดปุ่ม/ข้อความ */
     display: flex;                   /* ใช้ flexbox สำหรับโครงร่าง */
     flex-direction: column;          /* จัดเรียงแนวตั้ง */
-    text-align: center;              /* จัดกึ่งกลางเนื้อหา */
+    text-align: left;                /* จัดชิดซ้ายเพื่ออ่านง่าย */
 }
 
 .product-card:hover {
@@ -1752,11 +1754,11 @@ body {
 }
 
 .product-info {
-    padding: 1rem;                    /* ระยะห่างภายใน - แก้ไขได้ที่นี่ */
+    padding: 1rem 1rem 1.1rem;        /* ระยะห่างภายใน - แก้ไขได้ที่นี่ */
     flex: 1;                          /* ขยายเต็มพื้นที่ที่เหลือ */
     display: flex;                    /* ใช้ Flexbox Layout */
     flex-direction: column;           /* จัดเรียงแนวตั้ง */
-    justify-content: space-between;   /* กระจายเนื้อหาให้เท่ากัน */
+    gap: 0.5rem;                      /* ช่องไฟระหว่างบล็อกข้อมูล */
 }
 
 .product-body {
@@ -1802,19 +1804,12 @@ body {
 
 .product-title {
     color: var(--text-color);         /* สีข้อความ - แก้ไขได้ที่ CSS Variables */
-    margin-bottom: 0.5rem;            /* ระยะห่างด้านล่าง - แก้ไขได้ที่นี่ */
-    font-size: 0.95rem;               /* ขนาดฟอนต์ - แก้ไขได้ที่นี่ */
-    font-weight: 500;                 /* ความหนาฟอนต์ - แก้ไขได้ที่นี่ */
+    margin-bottom: 0.25rem;           /* ระยะห่างด้านล่าง - แก้ไขได้ที่นี่ */
+    font-size: 1rem;                  /* ขนาดฟอนต์ - แก้ไขได้ที่นี่ */
+    font-weight: 600;                 /* ความหนาฟอนต์ - แก้ไขได้ที่นี่ */
     line-height: 1.3;                 /* ระยะห่างระหว่างบรรทัด */
     word-wrap: break-word;            /* ห่อคำเมื่อยาวเกินไป */
     overflow-wrap: break-word;        /* ห่อคำเมื่อยาวเกินไป */
-    flex-shrink: 0;                   /* ไม่หดตัว */
-    height: 2.6rem;                   /* ความสูงคงที่สำหรับ 2 บรรทัด */
-    overflow: hidden;                 /* ซ่อนข้อความที่เกิน */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;                    /* เพิ่มบรรทัดนี้สำหรับความเข้ากันได้ */
-    -webkit-box-orient: vertical;
 }
 
 .product-description {
@@ -1825,8 +1820,12 @@ body {
     word-wrap: break-word;            /* ห่อคำเมื่อยาวเกินไป */
     overflow-wrap: break-word;        /* ห่อคำเมื่อยาวเกินไป */
     flex: 0;                          /* ให้สูงตามเนื้อหา */
+    display: block;                   /* แสดงตามเนื้อหาเต็ม */
+    overflow: visible;                /* ไม่ซ่อนข้อความ */
     font-family: var(--font-family);  /* ใช้ฟอนต์มาตรฐานของเว็บ */
 }
+
+/* (ไม่ใช้ปุ่มอ่านเพิ่มเติมอีกต่อไป) */
 
 /* จัดรูปแบบรายการภายในคำอธิบายสินค้าให้สอดคล้องกับสไตล์หลัก */
 .product-description ul {
@@ -6093,8 +6092,11 @@ iframe:hover {
     }
     
     .card-grid, .product-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
+    }
+    /* Force products to 3 columns on desktop */
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
     }
 }
 
