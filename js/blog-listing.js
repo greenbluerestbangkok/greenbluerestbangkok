@@ -5,6 +5,16 @@ class BlogListingManager {
         this.init();
     }
     
+    resolveAssetPath(path) {
+        if (!path) return path;
+        const onGithubRoot = window.location.hostname.endsWith('github.io');
+        // Paths stored as /greenbluerestbangkok/... should drop the prefix on custom domain
+        if (!onGithubRoot && path.startsWith('/greenbluerestbangkok')) {
+            return path.replace('/greenbluerestbangkok', '');
+        }
+        return path;
+    }
+
     init() {
         this.renderBlogGrid();
     }
@@ -19,11 +29,12 @@ class BlogListingManager {
         // ======================================== -->
 
         // ฟังก์ชันสร้าง HTML string ที่ปลอดภัย
+        const resolve = this.resolveAssetPath.bind(this);
         function createSafeHTML(blogs) {
             return blogs.map(blog => `
                 <div class="blog-card">
                     <div class="blog-image">
-                        <img src="${blog.image}" alt="${blog.title}" class="blog-img">
+                        <img src="${resolve(blog.image)}" alt="${blog.title}" class="blog-img">
                     </div>
                     <div class="blog-content">
                         <h3 class="blog-title">${blog.title}</h3>

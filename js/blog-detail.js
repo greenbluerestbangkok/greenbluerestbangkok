@@ -5,6 +5,15 @@ class BlogDetailManager {
         this.init();
     }
     
+    resolveAssetPath(path) {
+        if (!path) return path;
+        const onGithubRoot = window.location.hostname.endsWith('github.io');
+        if (!onGithubRoot && path.startsWith('/greenbluerestbangkok')) {
+            return path.replace('/greenbluerestbangkok', '');
+        }
+        return path;
+    }
+
     init() {
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
@@ -37,6 +46,7 @@ class BlogDetailManager {
     
     renderContent(content, type) {
         const detailContainer = document.getElementById('blogDetail');
+        const resolve = this.resolveAssetPath.bind(this);
         
         // ======================================== -->
         // 🚨 SECURITY FIX: แก้ไข XSS vulnerability

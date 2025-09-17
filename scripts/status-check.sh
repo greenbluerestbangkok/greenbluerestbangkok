@@ -14,9 +14,9 @@ PURPLE='\033[0;35m'
 NC='\033[0m' # No Color
 
 # Configuration
-REPO_OWNER="nattagid"
+REPO_OWNER="greenbluerestbangkok"
 REPO_NAME="greenbluerestbangkok"
-SITE_URL="https://${REPO_OWNER}.github.io/${REPO_NAME}"
+SITE_URL="https://${REPO_OWNER}.github.io/"
 MAX_WAIT_TIME=300  # 5 minutes
 CHECK_INTERVAL=10  # 10 seconds
 
