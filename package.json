@@ -6,7 +6,7 @@
   "scripts": {
     "start": "python3 -m http.server 3000",
     "dev": "python3 -m http.server 3000",
-    "build": "echo 'Build process not implemented yet'",
+    "build": "cd admin && npm run build",
     "test": "echo 'Testing not implemented yet'",
     "lint": "echo 'Linting not implemented yet'",
     "format": "echo 'Formatting not implemented yet'"
@@ -23,8 +23,14 @@
   ],
   "author": "Green Blue Rest Bangkok",
   "license": "MIT",
-  "devDependencies": {},
-  "dependencies": {},
+  "devDependencies": {
+    "next": "^14.0.0"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "engines": {
     "node": ">=14.0.0"
   },

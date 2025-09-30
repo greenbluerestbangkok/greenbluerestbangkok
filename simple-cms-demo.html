@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตัวอย่างการใช้งาน CMS API แบบง่าย</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .controls {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .controls h2 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background: #48bb78;
+        }
+        
+        .btn-success:hover {
+            background: #38a169;
+        }
+        
+        .btn-warning {
+            background: #ed8936;
+        }
+        
+        .btn-warning:hover {
+            background: #dd6b20;
+        }
+        
+        .section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            margin-bottom: 1rem;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+        
+        .articles-list, .products-grid {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .article-item, .product-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .products-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        
+        .article-item h3, .product-item h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-item p, .product-item p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-item small {
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+        
+        .status.published {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        
+        .status.draft {
+            background: #fef5e7;
+            color: #744210;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: #48bb78;
+        }
+        
+        .category {
+            background: #edf2f7;
+            color: #4a5568;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+        
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #667eea;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .error-message, .success-message {
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .error-message {
+            background: #fed7d7;
+            color: #e53e3e;
+            border: 1px solid #feb2b2;
+        }
+        
+        .success-message {
+            background: #c6f6d5;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+        
+        .info-box {
+            background: #e6fffa;
+            border: 1px solid #81e6d9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .info-box h3 {
+            color: #234e52;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-box p {
+            color: #285e61;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-box code {
+            background: #f7fafc;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #2d3748;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🚀 CMS API Integration Demo</h1>
+            <p>ตัวอย่างการใช้งาน CMS API แบบง่ายๆ ด้วย JavaScript ES6</p>
+        </div>
+
+        <!-- Info Box -->
+        <div class="info-box">
+            <h3>📋 ข้อมูลการใช้งาน</h3>
+            <p><strong>CMS URL:</strong> <code>http://localhost:1337</code></p>
+            <p><strong>Admin Panel:</strong> <a href="http://localhost:1337/admin" target="_blank">http://localhost:1337/admin</a></p>
+            <p><strong>API Health:</strong> <a href="http://localhost:1337/api/health" target="_blank">http://localhost:1337/api/health</a></p>
+            <p><strong>หมายเหตุ:</strong> ตรวจสอบให้แน่ใจว่า CMS Server ทำงานอยู่ที่ port 1337</p>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <h2>🎮 ปุ่มควบคุม</h2>
+            <button class="btn" onclick="loadArticles()">📰 โหลดบทความ</button>
+            <button class="btn" onclick="loadProducts()">📦 โหลดสินค้า</button>
+            <button class="btn" onclick="refreshData()">🔄 โหลดทั้งหมด</button>
+            <button class="btn btn-success" onclick="addArticle()">➕ เพิ่มบทความทดสอบ</button>
+            <button class="btn btn-warning" onclick="checkHealth()">❤️ ตรวจสอบสถานะ CMS</button>
+        </div>
+
+        <!-- Messages -->
+        <div id="error-message"></div>
+        <div id="success-message"></div>
+
+        <!-- Articles Section -->
+        <div class="section">
+            <h2>📰 บทความ (Articles)</h2>
+            <div id="articles-container">
+                <div class="loading">กำลังโหลดบทความ...</div>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div class="section">
+            <h2>📦 สินค้าชุมชน (Products)</h2>
+            <div id="products-container">
+                <div class="loading">กำลังโหลดสินค้า...</div>
+            </div>
+        </div>
+
+        <!-- Code Examples -->
+        <div class="section">
+            <h2>💻 ตัวอย่างโค้ด</h2>
+            <div style="background: #1a202c; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9rem; overflow-x: auto;">
+                <pre><code>// 1. ดึงข้อมูลบทความ
+async function loadArticles() {
+    try {
+        const response = await fetch('http://localhost:1337/api/articles');
+        const articles = await response.json();
+        console.log('บทความ:', articles);
+    } catch (error) {
+        console.error('เกิดข้อผิดพลาด:', error);
+    }
+}
+
+// 2. เพิ่มบทความใหม่
+async function addArticle() {
+    const formData = new FormData();
+    formData.append('title', 'ชื่อบทความ');
+    formData.append('description', 'คำอธิบาย');
+    formData.append('status', 'published');
+    
+    try {
+        const response = await fetch('http://localhost:1337/api/articles', {
+            method: 'POST',
+            body: formData
+        });
+        const result = await response.json();
+        console.log('เพิ่มสำเร็จ:', result);
+    } catch (error) {
+        console.error('เกิดข้อผิดพลาด:', error);
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2025 GreenBlueRest Bangkok - CMS Integration Demo</p>
+            <p>เปิด Console (F12) เพื่อดูข้อมูลการทำงาน</p>
+        </div>
+    </div>
+
+    <!-- Include JavaScript -->
+    <script src="js/simple-cms-example.js"></script>
+    
+    <script>
+        // ฟังก์ชันเพิ่มเติมสำหรับ demo
+        async function checkHealth() {
+            try {
+                const response = await fetch('http://localhost:1337/api/health');
+                const health = await response.json();
+                showSuccessMessage(`CMS ทำงานปกติ: ${health.message}`);
+            } catch (error) {
+                showErrorMessage('ไม่สามารถเชื่อมต่อกับ CMS ได้');
+            }
+        }
+        
+        // แสดงข้อความในหน้าเว็บ
+        function showErrorMessage(message) {
+            const container = document.getElementById('error-message');
+            container.innerHTML = `
+                <div class="error-message">
+                    <strong>❌ ข้อผิดพลาด:</strong> ${message}
+                </div>
+            `;
+            setTimeout(() => container.innerHTML = '', 5000);
+        }
+        
+        function showSuccessMessage(message) {
+            const container = document.getElementById('success-message');
+            container.innerHTML = `
+                <div class="success-message">
+                    <strong>✅ สำเร็จ:</strong> ${message}
+                </div>
+            `;
+            setTimeout(() => container.innerHTML = '', 5000);
+        }
+        
+        // Override functions เพื่อแสดงข้อความ
+        const originalLoadArticles = window.loadArticles;
+        window.loadArticles = function() {
+            console.log('📰 กำลังโหลดบทความ...');
+            originalLoadArticles();
+        };
+        
+        const originalLoadProducts = window.loadProducts;
+        window.loadProducts = function() {
+            console.log('📦 กำลังโหลดสินค้า...');
+            originalLoadProducts();
+        };
+        
+        const originalAddArticle = window.addArticle;
+        window.addArticle = function() {
+            console.log('➕ กำลังเพิ่มบทความทดสอบ...');
+            originalAddArticle();
+        };
+        
+        console.log('🚀 Simple CMS Demo เริ่มต้นแล้ว!');
+        console.log('📊 ตรวจสอบ Console เพื่อดูข้อมูลการทำงาน');
+    </script>
+</body>
+</html>
