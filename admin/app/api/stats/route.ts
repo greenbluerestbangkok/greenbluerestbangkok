@@ -7,19 +7,38 @@ export const dynamic = 'force-dynamic';
 // GET /api/stats - Get dashboard statistics
 export async function GET(request: NextRequest) {
   try {
-    // Fetch data from Supabase
-    const [articlesResult, productsResult, tripsResult, videosResult] = await Promise.all([
+    console.log('Fetching stats from Supabase...');
+    
+    // Fetch data from Supabase with error checking
+    const [articlesResult, productsResult, tripsResult, videosResult, entrepreneursResult] = await Promise.all([
       supabase.from('articles').select('id, status').limit(1000),
       supabase.from('products').select('id, status').limit(1000),
       supabase.from('trips').select('id, status').limit(1000),
-      supabase.from('videos').select('id, status').limit(1000)
+      supabase.from('videos').select('id, status').limit(1000),
+      supabase.from('entrepreneurs').select('id, status').limit(1000)
     ]);
+
+    // Log any errors
+    if (articlesResult.error) console.error('Articles error:', articlesResult.error);
+    if (productsResult.error) console.error('Products error:', productsResult.error);
+    if (tripsResult.error) console.error('Trips error:', tripsResult.error);
+    if (videosResult.error) console.error('Videos error:', videosResult.error);
+    if (entrepreneursResult.error) console.error('Entrepreneurs error:', entrepreneursResult.error);
 
     // Get data or use empty arrays
     const articles = articlesResult.data || [];
     const products = productsResult.data || [];
     const trips = tripsResult.data || [];
     const videos = videosResult.data || [];
+    const entrepreneurs = entrepreneursResult.data || [];
+    
+    console.log('Data fetched:', { 
+      articles: articles.length, 
+      products: products.length, 
+      trips: trips.length, 
+      videos: videos.length,
+      entrepreneurs: entrepreneurs.length
+    });
 
     // Calculate trips stats
     const tripsStats = {
@@ -47,22 +66,37 @@ export async function GET(request: NextRequest) {
       total: videos.length
     };
 
-    return NextResponse.json({
+    // Calculate entrepreneurs stats
+    const entrepreneursStats = {
+      total: entrepreneurs.length,
+      active: entrepreneurs.filter(e => e.status === 'active').length
+    };
+
+    const response = {
       trips: tripsStats,
       products: productsStats,
       articles: articlesStats,
-      videos: videosStats
-    });
-
-  } catch (error) {
-    console.error('Stats API error:', error);
+      videos: videosStats,
+      entrepreneurs: entrepreneursStats
+    };
     
-    // Return default stats if error
+    console.log('Returning stats:', response);
+
+    return NextResponse.json(response);
+
+  } catch (error: any) {
+    console.error('Stats API error:', error);
+    console.error('Error details:', error.message, error.stack);
+    
+    // Return error message for debugging
     return NextResponse.json({
+      error: 'Failed to fetch stats',
+      message: error.message,
       trips: { total: 0, active: 0, draft: 0 },
       products: { total: 0, available: 0, outOfStock: 0 },
       articles: { total: 0, published: 0, draft: 0 },
-      videos: { total: 0 }
-    });
+      videos: { total: 0 },
+      entrepreneurs: { total: 0, active: 0 }
+    }, { status: 500 });
   }
 }
