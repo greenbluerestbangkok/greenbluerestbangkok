@@ -182,7 +182,7 @@ body {
     color: var(--primary-color);    /* สี logo - แก้ไขได้ที่ CSS Variables */
     text-decoration: none;          /* ลบเส้นใต้ลิงก์ */
     transition: color 0.3s ease;    /* เอฟเฟกต์เปลี่ยนสี - แก้ไขได้ที่นี่ */
-    margin-right: auto;             /* ดัน logo ไปซ้าย, เมนูไปขวา */
+    margin-right: auto !important;  /* ดัน logo ไปซ้าย, เมนูไปขวา - Force! */
 }
 
 .nav-logo:hover {
@@ -194,7 +194,7 @@ body {
     list-style: none;               /* ลบจุดหน้าลิสต์ */
     gap: 2rem;                      /* ระยะห่างระหว่างเมนู - แก้ไขได้ที่นี่ */
     margin: 0;                      /* ลบระยะห่างเริ่มต้น */
-    margin-left: auto;              /* ดันเมนูไปทางขวาสุด */
+    margin-left: auto !important;   /* ดันเมนูไปทางขวาสุด - Force! */
     padding: 0;                     /* ลบระยะห่างภายในเริ่มต้น */
 }
 
