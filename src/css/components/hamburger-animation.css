@@ -44,8 +44,8 @@
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Mobile Menu Styles */
-@media (max-width: 768px) {
+/* Mobile & Tablet Menu Styles */
+@media (max-width: 1024px) {
     .hamburger {
         display: flex;
     }

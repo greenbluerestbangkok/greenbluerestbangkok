@@ -477,8 +477,9 @@ body {
     border: 2px solid var(--border-color);
     border-radius: 30px;
     font-size: 1.1rem;                   /* เพิ่มขนาดฟอนต์ */
-    min-width: 350px;                    /* เพิ่มความกว้างขั้นต่ำ */
+    min-width: 200px;                    /* ลดความกว้างขั้นต่ำ (responsive) */
     max-width: 450px;                    /* เพิ่มความกว้างสูงสุด */
+    width: 100%;                         /* Full width responsive */
     transition: all 0.3s ease;
     background: white;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* เพิ่มเงา */
@@ -737,7 +738,7 @@ body {
 
 .card-img {
     width: 100%;                      /* กว้างเต็มการ์ด */
-    height: 220px;                    /* เพิ่มความสูงภาพ - แก้ไขได้ที่นี่ */
+    aspect-ratio: 16/9;               /* รักษาอัตราส่วน 16:9 (responsive) */
     object-fit: cover;                /* ครอบคลุมพื้นที่โดยไม่บิดเบี้ยว - แก้ไขได้ที่นี่ */
     transition: transform 0.3s ease;  /* เอฟเฟกต์ขยายภาพ */
 }
@@ -1684,8 +1685,9 @@ body {
 .product-image-container {
     position: relative;               /* ตำแหน่งสัมพัทธ์สำหรับ overlay */
     overflow: hidden;                 /* ซ่อนภาพที่ล้นออกมา */
-    width: 200px;                     /* ความกว้างภาพ - สเกล 1:1 */
-    height: 200px;                    /* ความสูงภาพ - สเกล 1:1 */
+    width: 100%;                      /* Full width responsive */
+    aspect-ratio: 1/1;                /* รักษาอัตราส่วน 1:1 */
+    max-width: 300px;                 /* ความกว้างสูงสุด */
     background: #f8f9fa;             /* สีพื้นหลังระหว่างโหลดภาพ */
     display: flex;                    /* จัดเรียงเนื้อหา */
     align-items: center;              /* จัดกึ่งกลางแนวตั้ง */
@@ -2800,9 +2802,9 @@ body {
     - ลดขนาดฟอนต์
     - เปลี่ยนการจัดเรียงเป็นแนวตั้ง
 */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .hamburger {
-        display: flex;               /* แสดงเมนู hamburger บนมือถือ */
+        display: flex;               /* แสดงเมนู hamburger บนมือถือและแท็บเล็ต */
         pointer-events: auto;        /* ให้สามารถคลิกได้ */
         position: absolute;          /* จัดตำแหน่ง */
         right: 1rem;                 /* ระยะห่างจากขวา */
@@ -6188,6 +6190,392 @@ iframe:hover {
     
     .card-body, .product-body {
         padding: 1rem;
+    }
+}
+
+/* ======================================== */
+/* 📱 RESPONSIVE TYPOGRAPHY - Mobile First */
+/* ======================================== */
+
+/* Base (Mobile): 320px+ */
+body {
+    font-size: 16px;  /* Base font size */
+}
+
+h1 {
+    font-size: 1.75rem;   /* 28px - Mobile */
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 1.5rem;    /* 24px - Mobile */
+    line-height: 1.3;
+}
+
+h3 {
+    font-size: 1.25rem;   /* 20px - Mobile */
+    line-height: 1.4;
+}
+
+/* Tablet: 768px+ */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2.25rem;   /* 36px - Tablet */
+    }
+    
+    h2 {
+        font-size: 1.875rem;  /* 30px - Tablet */
+    }
+    
+    h3 {
+        font-size: 1.5rem;    /* 24px - Tablet */
+    }
+}
+
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+    h1 {
+        font-size: 3rem;      /* 48px - Desktop */
+    }
+    
+    h2 {
+        font-size: 2.25rem;   /* 36px - Desktop */
+    }
+    
+    h3 {
+        font-size: 1.875rem;  /* 30px - Desktop */
+    }
+}
+
+/* Large Desktop: 1440px+ */
+@media (min-width: 1440px) {
+    h1 {
+        font-size: 3.5rem;    /* 56px - Large Desktop */
+    }
+    
+    h2 {
+        font-size: 2.5rem;    /* 40px - Large Desktop */
+    }
+}
+
+/* ======================================== */
+/* 📐 RESPONSIVE SPACING - Mobile First */
+/* ======================================== */
+
+/* Base (Mobile): 320px+ */
+.container {
+    padding: 1rem;        /* 16px - Mobile */
+    gap: 1rem;
+}
+
+.main-content {
+    padding: 1rem 0;
+}
+
+/* Large Mobile: 640px+ */
+@media (min-width: 640px) {
+    .container {
+        padding: 1.5rem;  /* 24px - Large Mobile */
+        gap: 1.5rem;
+    }
+    
+    .main-content {
+        padding: 1.5rem 0;
+    }
+}
+
+/* Tablet: 768px+ */
+@media (min-width: 768px) {
+    .container {
+        padding: 2rem;    /* 32px - Tablet */
+        gap: 2rem;
+    }
+    
+    .main-content {
+        padding: 2rem 0;
+    }
+}
+
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+    .container {
+        padding: 2.5rem;  /* 40px - Desktop */
+        gap: 2.5rem;
+    }
+    
+    .main-content {
+        padding: 3rem 0;
+    }
+}
+
+/* ======================================== */
+/* 📱 NEW BREAKPOINTS - Complete Coverage */
+/* ======================================== */
+
+/* Small Mobile: 320px - 479px */
+@media (max-width: 479px) {
+    .search-input {
+        font-size: 0.9rem;
+        padding: 0.9rem 1rem;
+    }
+    
+    .product-grid,
+    .card-grid {
+        gap: 0.8rem;
+    }
+}
+
+/* Large Mobile: 640px - 767px */
+@media (min-width: 640px) and (max-width: 767px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+/* Desktop: 1280px - 1919px */
+@media (min-width: 1280px) and (max-width: 1919px) {
+    .container {
+        max-width: 1200px;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Large Desktop: 1920px+ */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1400px;   /* Wider on large screens */
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    .card-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Increase font sizes for large screens */
+    body {
+        font-size: 18px;
+    }
+}
+
+/* ======================================== */
+/* 🛠️ RESPONSIVE UTILITY CLASSES */
+/* ======================================== */
+
+/* Visibility Utilities */
+.hide-mobile {
+    display: none !important;
+}
+
+@media (min-width: 768px) {
+    .hide-mobile {
+        display: block !important;
+    }
+}
+
+.hide-tablet {
+    display: block !important;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hide-tablet {
+        display: none !important;
+    }
+}
+
+.hide-desktop {
+    display: block !important;
+}
+
+@media (min-width: 1024px) {
+    .hide-desktop {
+        display: none !important;
+    }
+}
+
+.show-mobile {
+    display: block !important;
+}
+
+@media (min-width: 768px) {
+    .show-mobile {
+        display: none !important;
+    }
+}
+
+.show-tablet {
+    display: none !important;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .show-tablet {
+        display: block !important;
+    }
+}
+
+.show-desktop {
+    display: none !important;
+}
+
+@media (min-width: 1024px) {
+    .show-desktop {
+        display: block !important;
+    }
+}
+
+/* Text Alignment Utilities */
+.text-center-mobile {
+    text-align: left;
+}
+
+@media (max-width: 767px) {
+    .text-center-mobile {
+        text-align: center;
+    }
+}
+
+.text-left-mobile {
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .text-left-mobile {
+        text-align: left;
+    }
+}
+
+/* Container Size Utilities */
+.container-fluid {
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.container-sm {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.container-md {
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+.container-lg {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.container-xl {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.container-2xl {
+    max-width: 1536px;
+    margin: 0 auto;
+}
+
+/* Responsive Spacing Utilities */
+.p-mobile-sm {
+    padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .p-mobile-sm {
+        padding: 1rem;
+    }
+}
+
+.m-mobile-sm {
+    margin: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .m-mobile-sm {
+        margin: 1rem;
+    }
+}
+
+/* Responsive Width Utilities */
+.w-full-mobile {
+    width: auto;
+}
+
+@media (max-width: 767px) {
+    .w-full-mobile {
+        width: 100% !important;
+    }
+}
+
+/* Responsive Flex Direction */
+.flex-col-mobile {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 767px) {
+    .flex-col-mobile {
+        flex-direction: column;
+    }
+}
+
+/* Responsive Grid Columns */
+.grid-1-mobile {
+    display: grid;
+}
+
+@media (max-width: 767px) {
+    .grid-1-mobile {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+.grid-2-tablet {
+    display: grid;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .grid-2-tablet {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Touch Target Size Utilities */
+.touch-target {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.5rem;
+}
+
+/* Responsive Font Size Utilities */
+.text-sm-mobile {
+    font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+    .text-sm-mobile {
+        font-size: 0.875rem;
+    }
+}
+
+.text-lg-desktop {
+    font-size: 1rem;
+}
+
+@media (min-width: 1024px) {
+    .text-lg-desktop {
+        font-size: 1.25rem;
     }
 }
 
