@@ -1,38 +1,44 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { requireAuth } from '@/lib/auth';
+import { supabase } from '@/lib/supabase';
+
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
 
 // GET /api/auth/me - Get current user
 export async function GET(request: NextRequest) {
   try {
-    // Require authentication
-    const { user } = await requireAuth(request);
-
-    return NextResponse.json({
-      success: true,
-      user: {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        role: user.role.name,
-        confirmed: user.confirmed,
-        blocked: user.blocked,
-        createdAt: user.createdAt,
-        updatedAt: user.updatedAt,
-      }
-    });
-
-  } catch (error) {
-    console.error('Get current user error:', error);
+    // Get token from cookie
+    const token = request.cookies.get('supabase_token')?.value;
     
-    if (error instanceof Error && error.message === 'Authentication required') {
+    if (!token) {
       return NextResponse.json(
         { error: 'Authentication required' },
         { status: 401 }
       );
     }
 
+    // Verify token with Supabase
+    const { data: { user }, error } = await supabase.auth.getUser(token);
+
+    if (error || !user) {
+      return NextResponse.json(
+        { error: 'Invalid token' },
+        { status: 401 }
+      );
+    }
+
+    return NextResponse.json({
+      user: {
+        id: user.id,
+        email: user.email,
+        role: 'admin'
+      }
+    });
+
+  } catch (error) {
+    console.error('Auth check error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Authentication failed' },
       { status: 500 }
     );
   }

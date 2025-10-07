@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
-  const [identifier, setIdentifier] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -16,16 +16,17 @@ export default function LoginPage() {
     setError('');
 
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch('/admin/api/auth/login', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ identifier, password }),
+        body: JSON.stringify({ email, password }),
       });
 
       if (response.ok) {
-        router.push('/admin'); // Redirect to dashboard
+        router.push('/'); // Redirect to dashboard
       } else {
         const data = await response.json();
         setError(data.error || 'Login failed');
@@ -58,18 +59,18 @@ export default function LoginPage() {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-4">
               <div>
-                <label htmlFor="identifier" className="form-label">
-                  ชื่อผู้ใช้หรืออีเมล
+                <label htmlFor="email" className="form-label">
+                  อีเมล
                 </label>
                 <input
-                  id="identifier"
-                  name="identifier"
-                  type="text"
+                  id="email"
+                  name="email"
+                  type="email"
                   required
                   className="form-input"
-                  placeholder="admin หรือ admin@greenbluerestbangkok.com"
-                  value={identifier}
-                  onChange={(e) => setIdentifier(e.target.value)}
+                  placeholder="admin@greenbluerestbangkok.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div>

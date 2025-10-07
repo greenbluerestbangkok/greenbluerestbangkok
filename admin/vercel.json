@@ -1,24 +1,30 @@
 {
-  "version": 2,
-  "buildCommand": "cd admin && npm run build",
-  "outputDirectory": "admin/.next",
-  "installCommand": "cd admin && npm install",
-  "routes": [
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "headers": [
     {
-      "src": "/admin/(.*)",
-      "dest": "/admin/$1"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "source": "/admin/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization, apikey"
+        }
+      ]
     }
   ],
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "functions": {
-    "admin/app/api/**/*.ts": {
-      "maxDuration": 30
+  "rewrites": [
+    {
+      "source": "/admin/api/(.*)",
+      "destination": "/api/$1"
     }
-  }
+  ]
 }

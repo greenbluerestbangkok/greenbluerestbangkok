@@ -164,7 +164,7 @@ export default function ProductsPage() {
           <p className="text-gray-600">จัดการข้อมูลสินค้าชุมชนทั้งหมด</p>
         </div>
         <Link
-          href="/admin/products/new"
+          href="/products/new"
           className="btn-primary"
         >
           เพิ่มสินค้าใหม่
@@ -286,7 +286,7 @@ export default function ProductsPage() {
 
                 <div className="flex space-x-2">
                   <Link
-                    href={`/admin/products/${product.id}`}
+                    href={`/products/${product.id}`}
                     className="flex-1 btn-primary text-center text-sm py-2"
                   >
                     แก้ไข

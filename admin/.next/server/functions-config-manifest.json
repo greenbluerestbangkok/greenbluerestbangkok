@@ -1,0 +1,1 @@
+{"version":1,"functions":{"/api/articles":{},"/api/auth/me":{},"/api/articles/[id]":{},"/api/entrepreneurs/[id]":{},"/api/auth/logout":{},"/api/products":{},"/api/auth/login":{},"/api/stats":{},"/api/entrepreneurs":{},"/api/trips/[id]":{},"/api/trips":{},"/api/products/[id]":{},"/api/videos":{},"/api/videos/[id]":{}}}

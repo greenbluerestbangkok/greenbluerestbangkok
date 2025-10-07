@@ -1,77 +1,41 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { z } from 'zod';
-import { listQuerySchema } from '@/lib/schema';
-import { listEntities, createEntity, StrapiEntity } from '@/lib/strapi';
-import { requireAuth, getAuth } from '@/lib/auth';
+import { supabase } from '@/lib/supabase';
 
-// Create article schema
-const createArticleSchema = z.object({
-  title: z.string().min(1, 'Title is required'),
-  description: z.string().optional(),
-  content: z.string().optional(),
-  author: z.string().optional(),
-  category: z.string().optional(),
-  status: z.enum(['draft', 'published']).default('draft'),
-  image_url: z.string().url().optional(),
-  slug: z.string().optional(),
-});
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
 
-// GET /api/articles - List all articles
+// GET /api/articles - Get all articles (No auth required for now)
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
-    const query = listQuerySchema.parse({
-      page: searchParams.get('page') || '1',
-      limit: searchParams.get('limit') || '20',
-      search: searchParams.get('search') || undefined,
-      category: searchParams.get('category') || undefined,
-      status: searchParams.get('status') || undefined,
-      sort: searchParams.get('sort') || 'createdAt',
-      order: searchParams.get('order') || 'desc'
-    });
+    // TODO: Add authentication when ready
+    
+    // Fetch articles from Supabase
+    const { data: articles, error } = await supabase
+      .from('articles')
+      .select('*')
+      .order('created_at', { ascending: false });
 
-    // Get auth info (optional for public content)
-    const auth = await getAuth(request);
+    if (error) {
+      console.error('Supabase error:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch articles', details: error.message },
+        { status: 500 }
+      );
+    }
 
-    // Fetch articles from Strapi
-    const response = await listEntities('articles', {
-      page: parseInt(query.page),
-      pageSize: parseInt(query.limit),
-      search: query.search,
-      category: query.category,
-      status: query.status,
-      sort: query.sort,
-      order: query.order,
-    }, auth?.token);
-
-    // Transform Strapi response to match expected format
-    const articles = response.data.map((item: StrapiEntity) => ({
-      id: item.id,
-      ...item.attributes,
-      createdAt: item.createdAt,
-      updatedAt: item.updatedAt,
-    }));
-
-    return NextResponse.json({
-      articles,
-      pagination: response.meta.pagination || {
-        page: parseInt(query.page),
-        limit: parseInt(query.limit),
-        total: articles.length,
-        totalPages: 1
+    // Return articles with pagination info
+    return NextResponse.json({ 
+      articles: articles || [],
+      pagination: {
+        page: 1,
+        limit: 20,
+        total: articles?.length || 0,
+        totalPages: Math.ceil((articles?.length || 0) / 20)
       }
     });
 
   } catch (error) {
-    console.error('Error listing articles:', error);
-    
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Invalid query parameters', details: error.errors },
-        { status: 400 }
-      );
-    }
-
+    console.error('API error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -82,56 +46,58 @@ export async function GET(request: NextRequest) {
 // POST /api/articles - Create new article
 export async function POST(request: NextRequest) {
   try {
-    // Require authentication
-    const { token } = await requireAuth(request);
+    // Get token from cookie for authentication
+    const token = request.cookies.get('supabase_token')?.value;
     
-    const body = await request.json();
-    const articleData = createArticleSchema.parse(body);
-
-    // Generate slug if not provided
-    if (!articleData.slug) {
-      articleData.slug = articleData.title
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .replace(/^-+|-+$/g, '');
-    }
-
-    // Create article in Strapi
-    const response = await createEntity('articles', articleData, token);
-
-    // Transform response to match expected format
-    const article = {
-      id: response.data.id,
-      ...response.data.attributes,
-      createdAt: response.data.createdAt,
-      updatedAt: response.data.updatedAt,
-    };
-
-    return NextResponse.json({
-      success: true,
-      article,
-      message: 'Article created successfully'
-    });
-
-  } catch (error) {
-    console.error('Error creating article:', error);
-    
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Invalid article data', details: error.errors },
-        { status: 400 }
-      );
-    }
-
-    if (error instanceof Error && error.message === 'Authentication required') {
+    if (!token) {
       return NextResponse.json(
         { error: 'Authentication required' },
         { status: 401 }
       );
     }
 
+    // Verify token with Supabase
+    const { data: { user }, error: authError } = await supabase.auth.getUser(token);
+
+    if (authError || !user) {
+      return NextResponse.json(
+        { error: 'Invalid token' },
+        { status: 401 }
+      );
+    }
+
+    const body = await request.json();
+    
+    // Insert new article into Supabase
+    const { data: article, error } = await supabase
+      .from('articles')
+      .insert([{
+        title: body.title,
+        description: body.description,
+        content: body.content,
+        category: body.category || 'general',
+        status: body.status || 'draft',
+        image_url: body.image_url,
+        gallery: body.gallery ? JSON.stringify(body.gallery) : null,
+        author: body.author || user.email,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      }])
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Supabase error:', error);
+      return NextResponse.json(
+        { error: 'Failed to create article' },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ article }, { status: 201 });
+
+  } catch (error) {
+    console.error('API error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

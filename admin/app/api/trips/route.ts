@@ -1,65 +1,42 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { z } from 'zod';
-import { listQuerySchema, createTripSchema } from '@/lib/schema';
-import { listEntities, createEntity, StrapiEntity } from '@/lib/strapi';
-import { requireAuth, getAuth } from '@/lib/auth';
+import { supabase } from '@/lib/supabase';
 
-// GET /api/trips - List all trips
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
+// GET /api/trips - Get all trips (No auth required for now)
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
-    const query = listQuerySchema.parse({
-      page: searchParams.get('page') || '1',
-      limit: searchParams.get('limit') || '20',
-      search: searchParams.get('search') || undefined,
-      category: searchParams.get('category') || undefined,
-      status: searchParams.get('status') || undefined,
-      sort: searchParams.get('sort') || 'createdAt',
-      order: searchParams.get('order') || 'desc'
-    });
+    // TODO: Add authentication when ready
+    // For now, allow all requests for testing
+    
+    // Fetch trips from Supabase
+    const { data: trips, error } = await supabase
+      .from('trips')
+      .select('*')
+      .order('created_at', { ascending: false });
 
-    // Get auth info (optional for public content)
-    const auth = await getAuth(request);
+    if (error) {
+      console.error('Supabase error:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch trips', details: error.message },
+        { status: 500 }
+      );
+    }
 
-    // Fetch trips from Strapi
-    const response = await listEntities('trips', {
-      page: parseInt(query.page),
-      pageSize: parseInt(query.limit),
-      search: query.search,
-      category: query.category,
-      status: query.status,
-      sort: query.sort,
-      order: query.order,
-    }, auth?.token);
-
-    // Transform Strapi response to match expected format
-    const trips = response.data.map((item: StrapiEntity) => ({
-      id: item.id,
-      ...item.attributes,
-      createdAt: item.createdAt,
-      updatedAt: item.updatedAt,
-    }));
-
-    return NextResponse.json({
-      trips,
-      pagination: response.meta.pagination || {
-        page: parseInt(query.page),
-        limit: parseInt(query.limit),
-        total: trips.length,
-        totalPages: 1
+    // Return trips with pagination info
+    return NextResponse.json({ 
+      trips: trips || [],
+      pagination: {
+        page: 1,
+        limit: 20,
+        total: trips?.length || 0,
+        totalPages: Math.ceil((trips?.length || 0) / 20)
       }
     });
 
   } catch (error) {
-    console.error('Error listing trips:', error);
-    
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Invalid query parameters', details: error.errors },
-        { status: 400 }
-      );
-    }
-
+    console.error('API error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -67,49 +44,48 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST /api/trips - Create new trip
+// POST /api/trips - Create new trip (No auth required for now)
 export async function POST(request: NextRequest) {
   try {
-    // Require authentication
-    const { token } = await requireAuth(request);
+    // TODO: Add authentication when ready
     
     const body = await request.json();
-    const tripData = createTripSchema.parse(body);
+    
+    // Insert new trip into Supabase
+    const { data: trip, error } = await supabase
+      .from('trips')
+      .insert([{
+        title: body.title,
+        description: body.description,
+        content: body.content,
+        price: body.price,
+        duration: body.duration,
+        capacity: body.capacity,
+        status: body.status || 'draft',
+        image_url: body.image_url,
+        gallery: body.gallery ? JSON.stringify(body.gallery) : null,
+        highlights: body.highlights ? JSON.stringify(body.highlights) : null,
+        includes: body.includes ? JSON.stringify(body.includes) : null,
+        schedule: body.schedule,
+        video_url: body.video_url,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      }])
+      .select()
+      .single();
 
-    // Create trip in Strapi
-    const response = await createEntity('trips', tripData, token);
+    if (error) {
+      console.error('Supabase error:', error);
+      return NextResponse.json(
+        { error: 'Failed to create trip' },
+        { status: 500 }
+      );
+    }
 
-    // Transform response to match expected format
-    const trip = {
-      id: response.data.id,
-      ...response.data.attributes,
-      createdAt: response.data.createdAt,
-      updatedAt: response.data.updatedAt,
-    };
-
-    return NextResponse.json({
-      success: true,
-      trip,
-      message: 'Trip created successfully'
-    });
+    return NextResponse.json({ trip }, { status: 201 });
 
   } catch (error) {
-    console.error('Error creating trip:', error);
-    
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Invalid trip data', details: error.errors },
-        { status: 400 }
-      );
-    }
-
-    if (error instanceof Error && error.message === 'Authentication required') {
-      return NextResponse.json(
-        { error: 'Authentication required' },
-        { status: 401 }
-      );
-    }
-
+    console.error('API error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

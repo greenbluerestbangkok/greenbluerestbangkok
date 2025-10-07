@@ -1,0 +1,36 @@
+/**
+ * Green Blue Rest Bangkok - Main Stylesheet
+ * 
+ * This is the entry point for all CSS.
+ * Import all modular stylesheets here.
+ */
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+@import url('base/layout.css');
+
+/* ========================================
+   COMPONENTS
+   ======================================== */
+@import url('components/buttons.css');
+@import url('components/hamburger-animation.css');
+
+/* ========================================
+   PAGES
+   ======================================== */
+@import url('pages/products.css');
+@import url('pages/trips.css');
+@import url('pages/videos.css');
+
+/* ========================================
+   VENDOR / THIRD-PARTY
+   ======================================== */
+@import url('vendor/photoswipe-fallback.css');
+
+/* ========================================
+   MAIN STYLES (from style.css)
+   ======================================== */
+/* Keep existing style.css content below */
+/* This will be the main stylesheet */
+

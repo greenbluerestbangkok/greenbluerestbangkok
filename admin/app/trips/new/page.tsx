@@ -2,14 +2,13 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { CreateTrip } from '@/lib/schema';
+import Link from 'next/link';
 
 export default function NewTripPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  
-  const [formData, setFormData] = useState<CreateTrip>({
+  const [error, setError] = useState('');
+  const [formData, setFormData] = useState({
     name: '',
     shortDescription: '',
     fullDescription: '',
@@ -18,73 +17,35 @@ export default function NewTripPage() {
     capacity: '',
     schedule: '',
     mainImage: '',
-    gallery: [],
-    highlights: [],
-    includes: [],
-    operator: '',
-    category: '',
-    status: 'draft',
-    featured: false
+    gallery: '',
+    highlights: '',
+    includes: '',
+    videoUrl: '',
+    status: 'active'
   });
-
-  const handleInputChange = (field: keyof CreateTrip, value: any) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  };
-
-  const handleArrayInputChange = (field: 'gallery' | 'highlights' | 'includes', value: string[]) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  };
-
-  const addArrayItem = (field: 'gallery' | 'highlights' | 'includes', value: string) => {
-    if (!value.trim()) return;
-    
-    setFormData(prev => ({
-      ...prev,
-      [field]: [...prev[field], value.trim()]
-    }));
-  };
-
-  const removeArrayItem = (field: 'gallery' | 'highlights' | 'includes', index: number) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: prev[field].filter((_, i) => i !== index)
-    }));
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!formData.name.trim() || !formData.shortDescription.trim()) {
-      setError('กรุณากรอกชื่อทริปและคำอธิบายสั้น');
-      return;
-    }
-
     setLoading(true);
-    setError(null);
+    setError('');
 
     try {
-      const response = await fetch('/admin/api/trips', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+      // Parse gallery and highlights from strings to arrays
+      const parsedGallery = formData.gallery ? formData.gallery.split('\n').filter(url => url.trim()) : [];
+      const parsedHighlights = formData.highlights ? formData.highlights.split('\n').filter(item => item.trim()) : [];
+      const parsedIncludes = formData.includes ? formData.includes.split('\n').filter(item => item.trim()) : [];
+
+      // Mock API call for now
+      console.log('Mock creating trip:', {
+        ...formData,
+        gallery: parsedGallery,
+        highlights: parsedHighlights,
+        includes: parsedIncludes,
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to create trip');
-      }
-
-      // Redirect to trip list
-      router.push('/admin/trips');
+      // Simulate successful creation
+      alert('สร้างทริปเรียบร้อยแล้ว (Mock Data)');
+      router.push('/trips');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to create trip');
     } finally {
@@ -92,308 +53,269 @@ export default function NewTripPage() {
     }
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
+      {/* Header */}
+      <div className="flex justify-between items-center mb-8">
+        <div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">เพิ่มทริปใหม่</h1>
           <p className="text-gray-600">สร้างทริปท่องเที่ยวใหม่</p>
         </div>
-
-        {/* Error Message */}
-        {error && (
-          <div className="alert alert-error mb-6">
-            {error}
-          </div>
-        )}
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-8">
-          {/* Basic Information */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">ข้อมูลพื้นฐาน</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="md:col-span-2">
-                <label className="form-label">ชื่อทริป *</label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange('name', e.target.value)}
-                  className="form-input"
-                  required
-                />
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="form-label">คำอธิบายสั้น *</label>
-                <textarea
-                  value={formData.shortDescription}
-                  onChange={(e) => handleInputChange('shortDescription', e.target.value)}
-                  className="form-input"
-                  rows={2}
-                  required
-                />
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="form-label">คำอธิบายเต็ม</label>
-                <textarea
-                  value={formData.fullDescription}
-                  onChange={(e) => handleInputChange('fullDescription', e.target.value)}
-                  className="form-input"
-                  rows={4}
-                />
-              </div>
-
-              <div>
-                <label className="form-label">ราคา *</label>
-                <input
-                  type="text"
-                  value={formData.price}
-                  onChange={(e) => handleInputChange('price', e.target.value)}
-                  placeholder="เช่น 800 บาท/คน"
-                  className="form-input"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="form-label">ระยะเวลา *</label>
-                <input
-                  type="text"
-                  value={formData.duration}
-                  onChange={(e) => handleInputChange('duration', e.target.value)}
-                  placeholder="เช่น 3-4 ชั่วโมง"
-                  className="form-input"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="form-label">ความจุ *</label>
-                <input
-                  type="text"
-                  value={formData.capacity}
-                  onChange={(e) => handleInputChange('capacity', e.target.value)}
-                  placeholder="เช่น 2-8 คน"
-                  className="form-input"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="form-label">ตารางเวลา *</label>
-                <input
-                  type="text"
-                  value={formData.schedule}
-                  onChange={(e) => handleInputChange('schedule', e.target.value)}
-                  placeholder="เช่น ทุกวัน 8:00-17:00"
-                  className="form-input"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Images */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">รูปภาพ</h2>
-            
-            <div className="space-y-4">
-              <div>
-                <label className="form-label">รูปภาพหลัก</label>
-                <input
-                  type="url"
-                  value={formData.mainImage}
-                  onChange={(e) => handleInputChange('mainImage', e.target.value)}
-                  placeholder="URL รูปภาพหลัก"
-                  className="form-input"
-                />
-              </div>
-
-              <div>
-                <label className="form-label">แกลเลอรี่รูปภาพ</label>
-                <div className="space-y-2">
-                  {formData.gallery.map((url, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <input
-                        type="url"
-                        value={url}
-                        onChange={(e) => {
-                          const newGallery = [...formData.gallery];
-                          newGallery[index] = e.target.value;
-                          handleArrayInputChange('gallery', newGallery);
-                        }}
-                        placeholder="URL รูปภาพ"
-                        className="form-input flex-1"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => removeArrayItem('gallery', index)}
-                        className="btn-secondary"
-                      >
-                        ลบ
-                      </button>
-                    </div>
-                  ))}
-                  <button
-                    type="button"
-                    onClick={() => addArrayItem('gallery', '')}
-                    className="btn-secondary"
-                  >
-                    เพิ่มรูปภาพ
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Highlights & Includes */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-lg font-medium text-gray-900 mb-4">จุดเด่น</h3>
-                <div className="space-y-2">
-                  {formData.highlights.map((highlight, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <input
-                        type="text"
-                        value={highlight}
-                        onChange={(e) => {
-                          const newHighlights = [...formData.highlights];
-                          newHighlights[index] = e.target.value;
-                          handleArrayInputChange('highlights', newHighlights);
-                        }}
-                        className="form-input flex-1"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => removeArrayItem('highlights', index)}
-                        className="btn-secondary"
-                      >
-                        ลบ
-                      </button>
-                    </div>
-                  ))}
-                  <button
-                    type="button"
-                    onClick={() => addArrayItem('highlights', '')}
-                    className="btn-secondary"
-                  >
-                    เพิ่มจุดเด่น
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-medium text-gray-900 mb-4">สิ่งที่รวม</h3>
-                <div className="space-y-2">
-                  {formData.includes.map((include, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <input
-                        type="text"
-                        value={include}
-                        onChange={(e) => {
-                          const newIncludes = [...formData.includes];
-                          newIncludes[index] = e.target.value;
-                          handleArrayInputChange('includes', newIncludes);
-                        }}
-                        className="form-input flex-1"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => removeArrayItem('includes', index)}
-                        className="btn-secondary"
-                      >
-                        ลบ
-                      </button>
-                    </div>
-                  ))}
-                  <button
-                    type="button"
-                    onClick={() => addArrayItem('includes', '')}
-                    className="btn-secondary"
-                  >
-                    เพิ่มสิ่งที่รวม
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Settings */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">การตั้งค่า</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <label className="form-label">ผู้ประกอบการ</label>
-                <input
-                  type="text"
-                  value={formData.operator}
-                  onChange={(e) => handleInputChange('operator', e.target.value)}
-                  className="form-input"
-                />
-              </div>
-
-              <div>
-                <label className="form-label">หมวดหมู่</label>
-                <input
-                  type="text"
-                  value={formData.category}
-                  onChange={(e) => handleInputChange('category', e.target.value)}
-                  className="form-input"
-                />
-              </div>
-
-              <div>
-                <label className="form-label">สถานะ</label>
-                <select
-                  value={formData.status}
-                  onChange={(e) => handleInputChange('status', e.target.value)}
-                  className="form-input"
-                >
-                  <option value="draft">ร่าง</option>
-                  <option value="active">เปิดใช้งาน</option>
-                  <option value="inactive">ปิดใช้งาน</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="mt-4">
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  checked={formData.featured}
-                  onChange={(e) => handleInputChange('featured', e.target.checked)}
-                  className="mr-2"
-                />
-                <span className="text-sm text-gray-700">ทริปแนะนำ</span>
-              </label>
-            </div>
-          </div>
-
-          {/* Actions */}
-          <div className="flex justify-end space-x-4">
-            <button
-              type="button"
-              onClick={() => router.push('/admin/trips')}
-              className="btn-secondary"
-            >
-              ยกเลิก
-            </button>
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-primary disabled:opacity-50"
-            >
-              {loading ? 'กำลังบันทึก...' : 'บันทึกทริป'}
-            </button>
-          </div>
-        </form>
+        <Link href="/trips" className="btn-secondary">
+          กลับไปรายการทริป
+        </Link>
       </div>
+
+      {/* Error Message */}
+      {error && (
+        <div className="alert alert-error mb-6">
+          {error}
+        </div>
+      )}
+
+      {/* Form */}
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">ข้อมูลพื้นฐาน</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="md:col-span-2">
+              <label htmlFor="name" className="form-label">
+                ชื่อทริป *
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="ชื่อทริปท่องเที่ยว"
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label htmlFor="shortDescription" className="form-label">
+                คำอธิบายสั้น *
+              </label>
+              <textarea
+                id="shortDescription"
+                name="shortDescription"
+                required
+                rows={3}
+                value={formData.shortDescription}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="คำอธิบายสั้นๆ เกี่ยวกับทริป"
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label htmlFor="fullDescription" className="form-label">
+                คำอธิบายเต็ม
+              </label>
+              <textarea
+                id="fullDescription"
+                name="fullDescription"
+                rows={6}
+                value={formData.fullDescription}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="คำอธิบายรายละเอียดของทริป"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="price" className="form-label">
+                ราคา *
+              </label>
+              <input
+                type="text"
+                id="price"
+                name="price"
+                required
+                value={formData.price}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="เช่น 1,500 บาท"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="duration" className="form-label">
+                ระยะเวลา *
+              </label>
+              <input
+                type="text"
+                id="duration"
+                name="duration"
+                required
+                value={formData.duration}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="เช่น 1 วัน"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="capacity" className="form-label">
+                ความจุ
+              </label>
+              <input
+                type="text"
+                id="capacity"
+                name="capacity"
+                value={formData.capacity}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="เช่น 10-15 คน"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="status" className="form-label">
+                สถานะ
+              </label>
+              <select
+                id="status"
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+                className="form-input"
+              >
+                <option value="active">เปิดใช้งาน</option>
+                <option value="inactive">ปิดใช้งาน</option>
+                <option value="draft">ร่าง</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">รูปภาพและสื่อ</h2>
+          
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="mainImage" className="form-label">
+                รูปภาพหลัก
+              </label>
+              <input
+                type="url"
+                id="mainImage"
+                name="mainImage"
+                value={formData.mainImage}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="URL ของรูปภาพหลัก"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="gallery" className="form-label">
+                แกลเลอรี่รูปภาพ
+              </label>
+              <textarea
+                id="gallery"
+                name="gallery"
+                rows={4}
+                value={formData.gallery}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="URL ของรูปภาพ (แยกแต่ละบรรทัด)"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="videoUrl" className="form-label">
+                URL วิดีโอ
+              </label>
+              <input
+                type="url"
+                id="videoUrl"
+                name="videoUrl"
+                value={formData.videoUrl}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="URL ของวิดีโอ"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">รายละเอียดเพิ่มเติม</h2>
+          
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="schedule" className="form-label">
+                ตารางการเดินทาง
+              </label>
+              <textarea
+                id="schedule"
+                name="schedule"
+                rows={6}
+                value={formData.schedule}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="รายละเอียดตารางการเดินทาง"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="highlights" className="form-label">
+                จุดเด่น
+              </label>
+              <textarea
+                id="highlights"
+                name="highlights"
+                rows={4}
+                value={formData.highlights}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="จุดเด่นของทริป (แยกแต่ละบรรทัด)"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="includes" className="form-label">
+                สิ่งที่รวมในราคา
+              </label>
+              <textarea
+                id="includes"
+                name="includes"
+                rows={4}
+                value={formData.includes}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="สิ่งที่รวมในราคา (แยกแต่ละบรรทัด)"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Submit Buttons */}
+        <div className="flex justify-end space-x-4">
+          <Link href="/trips" className="btn-secondary">
+            ยกเลิก
+          </Link>
+          <button
+            type="submit"
+            disabled={loading}
+            className="btn-primary disabled:opacity-50"
+          >
+            {loading ? 'กำลังบันทึก...' : 'สร้างทริป'}
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

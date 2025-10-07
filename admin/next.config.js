@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove basePath and assetPrefix for Vercel deployment
+  // Remove basePath for standalone admin panel
   // basePath: '/admin',
   // assetPrefix: '/admin',
   output: 'standalone',
@@ -15,18 +15,9 @@ const nextConfig = {
       'raw.githubusercontent.com', 
       'github.com',
       'localhost:1337',
-      'your-strapi-domain.com'
+      'gmdvkegcejrbrobtrhfm.supabase.co'
     ],
   },
-  // Remove rewrites for Vercel deployment
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: '/admin/api/:path*',
-  //       destination: '/api/:path*',
-  //     },
-  //   ];
-  // },
 };
 
 module.exports = nextConfig;
